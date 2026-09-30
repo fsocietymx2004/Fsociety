@@ -260,7 +260,9 @@
                 <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800/80">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Nuestra Esencia</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'about-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Nuestra Historia</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'quienes-somos-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Quiénes Somos?</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'que-hacemos-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Qué Hacemos?</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'historia-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Nuestra Historia</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'mision-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Misión</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'vision-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Visión</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'valores-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Valores</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
@@ -433,6 +435,15 @@
 
         const productsDB = [
             { id: 'd_aqua', name: 'Decant Oddesey Aqua', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 80, isRequest: false, image: 'img/aqua.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. 🌸🍨' },
+            { id: 'd_coco', name: 'Coco Mademoiselle Chanel', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, image: 'img/Coco Chanel d.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
+            { id: 'd_scandal', name: 'Scandal', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 150, isRequest: false, image: 'img/Scandal D.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
+            { id: 'd_coral_fantasy', name: 'Valentino Coral Fantasy', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 90, isRequest: false, image: 'img/Valentino mzna d.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
+            { id: 'd_yara', name: 'Lattafa Yara', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 100, isRequest: false, image: 'img/yara d.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
+            { id: 'd_noble_blush', name: 'Lattafa Noble Blush', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 90, isRequest: false, image: 'img/badde d.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
+            { id: 'd_love', name: 'Love, Don’t Be Shy by Kilian', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, image: 'img/Love D.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
+            { id: 'd_prada_paradoxe', name: 'Prada Paradoxe', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 140, isRequest: false, image: 'img/Prada Milano D.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
+            { id: 'd_rayhaan_aloha', name: 'Rayhaan Aloha', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 200, isRequest: false, image: 'img/pacific aloha decant.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀️🌊' },
+            { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, image: 'img/Valentino Rosa D.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
             { id: 'd2', name: 'Valentino Uomo Born in Roma Purple', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 210, isRequest: false, image: 'img/rewdUqi.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa, lavanda aromática y vetiver ahumado. 🪻🍨🪵' },
             { id: 'd3', name: 'Valentino Born In Roma Extradose', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, image: 'img/beno81o.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
             { id: 'd4', name: 'Yves Saint Laurent Y', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 100, isRequest: false, image: 'img/71K4qtM.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna y versátil. 🍏🪵' },
@@ -453,10 +464,16 @@
             { id: 'd19', name: 'Jean Paul Gaultier Paradise Garden', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, image: 'img/LG6qnJ3.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con carácter tropical y moderno. 🥥🌿' },
             { id: 'd20', name: 'Carolina Herrera La Bomba', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, image: 'img/yFyX1ez.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce y vibrante. 🌸🍬' },
             { id: 'd21', name: 'Creed Aventus', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 80, isRequest: false, image: 'img/aQD855V.jpg', desc: 'EDP Fragancia masculina fresca, frutal y amaderada. 🍍🪵' },
-            { id: 'd22', name: 'Rasasi Hawas For Him Ice', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 120, isRequest: false, image: 'img/2m0rYtx.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
-            { id: 'd_bleu_chanel', name: 'Bleu de Chanel', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, image: 'img/OCTArcm.jpg.png', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
-
             { id: 'p_sauvage_elixir', name: 'Sauvage Elixir Dior', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/xJM8Vmu.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶️' },
+            { id: 'p_coco', name: 'Coco Mademoiselle Chanel', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/coco chanel.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
+            { id: 'p_scandal', name: 'Scandal', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Scandal.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
+            { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino mza d.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
+            { id: 'p_yara', name: 'Lattafa Yara', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/yara.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
+            { id: 'p_noble_blush', name: 'Lattafa Noble Blush', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Badde.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
+            { id: 'p_love', name: 'Love, Don’t Be Shy by Kilian', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Love.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
+            { id: 'p_prada_paradoxe', name: 'Prada Paradoxe', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Prada Milano.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
+            { id: 'p_rayhaan_aloha', name: 'Rayhaan Aloha', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/pacific aloha.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀️🌊' },
+            { id: 'p_valentino_donna', name: 'Valentino Donna Born in Roma', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino rosa.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
             { id: 'p_imagination_lv', name: 'Imagination Louis Vuitton', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/imagination.jpeg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
             { id: 'p_santal_33', name: 'Santal 33', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/0ywmTVA.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
             { id: 'p_perry_purple', name: 'Perry Ellis Purple For Women', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/v27wkmS.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
@@ -478,6 +495,8 @@
             { id: 'p_bleu_chanel', name: 'Bleu de Chanel', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/u5MLr0Z.jpg.png', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
             { id: 'p_ysl_y', name: 'Yves Saint Laurent Y', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/wc0xMOS.jpg.png', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna. 🍏🪵' },
             { id: 'p_carolina_bomba', name: 'Carolina Herrera La Bomba', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ecofdPj.jpg.png', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce, vibrante y elegante. 🌸🍬' },
+            { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino mza d.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
+            { id: 'p_yara', name: 'Lattafa Yara', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/yara.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
             
             { id: 't1', name: 'Playera Básica Negra', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nNormal' },
             { id: 't2', name: 'Playera Básica Blanca', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nBlanca' },
@@ -602,16 +621,62 @@
             infoBottomZone.innerHTML = `
                 <div class="max-w-5xl mx-auto space-y-20 sm:space-y-24">
                     
-                    <section id="about-section" class="scroll-mt-28 text-center md:text-left">
+                    <section id="quienes-somos-section" class="scroll-mt-28 text-center md:text-left">
                         <div class="max-w-3xl mx-auto">
                             <span class="text-xs uppercase tracking-[0.3em] text-fsgold font-semibold block mb-3">Conoce nuestra esencia</span>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl brand-font font-bold text-gray-900 dark:text-white mb-6">¿Quiénes Somos?</h2>
+                            <div class="w-16 h-0.5 bg-fsgold mx-auto md:mx-0 mb-8"></div>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                F Society es una marca mexicana enfocada en acercar la perfumería, el estilo y la moda a más personas mediante una experiencia de compra accesible, moderna y personalizada.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Nuestra propuesta combina decants, perfumes, playeras, sudaderas y gorras, seleccionados para quienes buscan expresar su personalidad a través de su aroma y su estilo sin necesidad de gastar de más.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-light">
+                                Creemos que encontrar un perfume o una prenda que te represente debería ser una experiencia sencilla, confiable y emocionante.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="que-hacemos-section" class="scroll-mt-28 text-center md:text-left">
+                        <div class="max-w-3xl mx-auto">
+                            <span class="text-xs uppercase tracking-[0.3em] text-fsgold font-semibold block mb-3">Nuestra labor</span>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl brand-font font-bold text-gray-900 dark:text-white mb-6">¿Qué Hacemos?</h2>
+                            <div class="w-16 h-0.5 bg-fsgold mx-auto md:mx-0 mb-8"></div>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                En F Society seleccionamos y comercializamos fragancias y productos de estilo personal para distintos gustos, ocasiones y presupuestos.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Nuestra especialidad son los decants, que permiten probar y utilizar diferentes perfumes en presentaciones prácticas antes de invertir en una botella completa. También ofrecemos perfumes de distintas categorías, incluyendo fragancias de diseñador y propuestas árabes, además de una línea de ropa y accesorios.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Buscamos acompañar al cliente durante su compra mediante recomendaciones personalizadas, comparaciones entre fragancias y opciones adaptadas a su presupuesto.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-light font-medium italic">
+                                No se trata solamente de vender un perfume; queremos ayudarte a encontrar el aroma y el estilo que mejor te representen.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="historia-section" class="scroll-mt-28 text-center md:text-left">
+                        <div class="max-w-3xl mx-auto">
+                            <span class="text-xs uppercase tracking-[0.3em] text-fsgold font-semibold block mb-3">Nuestros orígenes</span>
                             <h2 class="text-3xl sm:text-4xl md:text-5xl brand-font font-bold text-gray-900 dark:text-white mb-6">Nuestra Historia</h2>
                             <div class="w-16 h-0.5 bg-fsgold mx-auto md:mx-0 mb-8"></div>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
-                                F Society nace bajo la premisa de la exclusividad y el buen gusto absoluto. Cada fragancia de nicho y pieza de moda urbana es seleccionada cuidadosamente para quienes no siguen tendencias, sino que las imponen.
+                                F Society nació de una idea sencilla: hacer más accesible el mundo de la perfumería.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Comprar una botella completa puede representar una inversión importante, especialmente cuando una persona todavía no sabe si una fragancia realmente se adapta a sus gustos. A partir de esa necesidad surgió la idea de ofrecer decants, pequeñas presentaciones que permiten conocer, probar y utilizar diferentes perfumes de una forma mucho más accesible.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Con el tiempo, el proyecto comenzó a crecer. El catálogo incorporó nuevas fragancias, perfumes de diseñador, opciones árabes y alternativas para diferentes presupuestos. Al mismo tiempo, F Society comenzó a desarrollar una identidad propia basada en una estética elegante, moderna y reconocible.
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                La siguiente etapa fue ampliar el concepto más allá de la perfumería, incorporando playeras, sudaderas, gorras y productos relacionados con el estilo personal.
                             </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-light">
-                                Creemos firmemente que el estilo personal es una declaración silenciosa de presencia, elegancia y distinción inquebrantable.
+                                Hoy, F Society busca convertirse en algo más que una tienda: una comunidad donde cada persona pueda descubrir nuevos aromas, construir su estilo y encontrar productos que realmente conecten con su personalidad.
                             </p>
                         </div>
                     </section>
@@ -621,8 +686,11 @@
                             <span class="text-xs uppercase tracking-[0.3em] text-fsgold font-semibold block mb-3">Propósito</span>
                             <h2 class="text-3xl sm:text-4xl md:text-5xl brand-font font-bold text-gray-900 dark:text-white mb-6">Misión</h2>
                             <div class="w-16 h-0.5 bg-fsgold mx-auto md:mx-0 mb-8"></div>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Ofrecer perfumes, decants, ropa y accesorios con una excelente relación entre calidad, variedad y precio, brindando una experiencia de compra confiable, accesible y personalizada.
+                            </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-light">
-                                Proveerte acceso a piezas de alta perfumería y moda urbana curadas con rigor, garantizando elegancia, presencia y distinción en cada detalle de tu día a día.
+                                Nuestra misión es permitir que cada cliente pueda descubrir nuevas fragancias y estilos sin tener que realizar grandes inversiones, ofreciendo alternativas para diferentes gustos y presupuestos.
                             </p>
                         </div>
                     </section>
@@ -632,46 +700,70 @@
                             <span class="text-xs uppercase tracking-[0.3em] text-fsgold font-semibold block mb-3">Horizonte</span>
                             <h2 class="text-3xl sm:text-4xl md:text-5xl brand-font font-bold text-gray-900 dark:text-white mb-6">Visión</h2>
                             <div class="w-16 h-0.5 bg-fsgold mx-auto md:mx-0 mb-8"></div>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
+                                Convertir a F Society en una marca reconocida en México dentro del sector de perfumería y estilo de vida, desarrollando una comunidad de clientes y distribuidores que encuentren en nosotros variedad, confianza, asesoría y precios competitivos.
+                            </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-light">
-                                Convertirnos en el referente líder de curaduría de estilo exclusivo y colecciones privadas de fragancias de nicho en toda la región.
+                                Buscamos evolucionar de una tienda especializada a una marca y distribuidora con presencia nacional, fortaleciendo nuestros canales digitales, catálogo, logística y red comercial.
                             </p>
                         </div>
                     </section>
 
                     <section id="valores-section" class="scroll-mt-28 text-center">
-                        <div class="max-w-4xl mx-auto">
+                        <div class="max-w-5xl mx-auto">
                             <span class="text-xs uppercase tracking-[0.3em] text-fsgold font-semibold block mb-3">Pilares</span>
                             <h2 class="text-3xl sm:text-4xl md:text-5xl brand-font font-bold text-gray-900 dark:text-white mb-6">Valores</h2>
                             <div class="w-16 h-0.5 bg-fsgold mx-auto mb-12"></div>
                             
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 text-left justify-center">
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
                                     <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
-                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-handshake"></i>
                                     </div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Exclusividad</h4>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Piezas únicas y selectas para gustos exigentes.</p>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Confianza</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Buscamos ofrecer información clara sobre nuestros productos y una experiencia de compra segura.</p>
                                 </div>
-                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm">
-                                    <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
-                                        <i class="fas fa-user-shield"></i>
-                                    </div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Discreción</h4>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Trato directo, personalizado y confidencial.</p>
-                                </div>
-                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm">
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
                                     <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
                                         <i class="fas fa-award"></i>
                                     </div>
                                     <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Calidad</h4>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Excelencia garantizada en cada botella y prenda.</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Seleccionamos cuidadosamente los productos que forman parte de nuestro catálogo.</p>
                                 </div>
-                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm">
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
+                                        <i class="fas fa-wallet"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Accesibilidad</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Creemos que disfrutar buenas fragancias y productos de estilo no debería estar limitado por el presupuesto.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Atención Personalizada</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Cada persona tiene gustos distintos; por eso nuestras recomendaciones parten de las necesidades del cliente.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Innovación</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Buscamos constantemente nuevas fragancias, tendencias, productos y formas de mejorar la experiencia de compra.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
                                     <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
                                         <i class="fas fa-fire"></i>
                                     </div>
-                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Presencia</h4>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Estilo imponente que perdura en el tiempo.</p>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Pasión</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Disfrutamos descubrir perfumes, comparar aromas y compartir nuevas opciones con nuestra comunidad.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
+                                    <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
+                                        <i class="fas fa-hand-holding-heart"></i>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Compromiso</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Trabajamos para mejorar continuamente nuestro catálogo, atención y servicio.</p>
                                 </div>
                             </div>
                         </div>
@@ -684,10 +776,10 @@
                             <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm max-w-xl mx-auto mb-8 font-light">¿Tienes dudas, pedidos especiales o requieres asesoría personalizada? Estamos a tu disposición en nuestros canales oficiales.</p>
                             
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                                <a href="mailto:fsociety2710@outlook.com?subject=Consulta%20de%20Productos%20-%20F%20Society&body=Hola%20F%20Society,%0A%0AMe%20gustaría%20obtener%20más%20información%20sobre%20su%20catálogo.%0A%0A" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl border border-fsgold/25 hover:border-fsgold transition flex flex-col items-center justify-center group bg-white/80 dark:bg-black/50 shadow-sm">
+                                <a href="mailto:fsocietymx2004@gmail.com?subject=Consulta%20de%20Productos%20-%20F%20Society&body=Hola%20F%20Society,%0A%0AMe%20gustaría%20obtener%20más%20información%20sobre%20su%20catálogo.%0A%0A" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl border border-fsgold/25 hover:border-fsgold transition flex flex-col items-center justify-center group bg-white/80 dark:bg-black/50 shadow-sm">
                                     <i class="fas fa-envelope text-fsgold text-xl sm:text-2xl mb-3 group-hover:scale-110 transition-transform"></i>
                                     <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider mb-1 font-medium">Correo</span>
-                                    <span class="text-[11px] sm:text-xs text-gray-800 dark:text-white font-semibold break-all">fsociety2710@outlook.com</span>
+                                    <span class="text-[11px] sm:text-xs text-gray-800 dark:text-white font-semibold break-all">fsocietymx2004@gmail.com</span>
                                 </a>
                                 <a href="https://wa.me/525545234410" target="_blank" rel="noopener noreferrer" class="p-5 rounded-xl border border-fsgold/25 hover:border-fsgold transition flex flex-col items-center justify-center group bg-white/80 dark:bg-black/50 shadow-sm">
                                     <i class="fab fa-whatsapp text-fsgold text-xl sm:text-2xl mb-3 group-hover:scale-110 transition-transform"></i>
