@@ -473,7 +473,7 @@
             { id: 'p_noble_blush', name: 'Lattafa Noble Blush', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Badde.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
             { id: 'p_love', name: 'Love, Don’t Be Shy by Kilian', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Love.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
             { id: 'p_prada_paradoxe', name: 'Prada Paradoxe', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Prada Milano.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
-            { id: 'p_rayhaan_aloha', name: 'Rayhaan Aloha', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/pacific aloha.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀️️🌊' },
+            { id: 'p_rayhaan_aloha', name: 'Rayhaan Aloha', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/pacific aloha.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
             { id: 'p_valentino_donna', name: 'Valentino Donna Born in Roma', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino rosa.jpeg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
             { id: 'p_imagination_lv', name: 'Imagination Louis Vuitton', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/imagination.jpeg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
             { id: 'p_santal_33', name: 'Santal 33', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/0ywmTVA.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
@@ -518,8 +518,8 @@
 
         let cart = [];
         let filters = {
-            perfumes: { origin: 'Todos', occasion: 'Todas' },
-            decants: { origin: 'Todos', occasion: 'Todas' }
+            perfumes: { gender: 'Todos', origin: 'Todos', occasion: 'Todas' },
+            decants: { gender: 'Todos', origin: 'Todos', occasion: 'Todas' }
         };
 
         function renderCatalog() {
@@ -555,8 +555,18 @@
                 if (isFragrance) {
                     const currentFilter = filters[category.id];
                     filterHTML = `
-                        <div class="flex flex-col justify-center items-center mt-6 mb-10 w-full max-w-3xl mx-auto px-2">
-                            <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
+                        <div class="flex flex-col justify-center items-center mt-6 mb-10 w-full max-w-4xl mx-auto px-2">
+                            <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-4 gap-3 w-full">
+                                <div class="relative w-full">
+                                    <i class="fas fa-venus-mars absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
+                                    <select onchange="updateFilter('${category.id}', 'gender', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
+                                        <option value="Todos" ${currentFilter.gender === 'Todos' ? 'selected' : ''}>Género: Todos</option>
+                                        <option value="Hombre" ${currentFilter.gender === 'Hombre' ? 'selected' : ''}>Hombre</option>
+                                        <option value="Mujer" ${currentFilter.gender === 'Mujer' ? 'selected' : ''}>Mujer</option>
+                                        <option value="Unisex" ${currentFilter.gender === 'Unisex' ? 'selected' : ''}>Unisex</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+                                </div>
                                 <div class="relative w-full">
                                     <i class="fas fa-globe absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
                                     <select onchange="updateFilter('${category.id}', 'origin', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
@@ -594,25 +604,24 @@
                 `;
 
                 if (isFragrance) {
-                    // Subsecciones internas: Hombre, Mujer, Unisex
                     section.innerHTML = `
                         ${headerHTML}
                         <div class="max-w-[1600px] mx-auto space-y-16">
-                            <div>
+                            <div id="sub-section-Hombre-${category.id}">
                                 <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
                                     <i class="fas fa-mars text-fsgold text-xl"></i>
                                     <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Hombre</h3>
                                 </div>
                                 <div id="grid-${category.id}-Hombre" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
                             </div>
-                            <div>
+                            <div id="sub-section-Mujer-${category.id}">
                                 <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
                                     <i class="fas fa-venus text-fsgold text-xl"></i>
                                     <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Mujer</h3>
                                 </div>
                                 <div id="grid-${category.id}-Mujer" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
                             </div>
-                            <div>
+                            <div id="sub-section-Unisex-${category.id}">
                                 <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
                                     <i class="fas fa-venus-mars text-fsgold text-xl"></i>
                                     <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Unisex</h3>
@@ -628,7 +637,6 @@
                 }
             });
 
-            // Philosophy & Contact Zone (Reverts to Gold Theme)
             const infoBottomZone = document.createElement('div');
             infoBottomZone.id = 'info-bottom-zone';
             infoBottomZone.className = 'w-full bg-white dark:bg-fsblack py-16 px-6 md:px-12 transition-colors duration-500 relative z-30 border-t border-fsgold/25';
@@ -862,6 +870,15 @@
             const gridId = subCategory ? `grid-${categoryId}-${subCategory}` : `grid-${categoryId}`;
             const grid = document.getElementById(gridId);
             if(!grid) return;
+
+            const subSectionWrapper = subCategory ? document.getElementById(`sub-section-${subCategory}-${categoryId}`) : null;
+
+            if (subCategory && filters[categoryId] && filters[categoryId].gender !== 'Todos' && filters[categoryId].gender !== subCategory) {
+                if (subSectionWrapper) subSectionWrapper.style.display = 'none';
+                return;
+            } else {
+                if (subSectionWrapper) subSectionWrapper.style.display = 'block';
+            }
 
             let catProducts = productsDB.filter(p => p.category === categoryId);
             if (subCategory) {
@@ -1323,6 +1340,14 @@
             const gridId = `grid-${categoryId}-${subCategory}`;
             const grid = document.getElementById(gridId);
             if(!grid) return;
+
+            const subSectionWrapper = document.getElementById(`sub-section-${subCategory}-${categoryId}`);
+            if (filters[categoryId] && filters[categoryId].gender !== 'Todos' && filters[categoryId].gender !== subCategory) {
+                if (subSectionWrapper) subSectionWrapper.style.display = 'none';
+                return;
+            } else {
+                if (subSectionWrapper) subSectionWrapper.style.display = 'block';
+            }
 
             let catProducts = productsDB.filter(p => p.category === categoryId && p.sub === subCategory);
             
