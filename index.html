@@ -232,7 +232,6 @@
         </div>
     </nav>
 
-    <!-- Submenú Lateral Minimalista, Elegante y Formal -->
     <div id="submenu-drawer" class="fixed inset-0 z-[75] hidden-element flex justify-start transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleSubmenu()"></div>
         <div class="relative w-full max-w-xs sm:max-w-sm bg-white dark:bg-fsdark h-full border-r border-fsgold/20 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full" id="submenu-panel">
@@ -244,7 +243,6 @@
             </div>
             <div class="flex-grow overflow-y-auto px-6 py-6 space-y-8">
                 
-                <!-- Sección Tienda -->
                 <div class="space-y-3">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Tienda</h4>
                     <ul class="space-y-2.5">
@@ -256,7 +254,6 @@
                     </ul>
                 </div>
 
-                <!-- Sección Esencia -->
                 <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800/80">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Nuestra Esencia</h4>
                     <ul class="space-y-2.5">
@@ -269,7 +266,6 @@
                     </ul>
                 </div>
 
-                <!-- Sección Atención -->
                 <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800/80">
                     <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Atención</h4>
                     <ul class="space-y-2.5">
@@ -434,6 +430,7 @@
         }
 
         const productsDB = [
+            // --- DECANTS ---
             { id: 'd_aqua', name: 'Decant Oddesey Aqua', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 80, isRequest: false, image: 'img/aqua.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. 🌸🍨' },
             { id: 'd_coco', name: 'Coco Mademoiselle Chanel', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, image: 'img/Coco Chanel d.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
             { id: 'd_scandal', name: 'Scandal', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 150, isRequest: false, image: 'img/Scandal D.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
@@ -442,7 +439,7 @@
             { id: 'd_noble_blush', name: 'Lattafa Noble Blush', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 90, isRequest: false, image: 'img/badde d.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
             { id: 'd_love', name: 'Love, Don’t Be Shy by Kilian', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, image: 'img/Love D.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
             { id: 'd_prada_paradoxe', name: 'Prada Paradoxe', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 140, isRequest: false, image: 'img/Prada Milano D.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
-            { id: 'd_rayhaan_aloha', name: 'Rayhaan Aloha', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 200, isRequest: false, image: 'img/pacific aloha decant.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀️🌊' },
+            { id: 'd_rayhaan_aloha', name: 'Rayhaan Aloha', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 200, isRequest: false, image: 'img/pacific aloha decant.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
             { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, image: 'img/Valentino Rosa D.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
             { id: 'd2', name: 'Valentino Uomo Born in Roma Purple', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 210, isRequest: false, image: 'img/rewdUqi.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa, lavanda aromática y vetiver ahumado. 🪻🍨🪵' },
             { id: 'd3', name: 'Valentino Born In Roma Extradose', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, image: 'img/beno81o.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
@@ -464,11 +461,15 @@
             { id: 'd19', name: 'Jean Paul Gaultier Paradise Garden', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, image: 'img/LG6qnJ3.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con carácter tropical y moderno. 🥥🌿' },
             { id: 'd20', name: 'Carolina Herrera La Bomba', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, image: 'img/yFyX1ez.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce y vibrante. 🌸🍬' },
             { id: 'd21', name: 'Creed Aventus', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 80, isRequest: false, image: 'img/aQD855V.jpg', desc: 'EDP Fragancia masculina fresca, frutal y amaderada. 🍍🪵' },
+            { id: 'd22', name: 'Rasasi Hawas For Him Ice', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 120, isRequest: false, image: 'img/2m0rYtx.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
+            { id: 'd_bleu_chanel', name: 'Bleu de Chanel', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, image: 'img/OCTArcm.jpg.png', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
+
+            // --- PERFUMES BAJO PEDIDO ---
             { id: 'p_sauvage_elixir', name: 'Sauvage Elixir Dior', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/xJM8Vmu.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶️' },
             { id: 'p_coco', name: 'Coco Mademoiselle Chanel', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/coco chanel.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
             { id: 'p_scandal', name: 'Scandal', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Scandal.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
             { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino mza d.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
-            { id: 'p_yara', name: 'Lattafa Yara', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/yara.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
+            { id: 'p_yara', name: 'Lattafa Yara', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/Yara.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
             { id: 'p_noble_blush', name: 'Lattafa Noble Blush', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Badde.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
             { id: 'p_love', name: 'Love, Don’t Be Shy by Kilian', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Love.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
             { id: 'p_prada_paradoxe', name: 'Prada Paradoxe', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Prada Milano.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
@@ -495,17 +496,14 @@
             { id: 'p_bleu_chanel', name: 'Bleu de Chanel', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/u5MLr0Z.jpg.png', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
             { id: 'p_ysl_y', name: 'Yves Saint Laurent Y', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/wc0xMOS.jpg.png', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna. 🍏🪵' },
             { id: 'p_carolina_bomba', name: 'Carolina Herrera La Bomba', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ecofdPj.jpg.png', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce, vibrante y elegante. 🌸🍬' },
-            { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino mza d.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
-            { id: 'p_yara', name: 'Lattafa Yara', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/yara.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
-            
+
+            // --- APPAREL ---
             { id: 't1', name: 'Playera Básica Negra', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nNormal' },
             { id: 't2', name: 'Playera Básica Blanca', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nBlanca' },
             { id: 't3', name: 'Polo Gold Edition Negra', category: 'playeras', sub: 'Tipo Polo', price: 650, isRequest: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Polo\nNegra' },
             { id: 't4', name: 'Polo Silver Edition Blanca', category: 'playeras', sub: 'Tipo Polo', price: 650, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Polo\nBlanca' },
-            
             { id: 's1', name: 'Sudadera Hoodie Classic', category: 'sudaderas', sub: 'Unisex', price: 890, isRequest: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Sudadera\nClassic' },
             { id: 's2', name: 'Sudadera Crewneck', category: 'sudaderas', sub: 'Unisex', price: 790, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Crewneck' },
-            
             { id: 'g1', name: 'Gorra Snapback Logo Dorado', category: 'gorras', sub: 'Unisex', price: 350, isRequest: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Gorra\nGold' },
             { id: 'g2', name: 'Gorra Trucker Logo Plateado', category: 'gorras', sub: 'Unisex', price: 350, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Gorra\nSilver' },
         ];
@@ -520,8 +518,8 @@
 
         let cart = [];
         let filters = {
-            perfumes: { sub: 'Todos', origin: 'Todos', occasion: 'Todas' },
-            decants: { sub: 'Todos', origin: 'Todos', occasion: 'Todas' }
+            perfumes: { origin: 'Todos', occasion: 'Todas' },
+            decants: { origin: 'Todos', occasion: 'Todas' }
         };
 
         function renderCatalog() {
@@ -557,18 +555,8 @@
                 if (isFragrance) {
                     const currentFilter = filters[category.id];
                     filterHTML = `
-                        <div class="flex flex-col justify-center items-center mt-6 mb-10 w-full max-w-4xl mx-auto px-2">
-                            <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full">
-                                <div class="relative w-full">
-                                    <i class="fas fa-venus-mars absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
-                                    <select onchange="updateFilter('${category.id}', 'sub', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
-                                        <option value="Todos" ${currentFilter.sub === 'Todos' ? 'selected' : ''}>Género: Todos</option>
-                                        <option value="Hombre" ${currentFilter.sub === 'Hombre' ? 'selected' : ''}>Hombre</option>
-                                        <option value="Mujer" ${currentFilter.sub === 'Mujer' ? 'selected' : ''}>Mujer</option>
-                                        <option value="Unisex" ${currentFilter.sub === 'Unisex' ? 'selected' : ''}>Unisex</option>
-                                    </select>
-                                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
-                                </div>
+                        <div class="flex flex-col justify-center items-center mt-6 mb-10 w-full max-w-3xl mx-auto px-2">
+                            <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
                                 <div class="relative w-full">
                                     <i class="fas fa-globe absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
                                     <select onchange="updateFilter('${category.id}', 'origin', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
@@ -605,11 +593,37 @@
                     </div>
                 `;
 
-                section.innerHTML = headerHTML + `<div id="grid-${category.id}" class="max-w-[1600px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>`;
-                
                 if (isFragrance) {
+                    // Subsecciones internas: Hombre, Mujer, Unisex
+                    section.innerHTML = `
+                        ${headerHTML}
+                        <div class="max-w-[1600px] mx-auto space-y-16">
+                            <div>
+                                <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
+                                    <i class="fas fa-mars text-fsgold text-xl"></i>
+                                    <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Hombre</h3>
+                                </div>
+                                <div id="grid-${category.id}-Hombre" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
+                                    <i class="fas fa-venus text-fsgold text-xl"></i>
+                                    <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Mujer</h3>
+                                </div>
+                                <div id="grid-${category.id}-Mujer" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
+                                    <i class="fas fa-venus-mars text-fsgold text-xl"></i>
+                                    <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Unisex</h3>
+                                </div>
+                                <div id="grid-${category.id}-Unisex" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
+                            </div>
+                        </div>
+                    `;
                     fragranceZone.appendChild(section);
                 } else {
+                    section.innerHTML = headerHTML + `<div id="grid-${category.id}" class="max-w-[1600px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>`;
                     clothingZone.appendChild(section);
                 }
             });
@@ -807,7 +821,15 @@
             container.appendChild(clothingZone);
             container.appendChild(infoBottomZone);
 
-            catalogStructure.forEach(cat => renderProducts(cat.id));
+            catalogStructure.forEach(cat => {
+                if(cat.id === 'perfumes' || cat.id === 'decants') {
+                    renderProducts(cat.id, 'Hombre');
+                    renderProducts(cat.id, 'Mujer');
+                    renderProducts(cat.id, 'Unisex');
+                } else {
+                    renderProducts(cat.id);
+                }
+            });
             setupScrollObserver();
         }
 
@@ -836,15 +858,18 @@
             });
         }
 
-        function renderProducts(categoryId) {
-            const grid = document.getElementById(`grid-${categoryId}`);
+        function renderProducts(categoryId, subCategory = null) {
+            const gridId = subCategory ? `grid-${categoryId}-${subCategory}` : `grid-${categoryId}`;
+            const grid = document.getElementById(gridId);
             if(!grid) return;
 
             let catProducts = productsDB.filter(p => p.category === categoryId);
+            if (subCategory) {
+                catProducts = catProducts.filter(p => p.sub === subCategory);
+            }
             
             if (filters[categoryId]) {
                 const f = filters[categoryId];
-                if (f.sub !== 'Todos') catProducts = catProducts.filter(p => p.sub === f.sub);
                 if (f.origin !== 'Todos') catProducts = catProducts.filter(p => p.origin === f.origin);
                 if (f.occasion !== 'Todas') catProducts = catProducts.filter(p => p.occasion === f.occasion);
             }
@@ -852,7 +877,7 @@
             let productsHTML = '';
             
             if (catProducts.length === 0) {
-                productsHTML = `<div class="col-span-full text-center text-gray-400 py-10">No hay productos que coincidan con estos filtros.</div>`;
+                productsHTML = `<div class="col-span-full text-center text-gray-400 py-8 text-sm">No hay productos en esta sección con los filtros seleccionados.</div>`;
             } else {
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
@@ -893,7 +918,13 @@
         function updateFilter(category, type, value) {
             if(filters[category]) {
                 filters[category][type] = value;
-                renderProducts(category);
+                if(category === 'perfumes' || category === 'decants') {
+                    renderProducts(category, 'Hombre');
+                    renderProducts(category, 'Mujer');
+                    renderProducts(category, 'Unisex');
+                } else {
+                    renderProducts(category);
+                }
             }
         }
 
@@ -1221,19 +1252,20 @@
 
         function handleCategorySearch(event, categoryId) {
             const query = event.target.value.toLowerCase().trim();
+            
+            if (categoryId === 'perfumes' || categoryId === 'decants') {
+                ['Hombre', 'Mujer', 'Unisex'].forEach(subCat => {
+                    renderSearchedProducts(categoryId, subCat, query);
+                });
+                return;
+            }
+
             const grid = document.getElementById(`grid-${categoryId}`);
             if(!grid) return;
 
             let catProducts = productsDB.filter(p => p.category === categoryId);
             if (query.length > 0) {
                 catProducts = catProducts.filter(p => p.name.toLowerCase().includes(query));
-            } else {
-                if (filters[categoryId]) {
-                    const f = filters[categoryId];
-                    if (f.sub !== 'Todos') catProducts = catProducts.filter(p => p.sub === f.sub);
-                    if (f.origin !== 'Todos') catProducts = catProducts.filter(p => p.origin === f.origin);
-                    if (f.occasion !== 'Todas') catProducts = catProducts.filter(p => p.occasion === f.occasion);
-                }
             }
 
             if (catProducts.length === 0 && query.length > 0) {
@@ -1250,10 +1282,6 @@
                     </div>
                 `;
             } else {
-                if (query.length === 0) {
-                    renderProducts(categoryId);
-                    return;
-                }
                 let productsHTML = '';
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
@@ -1289,6 +1317,63 @@
                 });
                 grid.innerHTML = productsHTML;
             }
+        }
+
+        function renderSearchedProducts(categoryId, subCategory, query) {
+            const gridId = `grid-${categoryId}-${subCategory}`;
+            const grid = document.getElementById(gridId);
+            if(!grid) return;
+
+            let catProducts = productsDB.filter(p => p.category === categoryId && p.sub === subCategory);
+            
+            if (filters[categoryId]) {
+                const f = filters[categoryId];
+                if (f.origin !== 'Todos') catProducts = catProducts.filter(p => p.origin === f.origin);
+                if (f.occasion !== 'Todas') catProducts = catProducts.filter(p => p.occasion === f.occasion);
+            }
+
+            if (query.length > 0) {
+                catProducts = catProducts.filter(p => p.name.toLowerCase().includes(query));
+            }
+
+            let productsHTML = '';
+            if (catProducts.length === 0) {
+                productsHTML = `<div class="col-span-full text-center text-gray-400 py-6 text-xs">No hay resultados en esta sección.</div>`;
+            } else {
+                catProducts.forEach(prod => {
+                    const priceDisplay = prod.isRequest 
+                        ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
+                        : `<span class="text-sm sm:text-lg md:text-xl brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+
+                    let originBadge = '';
+                    if(prod.origin) {
+                        const bgClass = prod.origin === 'Diseñador' ? 'bg-black text-fsgold border-fsgold/50' : 'bg-fsgold text-black border-black/20';
+                        originBadge = `<span class="mt-1 inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-sm border ${bgClass}">${prod.origin.toUpperCase()}</span>`;
+                    }
+
+                    productsHTML += `
+                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                            <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
+                                <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
+                                <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start pointer-events-none">
+                                    <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
+                                    ${originBadge}
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
+                                <h3 class="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
+                                <div class="mt-auto flex items-center justify-between pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800">
+                                    ${priceDisplay}
+                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-300 hover:text-white dark:hover:text-white w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
+                                        <i class="fas fa-plus text-xs sm:text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            grid.innerHTML = productsHTML;
         }
 
         document.addEventListener('click', (e) => {
