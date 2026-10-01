@@ -7,7 +7,7 @@
  
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cervant666.github.io/GITHUBPAGESTEST/">
+    <meta property="og:url" content="https://fsocietymx2004.github.io/Fsociety/">
     <meta property="og:title" content="F Society | Catálogo Exclusivo de Perfumería y Moda">
     <meta property="og:description" content="Encuentra decants, perfumes de diseñador y moda urbana exclusiva. Estilo, presencia y exclusividad.">
     <meta property="og:image" content="https://i.imgur.com/GRbtuKx.png">
@@ -297,7 +297,7 @@
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleSubmenu()"></div>
         <div class="relative w-full max-w-xs sm:max-w-sm h-full shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full" id="submenu-panel">
             <div class="flex items-center justify-between px-6 py-6 border-b border-inherit">
-                <span class="text-2xl brand-font text-fsgold font-bold tracking-wider">Menú</span>
+                <span id="submenu-title" class="text-2xl brand-font font-bold tracking-wider">Menú</span>
                 <button onclick="toggleSubmenu()" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition p-1">
                     <i class="fas fa-times text-lg"></i>
                 </button>
@@ -305,32 +305,32 @@
             <div class="flex-grow overflow-y-auto px-6 py-6 space-y-8">
                 
                 <div class="space-y-3">
-                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-semibold mb-3">Tienda</h4>
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] opacity-70 font-semibold mb-3">Tienda</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'decants')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Decants de Perfumes</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'perfumes')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Perfumes Completos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'playeras')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Playeras (Normal y Polo)</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'sudaderas')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Sudaderas Hoodie</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'gorras')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Gorras Snapback</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'decants')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Decants de Perfumes</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'perfumes')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Perfumes Completos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'playeras')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Playeras (Normal y Polo)</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'sudaderas')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Sudaderas Hoodie</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'gorras')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Gorras Snapback</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                     </ul>
                 </div>
  
                 <div class="space-y-3 pt-4 border-t border-inherit">
-                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-semibold mb-3">Nuestra Esencia</h4>
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] opacity-70 font-semibold mb-3">Nuestra Esencia</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'quienes-somos-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Quiénes Somos?</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'que-hacemos-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Qué Hacemos?</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'historia-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Nuestra Historia</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'mision-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Misión</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'vision-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Visión</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'valores-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Valores</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'quienes-somos-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>¿Quiénes Somos?</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'que-hacemos-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>¿Qué Hacemos?</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'historia-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Nuestra Historia</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'mision-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Misión</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'vision-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Visión</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'valores-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Valores</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                     </ul>
                 </div>
  
                 <div class="space-y-3 pt-4 border-t border-inherit">
-                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-semibold mb-3">Atención</h4>
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] opacity-70 font-semibold mb-3">Atención</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'contact-section')" class="w-full text-left text-sm hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Contáctanos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'contact-section')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Contáctanos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                     </ul>
                 </div>
  
@@ -663,15 +663,20 @@
         function toggleSubmenu() {
             const drawer = document.getElementById('submenu-drawer');
             const panel = document.getElementById('submenu-panel');
+            const submenuTitle = document.getElementById('submenu-title');
 
             if (document.body.classList.contains('women-mode')) {
                 panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] h-full border-r border-[#DDA7B1] dark:border-[#5C383F] shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+                submenuTitle.className = 'text-2xl brand-font font-bold tracking-wider text-[#B76E79]';
             } else if (document.body.classList.contains('bw-mode')) {
                 panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-[#050505] text-white h-full border-r border-[#333333] shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+                submenuTitle.className = 'text-2xl brand-font font-bold tracking-wider text-white';
             } else if (document.documentElement.classList.contains('dark')) {
                 panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-fsdark text-gray-100 h-full border-r border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+                submenuTitle.className = 'text-2xl brand-font font-bold tracking-wider text-fsgold';
             } else {
                 panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-white text-gray-900 h-full border-r border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+                submenuTitle.className = 'text-2xl brand-font font-bold tracking-wider text-fsgold';
             }
 
             if (drawer.classList.contains('hidden-element')) {
@@ -1115,7 +1120,7 @@
                     document.body.classList.remove('bw-mode');
                     document.body.classList.add('women-mode');
                     if (mainLogo) mainLogo.src = 'img/Logorosa.webp';
-                    if (footerLogo) footerLogo.src = 'img/Logorosa.webp';
+                    if (footerLogo) mainLogo.src = 'img/Logorosa.webp';
                 } else {
                     document.body.classList.remove('bw-mode');
                     document.body.classList.remove('women-mode');
