@@ -290,44 +290,45 @@
         </div>
     </nav>
  
+    <!-- Side Submenu Drawer (Theme Adaptive) -->
     <div id="submenu-drawer" class="fixed inset-0 z-[75] hidden-element flex justify-start transition-opacity duration-300">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleSubmenu()"></div>
-        <div class="relative w-full max-w-xs sm:max-w-sm bg-white dark:bg-fsdark h-full border-r border-fsgold/20 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full" id="submenu-panel">
-            <div class="flex items-center justify-between px-6 py-6 border-b border-gray-100 dark:border-gray-800">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleSubmenu()"></div>
+        <div class="relative w-full max-w-xs sm:max-w-sm bg-white text-gray-900 dark:bg-fsdark dark:text-gray-100 h-full border-r border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full" id="submenu-panel">
+            <div class="flex items-center justify-between px-6 py-6 border-b border-gray-200 dark:border-gray-800">
                 <span class="text-2xl brand-font text-fsgold font-bold tracking-wider">Menú</span>
-                <button onclick="toggleSubmenu()" class="text-gray-400 hover:text-gray-900 dark:hover:text-white transition p-1">
+                <button onclick="toggleSubmenu()" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition p-1">
                     <i class="fas fa-times text-lg"></i>
                 </button>
             </div>
             <div class="flex-grow overflow-y-auto px-6 py-6 space-y-8">
                 
                 <div class="space-y-3">
-                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Tienda</h4>
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-semibold mb-3">Tienda</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'decants')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Decants de Perfumes</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'perfumes')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Perfumes Completos</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'playeras')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Playeras (Normal y Polo)</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'sudaderas')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Sudaderas Hoodie</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'gorras')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Gorras Snapback</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'decants')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Decants de Perfumes</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'perfumes')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Perfumes Completos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'playeras')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Playeras (Normal y Polo)</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'sudaderas')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Sudaderas Hoodie</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'gorras')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Gorras Snapback</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                     </ul>
                 </div>
  
-                <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800/80">
-                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Nuestra Esencia</h4>
+                <div class="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-semibold mb-3">Nuestra Esencia</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'quienes-somos-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Quiénes Somos?</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'que-hacemos-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Qué Hacemos?</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'historia-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Nuestra Historia</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'mision-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Misión</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'vision-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Visión</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
-                        <li><button onclick="navigateToSection(event, 'valores-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Valores</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'quienes-somos-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Quiénes Somos?</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'que-hacemos-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>¿Qué Hacemos?</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'historia-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Nuestra Historia</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'mision-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Misión</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'vision-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Visión</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'valores-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Valores</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                     </ul>
                 </div>
  
-                <div class="space-y-3 pt-4 border-t border-gray-100 dark:border-gray-800/80">
-                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-semibold mb-3">Atención</h4>
+                <div class="space-y-3 pt-4 border-t border-gray-200 dark:border-gray-800">
+                    <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-500 dark:text-gray-400 font-semibold mb-3">Atención</h4>
                     <ul class="space-y-2.5">
-                        <li><button onclick="navigateToSection(event, 'contact-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Contáctanos</span><i class="fas fa-chevron-right text-[9px] opacity-30 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="navigateToSection(event, 'contact-section')" class="w-full text-left text-sm text-gray-800 dark:text-gray-200 hover:text-fsgold transition font-light py-0.5 flex items-center justify-between group"><span>Contáctanos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                     </ul>
                 </div>
  
@@ -335,15 +336,15 @@
         </div>
     </div>
  
-    <section class="w-full bg-white dark:bg-fsblack py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/30 pt-24 sm:pt-28 transition-colors duration-500">
+    <section class="w-full bg-white dark:bg-fsblack py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/30 pt-24 sm:pt-28 transition-colors duration-500">
         <div class="max-w-[1700px] mx-auto">
             <div class="text-center mb-6">
-                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Exclusivo y Elegante</span>
+                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Esencias de Alta Gama</span>
                 <h2 class="text-2xl sm:text-4xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1">Valentino & Jean Paul Gaultier</h2>
             </div>
             
-            <!-- 3-Panel Cinematic Grid with Smooth Sliding Animation Wrapper -->
-            <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[420px] sm:h-[500px] transition-opacity duration-700 ease-in-out opacity-100">
+            <!-- 3-Panel Cinematic Grid with Fluid Sliding Animation (6 Seconds interval) -->
+            <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[420px] sm:h-[500px] transition-all duration-700 ease-in-out opacity-100 transform translate-x-0">
                 
                 <!-- Left Panel -->
                 <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
@@ -458,7 +459,7 @@
         </div>
     </div>
  
-    <!-- Quick View Modal (Dynamic Theme Support) -->
+    <!-- Quick View Modal (Theme Adaptive) -->
     <div id="quick-view-modal" class="fixed inset-0 z-[70] hidden-element flex items-end md:items-center justify-center transition-opacity duration-300 p-2 sm:p-4">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuickView()"></div>
         <div class="relative bg-white dark:bg-fscardbg w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30" id="quick-view-panel">
@@ -469,7 +470,7 @@
                 <img id="qv-image" src="" alt="Producto" class="w-full h-full object-cover">
                 <div id="qv-badge" class="absolute top-4 left-4 text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-3 py-1 rounded shadow-sm font-bold uppercase tracking-widest"></div>
             </div>
-            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white dark:bg-fsdark text-gray-900 dark:text-gray-100">
+            <div id="qv-content-box" class="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white text-gray-900 dark:bg-fsdark dark:text-gray-100">
                 <h3 id="qv-title" class="text-2xl md:text-3xl brand-font font-bold mb-2 leading-tight"></h3>
                 <div id="qv-tags" class="flex flex-wrap gap-2 mb-4"></div>
                 <div id="qv-price" class="text-xl brand-font text-fsgold font-bold mb-4"></div>
@@ -480,7 +481,7 @@
                         <span id="qv-qty" class="w-8 text-center font-semibold">1</span>
                         <button onclick="changeQvQty(1)" class="w-10 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-fsgold transition">+</button>
                     </div>
-                    <button onclick="addQvToCart()" class="flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition shadow-md flex items-center justify-center gap-2">
+                    <button id="qv-add-btn" onclick="addQvToCart()" class="flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition shadow-md flex items-center justify-center gap-2">
                         <i class="fas fa-shopping-bag"></i> Añadir
                     </button>
                 </div>
@@ -541,15 +542,15 @@
             showcaseInterval = setInterval(() => {
                 const wrapper = document.getElementById('showcase-grid-wrapper');
                 if(wrapper) {
-                    wrapper.classList.remove('opacity-100');
-                    wrapper.classList.add('opacity-0');
+                    wrapper.classList.remove('opacity-100', 'translate-x-0');
+                    wrapper.classList.add('opacity-0', '-translate-x-8');
                     setTimeout(() => {
                         currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
                         renderShowcaseSet();
                         updateShowcaseDots();
-                        wrapper.classList.remove('opacity-0');
-                        wrapper.classList.add('opacity-100');
-                    }, 350);
+                        wrapper.classList.remove('opacity-0', '-translate-x-8');
+                        wrapper.classList.add('opacity-100', 'translate-x-0');
+                    }, 400);
                 }
             }, 6000); // 6 seconds per slide with smooth fluid transition
         }
@@ -584,28 +585,28 @@
                     clearInterval(showcaseInterval);
                     const wrapper = document.getElementById('showcase-grid-wrapper');
                     if(wrapper) {
-                        wrapper.classList.remove('opacity-100');
-                        wrapper.classList.add('opacity-0');
+                        wrapper.classList.remove('opacity-100', 'translate-x-0');
+                        wrapper.classList.add('opacity-0', '-translate-x-8');
                         setTimeout(() => {
                             currentShowcaseIndex = idx;
                             renderShowcaseSet();
                             updateShowcaseDots();
-                            wrapper.classList.remove('opacity-0');
-                            wrapper.classList.add('opacity-100');
-                        }, 350);
+                            wrapper.classList.remove('opacity-0', '-translate-x-8');
+                            wrapper.classList.add('opacity-100', 'translate-x-0');
+                        }, 400);
                     }
                     showcaseInterval = setInterval(() => {
                         const wrap = document.getElementById('showcase-grid-wrapper');
                         if(wrap) {
-                            wrap.classList.remove('opacity-100');
-                            wrap.classList.add('opacity-0');
+                            wrap.classList.remove('opacity-100', 'translate-x-0');
+                            wrap.classList.add('opacity-0', '-translate-x-8');
                             setTimeout(() => {
                                 currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
                                 renderShowcaseSet();
                                 updateShowcaseDots();
-                                wrap.classList.remove('opacity-0');
-                                wrap.classList.add('opacity-100');
-                            }, 350);
+                                wrap.classList.remove('opacity-0', '-translate-x-8');
+                                wrap.classList.add('opacity-100', 'translate-x-0');
+                            }, 400);
                         }
                     }, 6000);
                 };
@@ -638,6 +639,18 @@
         function toggleSubmenu() {
             const drawer = document.getElementById('submenu-drawer');
             const panel = document.getElementById('submenu-panel');
+
+            // Dynamic theme adaptation for side menu panel
+            if (document.body.classList.contains('women-mode')) {
+                panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] h-full border-r border-[#DDA7B1] dark:border-[#5C383F] shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+            } else if (document.body.classList.contains('bw-mode')) {
+                panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-[#050505] text-white h-full border-r border-[#333333] shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+            } else if (document.documentElement.classList.contains('dark')) {
+                panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-fsdark text-gray-100 h-full border-r border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+            } else {
+                panel.className = 'relative w-full max-w-xs sm:max-w-sm bg-white text-gray-900 h-full border-r border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full';
+            }
+
             if (drawer.classList.contains('hidden-element')) {
                 drawer.classList.remove('hidden-element');
                 setTimeout(() => { panel.classList.remove('-translate-x-full'); }, 10);
@@ -840,7 +853,7 @@
                                 </div>
                                 <div id="grid-${category.id}-Hombre" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
                             </div>
-                            <div id="sub-section-Mujer-${category.id}" class="women-section-wrapper">
+                            <div id="sub-section-Mujer-${category.id}">
                                 <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
                                     <i class="fas fa-venus text-fsgold text-xl"></i>
                                     <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Mujer</h3>
@@ -1204,6 +1217,18 @@
             }
             document.getElementById('qv-tags').innerHTML = tagsHTML;
  
+            // Dynamic theme adaptation for Quick View modal panel
+            const qvContentBox = document.getElementById('qv-content-box');
+            if (document.body.classList.contains('women-mode')) {
+                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
+            } else if (document.body.classList.contains('bw-mode')) {
+                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#0a0a0a] text-white border-l border-[#222222]';
+            } else if (document.documentElement.classList.contains('dark')) {
+                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-fsdark text-gray-100';
+            } else {
+                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white text-gray-900';
+            }
+
             const modal = document.getElementById('quick-view-modal');
             const panel = document.getElementById('quick-view-panel');
             
