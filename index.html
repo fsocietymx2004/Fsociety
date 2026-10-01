@@ -221,8 +221,8 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        #showcase-grid-wrapper {
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        .showcase-slide {
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
@@ -346,11 +346,11 @@
             </div>
             
             <!-- Mobile & Desktop Responsive Cinematic Showcase with Touch Swipe Support -->
-            <div id="showcase-container-wrapper" class="touch-pan-y">
-                <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 h-auto md:h-[460px] lg:h-[500px] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] opacity-100 transform translate-y-0 scale-100">
+            <div id="showcase-container-wrapper" class="touch-pan-y relative overflow-hidden">
+                <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 h-auto md:h-[460px] lg:h-[500px] transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] opacity-100 transform translate-y-0 scale-100">
                     
                     <!-- Left Panel -->
-                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
+                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
                         <img id="showcase-left-img" src="" alt="Showcase Left" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10">
@@ -363,7 +363,7 @@
                     </div>
 
                     <!-- Center Panel (Featured Big) -->
-                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/30 cursor-pointer md:-translate-y-3 z-10 h-[240px] sm:h-[280px] md:h-full" onclick="openQuickView(showcaseSets[currentShowcaseIndex].center.id)">
+                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/30 cursor-pointer md:-translate-y-3 z-10 h-[240px] sm:h-[280px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].center.id)">
                         <img id="showcase-center-img" src="" alt="Showcase Center" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-95">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
                         <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/60 backdrop-blur-md px-2.5 sm:px-3 py-1 rounded-full border border-fsgold/30 text-[9px] sm:text-[10px] text-fsgold uppercase tracking-widest font-bold">
@@ -379,7 +379,7 @@
                     </div>
 
                     <!-- Right Panel -->
-                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full" onclick="openQuickView(showcaseSets[currentShowcaseIndex].right.id)">
+                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].right.id)">
                         <img id="showcase-right-img" src="" alt="Showcase Right" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                         <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10">
@@ -438,9 +438,9 @@
  
     <div id="cart-drawer" class="fixed inset-0 z-[60] hidden-element flex justify-end transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleCart()"></div>
-        <div class="relative w-full max-w-md bg-white dark:bg-fsdark h-full border-l border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-panel">
-            <div class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-800">
-                <h2 class="text-2xl brand-font text-fsgold">Tu Selección</h2>
+        <div class="relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-panel">
+            <div class="flex items-center justify-between p-6 border-b border-inherit">
+                <h2 id="cart-title" class="text-2xl brand-font">Tu Selección</h2>
                 <button onclick="toggleCart()" class="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition">
                     <i class="fas fa-times text-xl"></i>
                 </button>
@@ -448,17 +448,17 @@
             <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
                 <div class="text-center text-gray-400 mt-10">Tu carrito está vacío.</div>
             </div>
-            <div class="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-fsblack">
+            <div class="p-6 border-t border-inherit bg-gray-50 dark:bg-fsblack">
                 <div class="flex flex-col mb-6 space-y-2">
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-700 dark:text-gray-300 text-lg">Total Estimado:</span>
-                        <span id="cart-total" class="text-xl brand-font text-fsgold font-bold">$0.00</span>
+                        <span id="cart-total-label" class="text-lg">Total Estimado:</span>
+                        <span id="cart-total" class="text-xl brand-font font-bold">$0.00</span>
                     </div>
                 </div>
-                <button onclick="processCheckout()" class="w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition flex items-center justify-center gap-2 shadow-md">
+                <button onclick="processCheckout()" id="cart-checkout-btn" class="w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md">
                     <i class="fab fa-whatsapp text-xl"></i> Hacer Pedido
                 </button>
-                <p class="text-xs text-center text-gray-500 dark:text-gray-500 mt-4">Serás redirigido a WhatsApp para confirmar.</p>
+                <p class="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">Serás redirigido a WhatsApp para confirmar.</p>
             </div>
         </div>
     </div>
@@ -476,15 +476,15 @@
             <div id="qv-content-box" class="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto">
                 <h3 id="qv-title" class="text-2xl md:text-3xl brand-font font-bold mb-2 leading-tight"></h3>
                 <div id="qv-tags" class="flex flex-wrap gap-2 mb-4"></div>
-                <div id="qv-price" class="text-xl brand-font text-fsgold font-bold mb-4"></div>
+                <div id="qv-price" class="text-xl brand-font font-bold mb-4"></div>
                 <p id="qv-desc" class="text-sm mb-8 leading-relaxed"></p>
                 <div class="mt-auto pt-4 border-t border-inherit flex items-center gap-4">
-                    <div class="flex items-center bg-gray-100 dark:bg-black rounded border border-gray-300 dark:border-gray-700">
-                        <button onclick="changeQvQty(-1)" class="w-10 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-fsgold transition">-</button>
+                    <div id="qv-qty-box" class="flex items-center rounded border">
+                        <button onclick="changeQvQty(-1)" class="w-10 h-12 flex items-center justify-center transition">-</button>
                         <span id="qv-qty" class="w-8 text-center font-semibold">1</span>
-                        <button onclick="changeQvQty(1)" class="w-10 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-fsgold transition">+</button>
+                        <button onclick="changeQvQty(1)" class="w-10 h-12 flex items-center justify-center transition">+</button>
                     </div>
-                    <button id="qv-add-btn" onclick="addQvToCart()" class="flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition shadow-md flex items-center justify-center gap-2">
+                    <button id="qv-add-btn" onclick="addQvToCart()" class="flex-grow text-white h-12 rounded font-bold uppercase tracking-widest transition shadow-md flex items-center justify-center gap-2">
                         <i class="fas fa-shopping-bag"></i> Añadir
                     </button>
                 </div>
@@ -554,14 +554,14 @@
             const wrapper = document.getElementById('showcase-grid-wrapper');
             if(wrapper) {
                 wrapper.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
-                wrapper.classList.add('opacity-0', 'translate-y-4', 'scale-[0.98]');
+                wrapper.classList.add('opacity-0', 'translate-y-2', 'scale-[0.99]');
                 setTimeout(() => {
                     currentShowcaseIndex = (currentShowcaseIndex + direction + showcaseSets.length) % showcaseSets.length;
                     renderShowcaseSet();
                     updateShowcaseDots();
-                    wrapper.classList.remove('opacity-0', 'translate-y-4', 'scale-[0.98]');
+                    wrapper.classList.remove('opacity-0', 'translate-y-2', 'scale-[0.99]');
                     wrapper.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-                }, 400);
+                }, 500);
             }
         }
 
@@ -582,14 +582,12 @@
             }, { passive: true });
 
             function handleSwipeGesture() {
-                const threshold = 50;
+                const threshold = 40;
                 if (touchEndX < touchStartX - threshold) {
-                    // Swiped Left -> Next slide
                     clearInterval(showcaseInterval);
                     transitionShowcase(1);
                     startShowcaseTimer();
                 } else if (touchEndX > touchStartX + threshold) {
-                    // Swiped Right -> Previous slide
                     clearInterval(showcaseInterval);
                     transitionShowcase(-1);
                     startShowcaseTimer();
@@ -625,14 +623,14 @@
                     const wrapper = document.getElementById('showcase-grid-wrapper');
                     if(wrapper) {
                         wrapper.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
-                        wrapper.classList.add('opacity-0', 'translate-y-4', 'scale-[0.98]');
+                        wrapper.classList.add('opacity-0', 'translate-y-2', 'scale-[0.99]');
                         setTimeout(() => {
                             currentShowcaseIndex = idx;
                             renderShowcaseSet();
                             updateShowcaseDots();
-                            wrapper.classList.remove('opacity-0', 'translate-y-4', 'scale-[0.98]');
+                            wrapper.classList.remove('opacity-0', 'translate-y-2', 'scale-[0.99]');
                             wrapper.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-                        }, 400);
+                        }, 500);
                     }
                     startShowcaseTimer();
                 };
@@ -1241,18 +1239,29 @@
  
             const qvContentBox = document.getElementById('qv-content-box');
             const qvPanel = document.getElementById('quick-view-panel');
+            const qvAddBtn = document.getElementById('qv-add-btn');
+            const qvQtyBox = document.getElementById('qv-qty-box');
+
             if (document.body.classList.contains('women-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#DDA7B1] dark:border-[#5C383F] bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
+                qvAddBtn.className = 'flex-grow bg-[#B76E79] text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                qvQtyBox.className = 'flex items-center rounded border border-[#DDA7B1] dark:border-[#5C383F] bg-white dark:bg-black/40 text-[#4A2E35] dark:text-[#F7EBEB]';
             } else if (document.body.classList.contains('bw-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#333333] bg-[#0a0a0a] text-white';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#0a0a0a] text-white border-l border-[#222222]';
+                qvAddBtn.className = 'flex-grow bg-white text-black h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                qvQtyBox.className = 'flex items-center rounded border border-[#333333] bg-[#1a1a1a] text-white';
             } else if (document.documentElement.classList.contains('dark')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30 bg-fsdark text-gray-100';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-fsdark text-gray-100';
+                qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                qvQtyBox.className = 'flex items-center rounded border border-gray-700 bg-black text-gray-200';
             } else {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30 bg-white text-gray-900';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white text-gray-900';
+                qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                qvQtyBox.className = 'flex items-center rounded border border-gray-300 bg-gray-100 text-gray-800';
             }
 
             const modal = document.getElementById('quick-view-modal');
@@ -1359,12 +1368,12 @@
                         <div class="flex items-center gap-4 bg-gray-50 dark:bg-black/50 p-3 rounded border border-gray-200 dark:border-gray-800">
                             <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded border border-gray-200 dark:border-gray-700" onerror="this.src='https://placehold.co/100x100/ffffff/D4AF37?text=Item'">
                             <div class="flex-grow">
-                                <h4 class="text-sm text-gray-900 dark:text-white font-medium line-clamp-2 leading-tight">${item.name}</h4>
+                                <h4 class="text-sm font-medium line-clamp-2 leading-tight">${item.name}</h4>
                                 <div class="mt-1">${priceLabel}</div>
                                 <div class="flex items-center gap-3 mt-2">
-                                    <button onclick="changeQuantity('${item.id}', -1)" class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white w-6 h-6 flex items-center justify-center bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded shadow-sm">-</button>
-                                    <span class="text-sm font-semibold dark:text-white">${item.quantity}</span>
-                                    <button onclick="changeQuantity('${item.id}', 1)" class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white w-6 h-6 flex items-center justify-center bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded shadow-sm">+</button>
+                                    <button onclick="changeQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center border rounded shadow-sm">-</button>
+                                    <span class="text-sm font-semibold">${item.quantity}</span>
+                                    <button onclick="changeQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center border rounded shadow-sm">+</button>
                                 </div>
                             </div>
                             <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition px-2">
@@ -1377,7 +1386,7 @@
                 if (totalPrice === 0 && hasRequests) {
                     totalEl.innerHTML = `<span class="text-lg">Por cotizar</span>`;
                 } else if (totalPrice > 0 && hasRequests) {
-                    totalEl.innerHTML = `$${totalPrice.toFixed(2)} <span class="text-sm font-normal text-gray-500 dark:text-gray-400 block text-right leading-none">+ Cotización</span>`;
+                    totalEl.innerHTML = `$${totalPrice.toFixed(2)} <span class="text-sm font-normal text-gray-500 block text-right leading-none">+ Cotización</span>`;
                 } else {
                     totalEl.innerText = `$${totalPrice.toFixed(2)} MXN`;
                 }
@@ -1387,6 +1396,31 @@
         function toggleCart() {
             const drawer = document.getElementById('cart-drawer');
             const panel = document.getElementById('cart-panel');
+            const cartTitle = document.getElementById('cart-title');
+            const cartTotalLabel = document.getElementById('cart-total-label');
+            const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+
+            if (document.body.classList.contains('women-mode')) {
+                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] border-l border-[#DDA7B1] dark:border-[#5C383F]';
+                cartTitle.className = 'text-2xl brand-font text-[#B76E79]';
+                cartTotalLabel.className = 'text-lg text-[#4A2E35] dark:text-[#F7EBEB]';
+                cartCheckoutBtn.className = 'w-full bg-[#B76E79] text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+            } else if (document.body.classList.contains('bw-mode')) {
+                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-[#050505] text-white border-l border-[#333333]';
+                cartTitle.className = 'text-2xl brand-font text-white';
+                cartTotalLabel.className = 'text-lg text-white';
+                cartCheckoutBtn.className = 'w-full bg-white text-black py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+            } else if (document.documentElement.classList.contains('dark')) {
+                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-fsdark text-gray-100 border-l border-fsgold/30';
+                cartTitle.className = 'text-2xl brand-font text-fsgold';
+                cartTotalLabel.className = 'text-lg text-gray-300';
+                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+            } else {
+                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-white text-gray-900 border-l border-fsgold/30';
+                cartTitle.className = 'text-2xl brand-font text-fsgold';
+                cartTotalLabel.className = 'text-lg text-gray-700';
+                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+            }
             
             if (drawer.classList.contains('hidden-element')) {
                 drawer.classList.remove('hidden-element');
@@ -1486,12 +1520,12 @@
         }
  
         function buildMiniCard(prod) {
-            const priceText = prod.isRequest ? `<span class="text-xs text-fsgold font-bold uppercase">Bajo Pedido</span>` : `<span class="text-sm text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+            const priceText = prod.isRequest ? `<span class="text-xs text-fsgold font-bold uppercase">Bajo Pedido</span>` : `<span class="text-sm font-bold">$${prod.price.toFixed(2)}</span>`;
             return `
                 <div onclick="openQuickView('${prod.id}')" class="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-black/50 cursor-pointer border-b border-gray-100 dark:border-gray-800 last:border-0 group transition-colors">
                     <img src="${prod.image}" class="w-12 h-14 object-cover rounded border border-gray-200 dark:border-gray-700">
                     <div class="flex-grow">
-                        <h4 class="text-sm text-gray-800 dark:text-gray-200 font-semibold group-hover:text-fsgold transition-colors line-clamp-1">${prod.name}</h4>
+                        <h4 class="text-sm font-semibold group-hover:text-fsgold transition-colors line-clamp-1">${prod.name}</h4>
                         <div class="text-[10px] text-gray-500 uppercase tracking-wide">${prod.category} • ${prod.sub}</div>
                     </div>
                     <div class="text-right whitespace-nowrap pl-2">${priceText}</div>
@@ -1580,7 +1614,7 @@
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-lg md:text-xl brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span class="text-sm sm:text-lg md:text-xl brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1598,10 +1632,10 @@
                                 </div>
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
-                                <h3 class="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
+                                <h3 class="text-xs sm:text-sm md:text-base font-semibold mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
                                 <div class="mt-auto flex items-center justify-between pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800">
                                     ${priceDisplay}
-                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-300 hover:text-white dark:hover:text-white w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
+                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
                                         <i class="fas fa-plus text-xs sm:text-sm"></i>
                                     </button>
                                 </div>
@@ -1645,7 +1679,7 @@
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-lg md:text-xl brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span class="text-sm sm:text-lg md:text-xl brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1663,10 +1697,10 @@
                                 </div>
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
-                                <h3 class="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
+                                <h3 class="text-xs sm:text-sm md:text-base font-semibold mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
                                 <div class="mt-auto flex items-center justify-between pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800">
                                     ${priceDisplay}
-                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-300 hover:text-white dark:hover:text-white w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
+                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
                                         <i class="fas fa-plus text-xs sm:text-sm"></i>
                                     </button>
                                 </div>
