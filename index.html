@@ -93,7 +93,7 @@
             animation: float-slow 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
  
-        /* --- MODO B&W STREETWEAR --- */
+        /* --- MODO B&W STREETWEAR (APPAREL) --- */
         body, nav, section, footer, .product-card, .bg-gray-50, .dark\:bg-fsblack, .bg-white, .dark\:bg-fscardbg, .text-fsgold, .bg-fsgold, .border-fsgold {
             transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease, text-shadow 0.8s ease;
         }
@@ -158,6 +158,64 @@
  
         body.bw-mode #theme-toggle-btn {
             display: none !important;
+        }
+
+        /* --- MODO ROSE WHISPER (MUJER) --- */
+        body.women-mode {
+            background-color: #FAF4F5 !important;
+            color: #4A2E35 !important;
+        }
+        .dark body.women-mode {
+            background-color: #1A1215 !important;
+            color: #F7EBEB !important;
+        }
+        body.women-mode .bg-gray-50, body.women-mode .dark\:bg-fsblack, body.women-mode .bg-white, body.women-mode .dark\:bg-fscardbg {
+            background-color: transparent !important;
+        }
+        body.women-mode nav {
+            background-color: rgba(250, 244, 245, 0.95) !important;
+            border-bottom-color: #E8D0D4 !important;
+        }
+        .dark body.women-mode nav {
+            background-color: rgba(26, 18, 21, 0.95) !important;
+            border-bottom-color: #3D262B !important;
+        }
+        body.women-mode footer {
+            background-color: #F5ECEE !important;
+            border-top-color: #E8D0D4 !important;
+        }
+        .dark body.women-mode footer {
+            background-color: #140E10 !important;
+            border-top-color: #3D262B !important;
+        }
+        body.women-mode .text-fsgold {
+            color: #B76E79 !important;
+            text-shadow: 0 0 15px rgba(183, 110, 121, 0.3);
+        }
+        body.women-mode .border-fsgold, body.women-mode .border-fsgold\/20, body.women-mode .border-fsgold\/30, body.women-mode .border-fsgold\/50 {
+            border-color: #DDA7B1 !important;
+        }
+        .dark body.women-mode .border-fsgold, .dark body.women-mode .border-fsgold\/20, .dark body.women-mode .border-fsgold\/30, .dark body.women-mode .border-fsgold\/50 {
+            border-color: #5C383F !important;
+        }
+        body.women-mode .bg-fsgold {
+            background-color: #B76E79 !important;
+            color: #ffffff !important;
+            border-color: #B76E79 !important;
+        }
+        body.women-mode .product-card {
+            background-color: #ffffff !important;
+            border-color: #E8D0D4 !important;
+            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.1) !important;
+        }
+        .dark body.women-mode .product-card {
+            background-color: #24191D !important;
+            border-color: #4D3137 !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+        }
+        body.women-mode .product-card:hover {
+            border-color: #B76E79 !important;
+            box-shadow: 0 0 25px rgba(183, 110, 121, 0.35) !important;
         }
  
         .hidden-element { display: none !important; }
@@ -755,7 +813,7 @@
                                 </div>
                                 <div id="grid-${category.id}-Hombre" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
                             </div>
-                            <div id="sub-section-Mujer-${category.id}">
+                            <div id="sub-section-Mujer-${category.id}" class="women-section-wrapper">
                                 <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
                                     <i class="fas fa-venus text-fsgold text-xl"></i>
                                     <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Mujer</h3>
@@ -971,6 +1029,7 @@
  
         function setupScrollObserver() {
             const clothingZone = document.getElementById('clothing-zone');
+            const womenSection = document.getElementById('sub-section-Mujer-decants') || document.getElementById('perfumes');
             const mainLogo = document.getElementById('main-logo');
             const footerLogo = document.getElementById('footer-logo');
             
@@ -978,16 +1037,25 @@
  
             window.addEventListener('scroll', () => {
                 const clothingRect = clothingZone.getBoundingClientRect();
+                const womenRect = womenSection ? womenSection.getBoundingClientRect() : { top: 9999, bottom: 9999 };
                 const windowHeight = window.innerHeight;
  
                 const isInsideClothing = clothingRect.top <= windowHeight * 0.5 && clothingRect.bottom >= windowHeight * 0.3;
+                const isInsideWomen = womenRect.top <= windowHeight * 0.5 && womenRect.bottom >= windowHeight * 0.3;
  
                 if (isInsideClothing) {
+                    document.body.classList.remove('women-mode');
                     document.body.classList.add('bw-mode');
                     if (mainLogo) mainLogo.src = 'https://i.imgur.com/Sz3U2r3.png';
                     if (footerLogo) footerLogo.src = 'https://i.imgur.com/Sz3U2r3.png';
+                } else if (isInsideWomen && !isInsideClothing) {
+                    document.body.classList.remove('bw-mode');
+                    document.body.classList.add('women-mode');
+                    if (mainLogo) mainLogo.src = 'img/Logorosa.webp';
+                    if (footerLogo) footerLogo.src = 'img/Logorosa.webp';
                 } else {
                     document.body.classList.remove('bw-mode');
+                    document.body.classList.remove('women-mode');
                     if (mainLogo) mainLogo.src = 'https://i.imgur.com/GRbtuKx.png';
                     if (footerLogo) footerLogo.src = 'https://i.imgur.com/GRbtuKx.png';
                 }
