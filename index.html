@@ -187,7 +187,7 @@
                     <a href="#" onclick="scrollToCategory(event, 'sudaderas')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Sudaderas</a>
                     <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Gorras</a>
                 </div>
- 
+
                 <div class="flex items-center space-x-2 sm:space-x-4">
                     <div class="hidden lg:block relative group">
                         <div class="flex items-center bg-gray-100 dark:bg-fsdark border border-gray-200 dark:border-gray-800 rounded-full px-3 py-1.5 focus-within:border-fsgold/50 transition-all">
@@ -196,16 +196,16 @@
                         </div>
                         <div id="global-search-results" class="absolute top-full right-0 mt-2 w-80 bg-white dark:bg-fscardbg border border-fsgold/20 rounded-lg shadow-2xl opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 max-h-96 overflow-y-auto z-50"></div>
                     </div>
- 
+
                     <div class="hidden lg:flex items-center space-x-3 pr-4 border-r border-fsgold/30">
                         <a href="https://www.instagram.com/fsociety.27" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-gray-500 hover:text-fsgold text-lg transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/1092397090632659" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-gray-500 hover:text-fsgold text-lg transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
                     </div>
- 
+
                     <button id="theme-toggle-btn" onclick="toggleDarkMode()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-2">
                         <i id="theme-icon" class="fas fa-moon text-lg sm:text-xl"></i>
                     </button>
- 
+
                     <button onclick="toggleCart()" class="relative p-2 text-gray-800 dark:text-gray-200 hover:text-fsgold transition">
                         <i class="fas fa-shopping-bag text-xl sm:text-2xl"></i>
                         <span id="cart-count" class="absolute top-0 right-0 bg-fsgold text-white text-[10px] sm:text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center transform translate-x-1 -translate-y-1 shadow-md">0</span>
@@ -276,6 +276,67 @@
             </div>
         </div>
     </div>
+ 
+    <section class="w-full bg-white dark:bg-fsblack py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/30 pt-24 sm:pt-28 transition-colors duration-500">
+        <div class="max-w-[1700px] mx-auto">
+            <div class="text-center mb-6">
+                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Esencias de Alta Gama</span>
+                <h2 class="text-2xl sm:text-4xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1">Valentino & Jean Paul Gaultier</h2>
+            </div>
+            
+            <!-- 3-Panel Cinematic Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[420px] sm:h-[500px]">
+                
+                <!-- Left Panel -->
+                <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
+                    <img id="showcase-left-img" src="" alt="Showcase Left" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 z-10">
+                        <span id="showcase-left-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-2 inline-block"></span>
+                        <h3 id="showcase-left-title" class="text-xl sm:text-2xl brand-font font-bold text-white mb-2 leading-tight"></h3>
+                        <div class="inline-flex items-center gap-2 text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                            <span>Ver Detalles</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Panel (Featured Big) -->
+                <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/30 cursor-pointer md:-translate-y-3 z-10" onclick="openQuickView(showcaseSets[currentShowcaseIndex].center.id)">
+                    <img id="showcase-center-img" src="" alt="Showcase Center" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-95">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-fsgold/30 text-[10px] text-fsgold uppercase tracking-widest font-bold">
+                        Destacado
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6 z-10">
+                        <span id="showcase-center-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-2 inline-block"></span>
+                        <h3 id="showcase-center-title" class="text-2xl sm:text-3xl brand-font font-bold text-white mb-2 leading-tight"></h3>
+                        <div class="inline-flex items-center gap-2 text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                            <span>Explorar Esencia</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel -->
+                <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer" onclick="openQuickView(showcaseSets[currentShowcaseIndex].right.id)">
+                    <img id="showcase-right-img" src="" alt="Showcase Right" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 z-10">
+                        <span id="showcase-right-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-2 inline-block"></span>
+                        <h3 id="showcase-right-title" class="text-xl sm:text-2xl brand-font font-bold text-white mb-2 leading-tight"></h3>
+                        <div class="inline-flex items-center gap-2 text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                            <span>Ver Detalles</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slider Dots / Indicator -->
+            <div class="flex justify-center items-center gap-3 mt-6" id="showcase-dots">
+                <!-- Injected dynamically -->
+            </div>
+        </div>
+    </section>
  
     <header class="h-[75vh] w-full flex flex-col items-center justify-center text-center bg-gradient-to-b from-amber-50 to-gray-100 dark:from-[#111] dark:to-fsblack pt-20 transition-colors duration-300 relative">
         <div class="absolute inset-0 z-0 opacity-10 dark:opacity-5 pointer-events-none">
@@ -394,6 +455,86 @@
     <script>
         let currentQuickViewId = null;
         let quickViewQty = 1;
+
+        // Showcase Sets collection containing Valentino & Jean Paul Gaultier items from DB
+        const showcaseSets = [
+            {
+                left: { id: 'd_coral_fantasy', name: 'Valentino Coral Fantasy', sub: 'Hombre', image: 'img/Valentino mzna d.jpg' },
+                center: { id: 'd5', name: 'Jean Paul Gaultier Elixir', sub: 'Hombre', image: 'img/S2qyVlX.jpg' },
+                right: { id: 'd2', name: 'Valentino Uomo Born in Roma Purple', sub: 'Hombre', image: 'img/rewdUqi.jpg' }
+            },
+            {
+                left: { id: 'd18', name: 'Jean Paul Gaultier "Le Beau"', sub: 'Hombre', image: 'img/9MbxndS.jpg' },
+                center: { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma', sub: 'Mujer', image: 'img/Valentino Rosa D.jpg' },
+                right: { id: 'd19', name: 'Jean Paul Gaultier Paradise Garden', sub: 'Hombre', image: 'img/LG6qnJ3.jpg' }
+            },
+            {
+                left: { id: 'd3', name: 'Valentino Born In Roma Extradose', sub: 'Hombre', image: 'img/beno81o.jpg' },
+                center: { id: 'p_jpg_elixir', name: 'Jean Paul Gaultier Elixir (Completo)', sub: 'Hombre', image: 'img/HXIIDWb.jpg' },
+                right: { id: 'p_valentino_purple', name: 'Valentino Uomo Born in Roma Purple', sub: 'Hombre', image: 'img/21Kbju7.jpg' }
+            }
+        ];
+        let currentShowcaseIndex = 0;
+        let showcaseInterval = null;
+
+        function initShowcase() {
+            renderShowcaseSet();
+            renderShowcaseDots();
+            showcaseInterval = setInterval(() => {
+                currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
+                renderShowcaseSet();
+                updateShowcaseDots();
+            }, 6000); // 6 seconds per slide as requested
+        }
+
+        function renderShowcaseSet() {
+            const set = showcaseSets[currentShowcaseIndex];
+            
+            // Left
+            document.getElementById('showcase-left-img').src = set.left.image;
+            document.getElementById('showcase-left-badge').innerText = set.left.sub;
+            document.getElementById('showcase-left-title').innerText = set.left.name;
+
+            // Center
+            document.getElementById('showcase-center-img').src = set.center.image;
+            document.getElementById('showcase-center-badge').innerText = set.center.sub;
+            document.getElementById('showcase-center-title').innerText = set.center.name;
+
+            // Right
+            document.getElementById('showcase-right-img').src = set.right.image;
+            document.getElementById('showcase-right-badge').innerText = set.right.sub;
+            document.getElementById('showcase-right-title').innerText = set.right.name;
+        }
+
+        function renderShowcaseDots() {
+            const dotsContainer = document.getElementById('showcase-dots');
+            if(!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            showcaseSets.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.className = `h-2 rounded-full transition-all duration-300 ${idx === currentShowcaseIndex ? 'w-8 bg-fsgold' : 'w-2 bg-gray-400/50 hover:bg-gray-400'}`;
+                dot.onclick = () => {
+                    clearInterval(showcaseInterval);
+                    currentShowcaseIndex = idx;
+                    renderShowcaseSet();
+                    updateShowcaseDots();
+                    showcaseInterval = setInterval(() => {
+                        currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
+                        renderShowcaseSet();
+                        updateShowcaseDots();
+                    }, 6000);
+                };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateShowcaseDots() {
+            const dotsContainer = document.getElementById('showcase-dots');
+            if(!dotsContainer) return;
+            Array.from(dotsContainer.children).forEach((dot, idx) => {
+                dot.className = `h-2 rounded-full transition-all duration-300 ${idx === currentShowcaseIndex ? 'w-8 bg-fsgold' : 'w-2 bg-gray-400/50 hover:bg-gray-400'}`;
+            });
+        }
  
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -492,7 +633,7 @@
             { id: 'p_jpg_pg', name: 'Jean Paul Gaultier Paradise Garden', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/WcQ9ZZ5.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con un carácter tropical y moderno. 🥥🌿' },
             { id: 'p_hawas', name: 'Rasasi Hawas For Him', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/ioSNOdp.jpg', desc: 'EDP Fresco, acuático y moderno con mezcla vibrante de cítricos. 🌊🍋' },
             { id: 'p_ice', name: 'Rasasi Hawas For Him Ice', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/hgW0f5A.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
-            { id: 'p_creed_aventus', name: 'Creed Aventus', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/vX2283Q.jpg.png', desc: 'EDP Creed Aventus es una fragancia masculina fresca, frutal y amaderada. 🍍🪵' },
+            { id: 'p_creed_aventus', name: 'Creed Aventus', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/vX2283Q.jpg.png', desc: 'EDP Creed Aventus is a fragrance masculina fresca, frutal y amaderada. 🍍🪵' },
             { id: 'p_bleu_chanel', name: 'Bleu de Chanel', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/u5MLr0Z.jpg.png', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
             { id: 'p_ysl_y', name: 'Yves Saint Laurent Y', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/wc0xMOS.jpg.png', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna. 🍏🪵' },
             { id: 'p_carolina_bomba', name: 'Carolina Herrera La Bomba', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ecofdPj.jpg.png', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce, vibrante y elegante. 🌸🍬' },
@@ -1410,8 +1551,8 @@
  
             renderCatalog();
             updateCartUI();
+            initShowcase();
         };
     </script>
 </body>
 </html>
- 
