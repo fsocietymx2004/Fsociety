@@ -335,15 +335,15 @@
         </div>
     </div>
  
-    <section class="w-full bg-white dark:bg-fsblack py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/30 pt-24 sm:pt-28 transition-colors duration-500">
+    <section class="w-full bg-white dark:bg-fsblack py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/30 pt-24 sm:pt-28 transition-colors duration-500">
         <div class="max-w-[1700px] mx-auto">
             <div class="text-center mb-6">
-                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Esencias de Alta Gama</span>
+                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Exclusivo y Elegante</span>
                 <h2 class="text-2xl sm:text-4xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1">Valentino & Jean Paul Gaultier</h2>
             </div>
             
-            <!-- 3-Panel Cinematic Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[420px] sm:h-[500px]">
+            <!-- 3-Panel Cinematic Grid with Smooth Sliding Animation Wrapper -->
+            <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[420px] sm:h-[500px] transition-opacity duration-700 ease-in-out opacity-100">
                 
                 <!-- Left Panel -->
                 <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
@@ -458,27 +458,27 @@
         </div>
     </div>
  
-    <!-- Quick View Modal -->
+    <!-- Quick View Modal (Dynamic Theme Support) -->
     <div id="quick-view-modal" class="fixed inset-0 z-[70] hidden-element flex items-end md:items-center justify-center transition-opacity duration-300 p-2 sm:p-4">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuickView()"></div>
-        <div class="relative bg-white dark:bg-fscardbg w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh]" id="quick-view-panel">
-            <button onclick="closeQuickView()" class="absolute top-4 right-4 z-20 bg-white/50 dark:bg-black/50 backdrop-blur text-gray-800 dark:text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-fsgold hover:text-white transition">
+        <div class="relative bg-white dark:bg-fscardbg w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30" id="quick-view-panel">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 z-20 bg-white/80 dark:bg-black/80 backdrop-blur text-gray-800 dark:text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-fsgold hover:text-white transition">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="w-full md:w-1/2 bg-gray-100 dark:bg-black/50 h-56 md:h-auto relative flex items-center justify-center overflow-hidden">
+            <div class="w-full md:w-1/2 bg-gray-100 dark:bg-black/60 h-56 md:h-auto relative flex items-center justify-center overflow-hidden">
                 <img id="qv-image" src="" alt="Producto" class="w-full h-full object-cover">
                 <div id="qv-badge" class="absolute top-4 left-4 text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-3 py-1 rounded shadow-sm font-bold uppercase tracking-widest"></div>
             </div>
-            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto">
-                <h3 id="qv-title" class="text-2xl md:text-3xl brand-font font-bold text-gray-900 dark:text-white mb-2 leading-tight"></h3>
+            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white dark:bg-fsdark text-gray-900 dark:text-gray-100">
+                <h3 id="qv-title" class="text-2xl md:text-3xl brand-font font-bold mb-2 leading-tight"></h3>
                 <div id="qv-tags" class="flex flex-wrap gap-2 mb-4"></div>
                 <div id="qv-price" class="text-xl brand-font text-fsgold font-bold mb-4"></div>
                 <p id="qv-desc" class="text-sm text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"></p>
-                <div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center gap-4">
-                    <div class="flex items-center bg-gray-100 dark:bg-black rounded border border-gray-200 dark:border-gray-700">
-                        <button onclick="changeQvQty(-1)" class="w-10 h-12 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-fsgold transition">-</button>
-                        <span id="qv-qty" class="w-8 text-center font-semibold dark:text-white">1</span>
-                        <button onclick="changeQvQty(1)" class="w-10 h-12 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-fsgold transition">+</button>
+                <div class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-800 flex items-center gap-4">
+                    <div class="flex items-center bg-gray-100 dark:bg-black rounded border border-gray-300 dark:border-gray-700">
+                        <button onclick="changeQvQty(-1)" class="w-10 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-fsgold transition">-</button>
+                        <span id="qv-qty" class="w-8 text-center font-semibold">1</span>
+                        <button onclick="changeQvQty(1)" class="w-10 h-12 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-fsgold transition">+</button>
                     </div>
                     <button onclick="addQvToCart()" class="flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition shadow-md flex items-center justify-center gap-2">
                         <i class="fas fa-shopping-bag"></i> Añadir
@@ -514,7 +514,7 @@
         let currentQuickViewId = null;
         let quickViewQty = 1;
 
-        // Showcase Sets collection containing Valentino & Jean Paul Gaultier items from DB
+        // Showcase Sets collection containing Valentino & Jean Paul Gaultier items from DB (6 seconds interval with fluid slide animation)
         const showcaseSets = [
             {
                 left: { id: 'd_coral_fantasy', name: 'Valentino Coral Fantasy', sub: 'Hombre', image: 'img/Valentino mzna d.jpg' },
@@ -539,10 +539,19 @@
             renderShowcaseSet();
             renderShowcaseDots();
             showcaseInterval = setInterval(() => {
-                currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
-                renderShowcaseSet();
-                updateShowcaseDots();
-            }, 6000); // 6 seconds per slide as requested
+                const wrapper = document.getElementById('showcase-grid-wrapper');
+                if(wrapper) {
+                    wrapper.classList.remove('opacity-100');
+                    wrapper.classList.add('opacity-0');
+                    setTimeout(() => {
+                        currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
+                        renderShowcaseSet();
+                        updateShowcaseDots();
+                        wrapper.classList.remove('opacity-0');
+                        wrapper.classList.add('opacity-100');
+                    }, 350);
+                }
+            }, 6000); // 6 seconds per slide with smooth fluid transition
         }
 
         function renderShowcaseSet() {
@@ -573,13 +582,31 @@
                 dot.className = `h-2 rounded-full transition-all duration-300 ${idx === currentShowcaseIndex ? 'w-8 bg-fsgold' : 'w-2 bg-gray-400/50 hover:bg-gray-400'}`;
                 dot.onclick = () => {
                     clearInterval(showcaseInterval);
-                    currentShowcaseIndex = idx;
-                    renderShowcaseSet();
-                    updateShowcaseDots();
+                    const wrapper = document.getElementById('showcase-grid-wrapper');
+                    if(wrapper) {
+                        wrapper.classList.remove('opacity-100');
+                        wrapper.classList.add('opacity-0');
+                        setTimeout(() => {
+                            currentShowcaseIndex = idx;
+                            renderShowcaseSet();
+                            updateShowcaseDots();
+                            wrapper.classList.remove('opacity-0');
+                            wrapper.classList.add('opacity-100');
+                        }, 350);
+                    }
                     showcaseInterval = setInterval(() => {
-                        currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
-                        renderShowcaseSet();
-                        updateShowcaseDots();
+                        const wrap = document.getElementById('showcase-grid-wrapper');
+                        if(wrap) {
+                            wrap.classList.remove('opacity-100');
+                            wrap.classList.add('opacity-0');
+                            setTimeout(() => {
+                                currentShowcaseIndex = (currentShowcaseIndex + 1) % showcaseSets.length;
+                                renderShowcaseSet();
+                                updateShowcaseDots();
+                                wrap.classList.remove('opacity-0');
+                                wrap.classList.add('opacity-100');
+                            }, 350);
+                        }
                     }, 6000);
                 };
                 dotsContainer.appendChild(dot);
@@ -1029,7 +1056,8 @@
  
         function setupScrollObserver() {
             const clothingZone = document.getElementById('clothing-zone');
-            const womenSection = document.getElementById('sub-section-Mujer-decants') || document.getElementById('perfumes');
+            const decantsWomenSec = document.getElementById('sub-section-Mujer-decants');
+            const perfumesWomenSec = document.getElementById('sub-section-Mujer-perfumes');
             const mainLogo = document.getElementById('main-logo');
             const footerLogo = document.getElementById('footer-logo');
             
@@ -1037,18 +1065,20 @@
  
             window.addEventListener('scroll', () => {
                 const clothingRect = clothingZone.getBoundingClientRect();
-                const womenRect = womenSection ? womenSection.getBoundingClientRect() : { top: 9999, bottom: 9999 };
+                const decantsWomenRect = decantsWomenSec ? decantsWomenSec.getBoundingClientRect() : { top: 9999, bottom: 9999 };
+                const perfumesWomenRect = perfumesWomenSec ? perfumesWomenSec.getBoundingClientRect() : { top: 9999, bottom: 9999 };
                 const windowHeight = window.innerHeight;
  
                 const isInsideClothing = clothingRect.top <= windowHeight * 0.5 && clothingRect.bottom >= windowHeight * 0.3;
-                const isInsideWomen = womenRect.top <= windowHeight * 0.5 && womenRect.bottom >= windowHeight * 0.3;
+                const isInsideDecantsWomen = decantsWomenRect.top <= windowHeight * 0.5 && decantsWomenRect.bottom >= windowHeight * 0.3;
+                const isInsidePerfumesWomen = perfumesWomenRect.top <= windowHeight * 0.5 && perfumesWomenRect.bottom >= windowHeight * 0.3;
  
                 if (isInsideClothing) {
                     document.body.classList.remove('women-mode');
                     document.body.classList.add('bw-mode');
                     if (mainLogo) mainLogo.src = 'https://i.imgur.com/Sz3U2r3.png';
                     if (footerLogo) footerLogo.src = 'https://i.imgur.com/Sz3U2r3.png';
-                } else if (isInsideWomen && !isInsideClothing) {
+                } else if ((isInsideDecantsWomen || isInsidePerfumesWomen) && !isInsideClothing) {
                     document.body.classList.remove('bw-mode');
                     document.body.classList.add('women-mode');
                     if (mainLogo) mainLogo.src = 'img/Logorosa.webp';
