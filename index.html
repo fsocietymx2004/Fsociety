@@ -928,6 +928,19 @@
                 }
             });
  
+            const comingSoonOverlay = document.createElement('div');
+            comingSoonOverlay.id = 'apparel-coming-soon';
+            comingSoonOverlay.className = 'absolute inset-0 z-40 bg-[#050505]/85 backdrop-blur-md opacity-0 transition-opacity duration-[1500ms] pointer-events-auto';
+            comingSoonOverlay.innerHTML = `
+                <div class="sticky top-[50vh] flex flex-col items-center justify-center transform -translate-y-1/2 opacity-0 transition-all duration-[1200ms] translate-y-12" id="apparel-coming-soon-content">
+                    <i class="fas fa-hourglass-half text-3xl sm:text-4xl text-gray-400 mb-6 animate-pulse"></i>
+                    <h2 class="text-4xl sm:text-6xl md:text-7xl brand-font font-bold uppercase tracking-[0.2em] text-white mb-4 text-center px-4 drop-shadow-2xl">Próximamente</h2>
+                    <div class="w-16 sm:w-24 h-px bg-white/40 mb-6"></div>
+                    <p class="text-xs sm:text-sm md:text-base tracking-[0.2em] uppercase text-gray-300 text-center px-4 max-w-lg font-light leading-relaxed">La nueva colección Streetwear & Apparel de F Society está en producción. Mantente atento.</p>
+                </div>
+            `;
+            clothingZone.appendChild(comingSoonOverlay);
+
             const infoBottomZone = document.createElement('div');
             infoBottomZone.id = 'info-bottom-zone';
             infoBottomZone.className = 'w-full bg-white dark:bg-fsblack py-16 px-6 md:px-12 transition-colors duration-500 relative z-30 border-t border-fsgold/25';
@@ -1117,8 +1130,42 @@
                 }
             });
             setupScrollObserver();
+            setupComingSoonObserver();
         }
  
+        function setupComingSoonObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const overlay = document.getElementById('apparel-coming-soon');
+                        const content = document.getElementById('apparel-coming-soon-content');
+                        if(overlay && content) {
+                            overlay.classList.remove('opacity-0');
+                            overlay.classList.add('opacity-100');
+                            
+                            setTimeout(() => {
+                                content.classList.remove('opacity-0', 'translate-y-12');
+                                content.classList.add('opacity-100', 'translate-y-0');
+                            }, 400); 
+                        }
+                    } else {
+                        // Optional: Reset animation when completely out of view (if you want it to trigger again)
+                        const overlay = document.getElementById('apparel-coming-soon');
+                        const content = document.getElementById('apparel-coming-soon-content');
+                        if(overlay && content && entry.boundingClientRect.top > window.innerHeight) {
+                            overlay.classList.add('opacity-0');
+                            overlay.classList.remove('opacity-100');
+                            content.classList.add('opacity-0', 'translate-y-12');
+                            content.classList.remove('opacity-100', 'translate-y-0');
+                        }
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            const clothingZone = document.getElementById('clothing-zone');
+            if(clothingZone) observer.observe(clothingZone);
+        }
+
         function setupScrollObserver() {
             const clothingZone = document.getElementById('clothing-zone');
             const decantsWomenSec = document.getElementById('sub-section-Mujer-decants');
