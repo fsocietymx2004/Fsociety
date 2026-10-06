@@ -350,11 +350,11 @@
         <div class="max-w-[1700px] mx-auto">
             <div class="text-center mb-5 sm:mb-6 px-2">
                 <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Esencias de Alta Gama</span>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1 leading-snug break-words">Valentino & Jean Paul Gaultier</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-5xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1 leading-snug break-words">Valentino & Jean Paul Gaultier</h2>
             </div>
             
             <div id="showcase-container-wrapper" class="touch-pan-y relative overflow-hidden">
-                <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 h-auto md:h-[460px] lg:h-[500px] transition-opacity duration-[1200ms] ease-in-out opacity-100">
+                <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 h-auto md:h-[460px] lg:h-[500px] transition-all duration-[1000ms] ease-in-out opacity-100 transform translate-y-0">
                     
                     <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
                         <img id="showcase-left-img" src="" alt="Showcase Left" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-90">
@@ -583,16 +583,16 @@
         function transitionShowcase(direction) {
             const wrapper = document.getElementById('showcase-grid-wrapper');
             if(wrapper) {
-                wrapper.classList.remove('opacity-100');
-                wrapper.classList.add('opacity-0');
+                wrapper.classList.remove('opacity-100', 'translate-y-0');
+                wrapper.classList.add('opacity-0', 'translate-y-4');
                 
                 setTimeout(() => {
                     currentShowcaseIndex = (currentShowcaseIndex + direction + showcaseSets.length) % showcaseSets.length;
                     renderShowcaseSet();
                     updateShowcaseDots();
-                    wrapper.classList.remove('opacity-0');
-                    wrapper.classList.add('opacity-100');
-                }, 600); 
+                    wrapper.classList.remove('opacity-0', 'translate-y-4');
+                    wrapper.classList.add('opacity-100', 'translate-y-0');
+                }, 500); 
             }
         }
 
@@ -649,15 +649,15 @@
                     clearInterval(showcaseInterval);
                     const wrapper = document.getElementById('showcase-grid-wrapper');
                     if(wrapper) {
-                        wrapper.classList.remove('opacity-100');
-                        wrapper.classList.add('opacity-0');
+                        wrapper.classList.remove('opacity-100', 'translate-y-0');
+                        wrapper.classList.add('opacity-0', 'translate-y-4');
                         setTimeout(() => {
                             currentShowcaseIndex = idx;
                             renderShowcaseSet();
                             updateShowcaseDots();
-                            wrapper.classList.remove('opacity-0');
-                            wrapper.classList.add('opacity-100');
-                        }, 600);
+                            wrapper.classList.remove('opacity-0', 'translate-y-4');
+                            wrapper.classList.add('opacity-100', 'translate-y-0');
+                        }, 500);
                     }
                     startShowcaseTimer();
                 };
@@ -738,6 +738,7 @@
             { id: 'd3', name: 'Valentino Born In Roma Extradose', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, image: 'img/beno81o.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
             { id: 'd4', name: 'Yves Saint Laurent Y', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 100, isRequest: false, image: 'img/Yves Saint Laurent Y p y d.jpg', image2: 'img/Yves Saint Laurent Y d.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna y versátil. 🍏🪵' },
             { id: 'd5', name: 'Jean Paul Gaultier Elixir', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, image: 'img/S2qyVlX.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
+            { id: 'd_jp_lemale', name: 'Jean Paul Gaultier "Le Male"', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 110, isRequest: false, image: 'img/Jean Paul Le male P y D.jpg', image2: 'img/Jean Paul Le male D.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
             { id: 'd6', name: 'Pacific Chill Louis Vuitton', category: 'decants', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 180, isRequest: false, image: 'img/NGn13Qm.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde que transmite lujo y sofisticación. 🍋🌿' },
             { id: 'd7', name: 'Montblanc Explorer', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, image: 'img/decant negro.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
             { id: 'd8', name: 'Afnan 9PM', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 80, isRequest: false, image: 'img/6YY6kTZ.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
@@ -757,7 +758,7 @@
             { id: 'd22', name: 'Rasasi Hawas For Him Ice', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 120, isRequest: false, image: 'img/2m0rYtx.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
             { id: 'd_bleu_chanel', name: 'Bleu de Chanel', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, image: 'img/Bleu de chanel p y d.jpg', image2: 'img/Bleu de chanel d.jpg', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
  
-            { id: 'p_sauvage_elixir', name: 'Sauvage Elixir Dior', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/xJM8Vmu.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶️️' },
+            { id: 'p_sauvage_elixir', name: 'Sauvage Elixir Dior', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/xJM8Vmu.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶' },
             { id: 'p_coco', name: 'Coco Mademoiselle Chanel', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/coco chanel p.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
             { id: 'p_scandal', name: 'Scandal', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/scandal p.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
             { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Valentino coral p.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
@@ -771,6 +772,7 @@
             { id: 'p_santal_33', name: 'Santal 33', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/0ywmTVA.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
             { id: 'p_perry_purple', name: 'Perry Ellis Purple For Women', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/v27wkmS.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
             { id: 'p_jpg_elixir', name: 'Jean Paul Gaultier Elixir', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/HXIIDWb.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
+            { id: 'p_jp_lemale', name: 'Jean Paul Gaultier "Le Male"', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Jean Paul Le male P.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
             { id: 'p_pacific_chill', name: 'Pacific Chill Louis Vuitton', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/MhjF8m8.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde. 🍋🌿' },
             { id: 'p_le_beau', name: 'Jean Paul Gaultier "Le Beau"', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/W3lGco0.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
             { id: 'p_afnan_9pm', name: 'Afnan 9PM', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, image: 'img/afnan 9pm.jpeg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
@@ -1149,7 +1151,6 @@
                             }, 400); 
                         }
                     } else {
-                        // Optional: Reset animation when completely out of view (if you want it to trigger again)
                         const overlay = document.getElementById('apparel-coming-soon');
                         const content = document.getElementById('apparel-coming-soon-content');
                         if(overlay && content && entry.boundingClientRect.top > window.innerHeight) {
@@ -1290,12 +1291,14 @@
             const dot1 = document.getElementById('qv-dot-1');
             const dot2 = document.getElementById('qv-dot-2');
             
-            if (index === 0) {
-                dot1.classList.replace('bg-white/40', 'bg-white');
-                dot2.classList.replace('bg-white', 'bg-white/40');
-            } else {
-                dot1.classList.replace('bg-white', 'bg-white/40');
-                dot2.classList.replace('bg-white/40', 'bg-white');
+            if (dot1 && dot2) {
+                if (index === 0) {
+                    dot1.className = 'w-2 h-2 rounded-full bg-white shadow-md border border-black/10 transition-colors';
+                    dot2.className = 'w-2 h-2 rounded-full bg-white/40 shadow-md border border-black/10 transition-colors';
+                } else {
+                    dot1.className = 'w-2 h-2 rounded-full bg-white/40 shadow-md border border-black/10 transition-colors';
+                    dot2.className = 'w-2 h-2 rounded-full bg-white shadow-md border border-black/10 transition-colors';
+                }
             }
         }
 
@@ -1337,12 +1340,12 @@
                 qvImg2.src = product.image2;
                 qvImg2.style.display = 'block';
                 dotsContainer.style.display = 'flex';
-                dot2.style.display = 'block';
+                if(dot2) dot2.style.display = 'block';
                 qvMaxSlides = 2;
             } else {
                 qvImg2.style.display = 'none';
                 dotsContainer.style.display = 'none';
-                dot2.style.display = 'none';
+                if(dot2) dot2.style.display = 'none';
                 qvMaxSlides = 1;
             }
             setQvSlide(0);
