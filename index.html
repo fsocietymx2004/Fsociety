@@ -84,6 +84,22 @@
         .dark .product-card:hover {
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.1);
         }
+
+        /* --- ESTILOS PARA PRODUCTOS AGOTADOS --- */
+        .product-card.sold-out img {
+            filter: grayscale(40%) brightness(85%);
+            transition: filter 0.3s ease;
+        }
+        .product-card.sold-out:hover img {
+            filter: grayscale(60%) brightness(65%);
+        }
+        .product-card.sold-out .sold-out-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .product-card.sold-out:hover .sold-out-overlay {
+            opacity: 1;
+        }
  
         @keyframes float-slow {
             0%, 100% { transform: translateY(0) scale(1); }
@@ -740,82 +756,82 @@
         }
 
         const productsDB = [
-            { id: 'd_aqua', name: 'Oddesey Aqua (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 80, isRequest: false, image: 'img/OddesseyAquaPyD.jpg', image2: 'img/OddesseyAquaD.jpg', desc: 'EDP Fragancia masculina fresca, acuática y aromática. Abre con un golpe cítrico de toronja y naranja con un toque amargo de ajenjo, seguido de un corazón de lavanda y menta helada, sobre un fondo limpio de ambroxan, pachulí y ciprés. Ideal para uso diario, clima cálido, oficina o cualquier ocasión en la que quieras oler fresco y limpio. 🌊🍊🌿' },
-            { id: 'd_coco', name: 'Coco Mademoiselle Chanel (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, image: 'img/Coco ChannelDyP.jpg', image2: 'img/CocoChannelD.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
-            { id: 'd_scandal', name: 'Scandal (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 150, isRequest: false, image: 'img/ScandalDyP.jpg', image2: 'img/ScandalD.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
-            { id: 'd_coral_fantasy', name: 'Valentino Coral Fantasy (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 90, isRequest: false, image: 'img/ValentinocoralfantasyPyD.jpg', image2: 'img/ValentinocoralfantasyD.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
-            { id: 'd_yara', name: 'Lattafa Yara (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 100, isRequest: false, image: 'img/LattfaYaraPyD.jpg', image2: 'img/LattfaYaraD.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
-            { id: 'd_noble_blush', name: 'Lattafa Noble Blush (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 90, isRequest: false, image: 'img/LatffaNobleBlushPyD.jpg', image2: 'img/LatffaNobleBlushD.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
-            { id: 'd_love', name: 'Love, Don’t Be Shy by Kilian (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, image: 'img/LoveDontBeShyByKilianPyD.jpg', image2: 'img/LoveDontBeShyByKilianD.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
-            { id: 'd_prada_paradoxe', name: 'Prada Paradoxe (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 140, isRequest: false, image: 'img/PradaParadoxePyD.jpg', image2: 'img/PradaParadoxeD.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
-            { id: 'd_rayhaan_aloha', name: 'Rayhaan Aloha (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 200, isRequest: false, image: 'img/PacificRayhaanAlohaPyD.jpg', image2: 'img/PacificRayhaanAlohaD.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
-            { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, image: 'img/ValentinoDonnaBornInRomaPyD.jpg', image2: 'img/ValentinoDonnaBornInRomaD.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
-            { id: 'd2', name: 'Valentino Uomo Born in Roma Purple (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 210, isRequest: false, image: 'img/ValentinoUomoBornInRomaPurplePyD.jpg', image2: 'img/ValentinoUomoBornInRomaPurpleD.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa, lavanda aromática y vetiver ahumado. 🪻🍨🪵' },
-            { id: 'd3', name: 'Valentino Born In Roma Extradose (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, image: 'img/ValentinoBornInRomaExtradosePyD.jpg', image2: 'img/ValentinoBornInRomaExtradoseD.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
-            { id: 'd4', name: 'Yves Saint Laurent Y (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 100, isRequest: false, image: 'img/YvesSaintLaurentPyD.jpg', image2: 'img/YvesSaintLaurentD.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna y versátil. 🍏🪵' },
-            { id: 'd5', name: 'Jean Paul Gaultier Elixir (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, image: 'img/JeanPaulElixirPyD.jpg', image2: 'img/JeanPaulElixirD.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
-            { id: 'd_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 110, isRequest: false, image: 'img/JeanPaulLeMalePyD.jpg', image2: 'img/JeanPAulLeMaleD.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
-            { id: 'd6', name: 'Pacific Chill Louis Vuitton (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 180, isRequest: false, image: 'img/LouisVuittonPacificChillPyD.jpg', image2: 'img/LouisVuittonPacificChillD.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde que transmite lujo y sofisticación. 🍋🌿' },
-            { id: 'd7', name: 'Montblanc Explorer (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, image: 'img/MontblacExplorerPyD.jpg', image2: 'img/MontblacExplorerD.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
-            { id: 'd8', name: 'Afnan 9PM (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 80, isRequest: false, image: 'img/Afnan9PMPyD.jpg', image2: 'img/Afnan9PMD.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
-            { id: 'd9', name: 'Afnan 9AM (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 140, isRequest: false, image: 'img/Afnan9AMPyD.jpg', image2: 'img/Afnan9AMD.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
-            { id: 'd10', name: 'Lattafa Khamrah (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 100, isRequest: false, image: 'img/LattafaKhamrahPyD.jpg', image2: 'img/LattafaKhamrahD.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
-            { id: 'd11', name: 'Perry Ellis Purple For Women (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 60, isRequest: false, image: 'img/PerryEllisPurpleForWomenPyD.jpg', image2: 'img/PerryEllisPurpleForWomenD.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
-            { id: 'd12', name: 'Sauvage Elixir Dior (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 50, isRequest: false, image: 'img/SauvageDiorPyD.jpg', image2: 'img/SauvageDiorD.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶️️' },
-            { id: 'd13', name: 'Invictus Parfum (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 70, isRequest: false, image: 'img/InvictusParfumPyD.jpg', image2: 'img/InvictusParfumD.jpg', desc: 'EDP Una fragancia intensa que combina acordes marinos, lavanda y notas minerales. 🌊🪻' },
-            { id: 'd14', name: 'Santal 33 (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, image: 'img/Santal33PyD.jpg', image2: 'img/Santal33D.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
-            { id: 'd15', name: 'Imagination Louis Vuitton (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, image: 'img/ImaginationLouisVuittonPyD.jpg', image2: 'img/ImaginationLouisVuittonD.jpg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
-            { id: 'd16', name: 'Versace Eros (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 120, isRequest: false, image: 'img/VersageerosPyD.jpg', image2: 'img/VersageErosD.jpg', desc: 'EDT Fresco, seductor y lleno de energía con menta, limón y vainilla. 🍏🌿' },
-            { id: 'd17', name: 'Rasasi Hawas For Him (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Versátil', price: 100, isRequest: false, image: 'img/RasasiHawasForHimPyD.jpg', image2: 'img/RasasiHawasForHimD.jpg', desc: 'EDP Fresco, acuático y moderno con mezcla vibrante de cítricos. 🌊🍋' },
-            { id: 'd18', name: 'Jean Paul Gaultier "Le Beau" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 120, isRequest: false, image: 'img/JeanPaulLeBeauPyD.jpg', image2: 'img/JeanPaulLeBeauD.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
-            { id: 'd19', name: 'Jean Paul Gaultier Paradise Garden (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, image: 'img/JeanPaulParadiseGardenPyD.jpg', image2: 'img/JeanPaulParadiseGardenD.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con carácter tropical y moderno. 🥥🌿' },
-            { id: 'd20', name: 'Carolina Herrera La Bomba (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, image: 'img/CarolinaHerreraLaBombaPyD.jpg', image2: 'img/CarolinaHerreraLaBombaD.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce y vibrante. 🌸🍬' },
-            { id: 'd21', name: 'Creed Aventus (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 80, isRequest: false, image: 'img/CreedAventusPyD.jpg', image2: 'img/CreedAventusD.jpg', desc: 'EDP Fragancia masculina fresca, frutal y amaderada. 🍍🪵' },
-            { id: 'd22', name: 'Rasasi Hawas For Him Ice (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 120, isRequest: false, image: 'img/RassasiHawasForHimIcePyD.jpg', image2: 'img/RassasiHawasForHimIceD.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
-            { id: 'd_bleu_chanel', name: 'Bleu de Chanel (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, image: 'img/BeludechanelPyD.jpg', image2: 'img/BeludechanelD.jpg', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
+            { id: 'd_aqua', name: 'Oddesey Aqua (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 80, isRequest: false, soldOut: true, image: 'img/OddesseyAquaPyD.jpg', image2: 'img/OddesseyAquaD.jpg', desc: 'EDP Fragancia masculina fresca, acuática y aromática. Abre con un golpe cítrico de toronja y naranja con un toque amargo de ajenjo, seguido de un corazón de lavanda y menta helada, sobre un fondo limpio de ambroxan, pachulí y ciprés. Ideal para uso diario, clima cálido, oficina o cualquier ocasión en la que quieras oler fresco y limpio. 🌊🍊🌿' },
+            { id: 'd_coco', name: 'Coco Mademoiselle Chanel (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, soldOut: false, image: 'img/Coco ChannelDyP.jpg', image2: 'img/CocoChannelD.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
+            { id: 'd_scandal', name: 'Scandal (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 150, isRequest: false, soldOut: false, image: 'img/ScandalDyP.jpg', image2: 'img/ScandalD.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
+            { id: 'd_coral_fantasy', name: 'Valentino Coral Fantasy (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 90, isRequest: false, soldOut: false, image: 'img/ValentinocoralfantasyPyD.jpg', image2: 'img/ValentinocoralfantasyD.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
+            { id: 'd_yara', name: 'Lattafa Yara (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 100, isRequest: false, soldOut: false, image: 'img/LattfaYaraPyD.jpg', image2: 'img/LattfaYaraD.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
+            { id: 'd_noble_blush', name: 'Lattafa Noble Blush (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 90, isRequest: false, soldOut: false, image: 'img/LatffaNobleBlushPyD.jpg', image2: 'img/LatffaNobleBlushD.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
+            { id: 'd_love', name: 'Love, Don’t Be Shy by Kilian (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, soldOut: false, image: 'img/LoveDontBeShyByKilianPyD.jpg', image2: 'img/LoveDontBeShyByKilianD.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
+            { id: 'd_prada_paradoxe', name: 'Prada Paradoxe (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 140, isRequest: false, soldOut: false, image: 'img/PradaParadoxePyD.jpg', image2: 'img/PradaParadoxeD.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
+            { id: 'd_rayhaan_aloha', name: 'Rayhaan Aloha (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 200, isRequest: false, soldOut: false, image: 'img/PacificRayhaanAlohaPyD.jpg', image2: 'img/PacificRayhaanAlohaD.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
+            { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, soldOut: false, image: 'img/ValentinoDonnaBornInRomaPyD.jpg', image2: 'img/ValentinoDonnaBornInRomaD.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
+            { id: 'd2', name: 'Valentino Uomo Born in Roma Purple (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 210, isRequest: false, soldOut: true, image: 'img/ValentinoUomoBornInRomaPurplePyD.jpg', image2: 'img/ValentinoUomoBornInRomaPurpleD.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa, lavanda aromática y vetiver ahumado. 🪻🍨🪵' },
+            { id: 'd3', name: 'Valentino Born In Roma Extradose (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, soldOut: false, image: 'img/ValentinoBornInRomaExtradosePyD.jpg', image2: 'img/ValentinoBornInRomaExtradoseD.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
+            { id: 'd4', name: 'Yves Saint Laurent Y (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 100, isRequest: false, soldOut: false, image: 'img/YvesSaintLaurentPyD.jpg', image2: 'img/YvesSaintLaurentD.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna y versátil. 🍏🪵' },
+            { id: 'd5', name: 'Jean Paul Gaultier Elixir (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, soldOut: false, image: 'img/JeanPaulElixirPyD.jpg', image2: 'img/JeanPaulElixirD.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
+            { id: 'd_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 110, isRequest: false, soldOut: false, image: 'img/JeanPaulLeMalePyD.jpg', image2: 'img/JeanPAulLeMaleD.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
+            { id: 'd6', name: 'Pacific Chill Louis Vuitton (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 180, isRequest: false, soldOut: false, image: 'img/LouisVuittonPacificChillPyD.jpg', image2: 'img/LouisVuittonPacificChillD.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde que transmite lujo y sofisticación. 🍋🌿' },
+            { id: 'd7', name: 'Montblanc Explorer (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, soldOut: false, image: 'img/MontblacExplorerPyD.jpg', image2: 'img/MontblacExplorerD.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
+            { id: 'd8', name: 'Afnan 9PM (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 80, isRequest: false, soldOut: false, image: 'img/Afnan9PMPyD.jpg', image2: 'img/Afnan9PMD.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
+            { id: 'd9', name: 'Afnan 9AM (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 140, isRequest: false, soldOut: false, image: 'img/Afnan9AMPyD.jpg', image2: 'img/Afnan9AMD.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
+            { id: 'd10', name: 'Lattafa Khamrah (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 100, isRequest: false, soldOut: false, image: 'img/LattafaKhamrahPyD.jpg', image2: 'img/LattafaKhamrahD.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
+            { id: 'd11', name: 'Perry Ellis Purple For Women (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 60, isRequest: false, soldOut: false, image: 'img/PerryEllisPurpleForWomenPyD.jpg', image2: 'img/PerryEllisPurpleForWomenD.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
+            { id: 'd12', name: 'Sauvage Elixir Dior (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 50, isRequest: false, soldOut: false, image: 'img/SauvageDiorPyD.jpg', image2: 'img/SauvageDiorD.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶' },
+            { id: 'd13', name: 'Invictus Parfum (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 70, isRequest: false, soldOut: false, image: 'img/InvictusParfumPyD.jpg', image2: 'img/InvictusParfumD.jpg', desc: 'EDP Una fragancia intensa que combina acordes marinos, lavanda y notas minerales. 🌊🪻' },
+            { id: 'd14', name: 'Santal 33 (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, soldOut: false, image: 'img/Santal33PyD.jpg', image2: 'img/Santal33D.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
+            { id: 'd15', name: 'Imagination Louis Vuitton (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, soldOut: false, image: 'img/ImaginationLouisVuittonPyD.jpg', image2: 'img/ImaginationLouisVuittonD.jpg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
+            { id: 'd16', name: 'Versace Eros (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 120, isRequest: false, soldOut: false, image: 'img/VersageerosPyD.jpg', image2: 'img/VersageErosD.jpg', desc: 'EDT Fresco, seductor y lleno de energía con menta, limón y vainilla. 🍏🌿' },
+            { id: 'd17', name: 'Rasasi Hawas For Him (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Versátil', price: 100, isRequest: false, soldOut: false, image: 'img/RasasiHawasForHimPyD.jpg', image2: 'img/RasasiHawasForHimD.jpg', desc: 'EDP Fresco, acuático y moderno con mezcla vibrante de cítricos. 🌊🍋' },
+            { id: 'd18', name: 'Jean Paul Gaultier "Le Beau" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 120, isRequest: false, soldOut: false, image: 'img/JeanPaulLeBeauPyD.jpg', image2: 'img/JeanPaulLeBeauD.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
+            { id: 'd19', name: 'Jean Paul Gaultier Paradise Garden (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, soldOut: false, image: 'img/JeanPaulParadiseGardenPyD.jpg', image2: 'img/JeanPaulParadiseGardenD.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con carácter tropical y moderno. 🥥🌿' },
+            { id: 'd20', name: 'Carolina Herrera La Bomba (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, soldOut: false, image: 'img/CarolinaHerreraLaBombaPyD.jpg', image2: 'img/CarolinaHerreraLaBombaD.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce y vibrante. 🌸🍬' },
+            { id: 'd21', name: 'Creed Aventus (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 80, isRequest: false, soldOut: false, image: 'img/CreedAventusPyD.jpg', image2: 'img/CreedAventusD.jpg', desc: 'EDP Fragancia masculina fresca, frutal y amaderada. 🍍🪵' },
+            { id: 'd22', name: 'Rasasi Hawas For Him Ice (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 120, isRequest: false, soldOut: false, image: 'img/RassasiHawasForHimIcePyD.jpg', image2: 'img/RassasiHawasForHimIceD.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
+            { id: 'd_bleu_chanel', name: 'Bleu de Chanel (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 150, isRequest: false, soldOut: false, image: 'img/BeludechanelPyD.jpg', image2: 'img/BeludechanelD.jpg', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
  
-            { id: 'p_aqua', name: 'Oddesey Aqua (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/OddesseyAquaP.jpg', desc: 'EDP Fragancia masculina fresca, acuática y aromática. Abre con un golpe cítrico de toronja y naranja con un toque amargo de ajenjo, seguido de un corazón de lavanda y menta helada, sobre un fondo limpio de ambroxan, pachulí y ciprés. Ideal para uso diario, clima cálido, oficina o cualquier ocasión en la que quieras oler fresco y limpio. 🌊🍊🌿' },
-            { id: 'p_sauvage_elixir', name: 'Sauvage Elixir Dior (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/SauvageDiorP.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶' },
-            { id: 'p_coco', name: 'Coco Mademoiselle Chanel (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/CocoChanelP.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
-            { id: 'p_scandal', name: 'Scandal (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ScandalP.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
-            { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ValentinocoralfantasyP.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
-            { id: 'p_yara', name: 'Lattafa Yara (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/LattfaYaraP.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
-            { id: 'p_noble_blush', name: 'Lattafa Noble Blush (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/LatffaNobleBlushP.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
-            { id: 'p_love', name: 'Love, Don’t Be Shy by Kilian (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/LoveDontBeShyByKilianP.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
-            { id: 'p_prada_paradoxe', name: 'Prada Paradoxe (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/PradaParadoxeP.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
-            { id: 'p_rayhaan_aloha', name: 'Rayhaan Aloha (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/PacificRayhaanAlohaP.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
-            { id: 'p_valentino_donna', name: 'Valentino Donna Born in Roma (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ValentinoDonnaBornInRomaP.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
-            { id: 'p_imagination_lv', name: 'Imagination Louis Vuitton (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/ImaginationLouisVuittonp.jpg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
-            { id: 'p_santal_33', name: 'Santal 33 (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/Santal33P.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
-            { id: 'p_perry_purple', name: 'Perry Ellis Purple For Women (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/PerryEllisPurpleForWomenP.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
-            { id: 'p_jpg_elixir', name: 'Jean Paul Gaultier Elixir (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/JeanPaulElixirP.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
-            { id: 'p_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/JeanPaulLeMaleP.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
-            { id: 'p_pacific_chill', name: 'Pacific Chill Louis Vuitton (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/LouisVuittonPacificChillP.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde. 🍋🌿' },
-            { id: 'p_le_beau', name: 'Jean Paul Gaultier "Le Beau" (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/JeanPaulLeBeauP.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
-            { id: 'p_afnan_9pm', name: 'Afnan 9PM (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, image: 'img/Afnan9PMP.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
-            { id: 'p_afnan_9am', name: 'Afnan 9AM (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/Afnan9AMP.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
-            { id: 'p_khamrah', name: 'Lattafa Khamrah (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, image: 'img/LattafaKhamrahP.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
-            { id: 'p_invictus_parfum', name: 'Invictus Parfum (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/InvictusParfumP.jpg', desc: 'EDP Una fragancia intensa que combina acordes marinos, lavanda y notas minerales. 🌊🪻' },
-            { id: 'p_valentino_extradose', name: 'Valentino Born in Roma Extradose (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ValentinoBornInRomaExtradoseP.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. 🪻🍨' },
-            { id: 'p_valentino_purple', name: 'Valentino Uomo Born in Roma Purple (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/ValentinoUomoBornInRomaPurpleP.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa y lavanda. 🪻🍨🪵' },
-            { id: 'p_versace_eros', name: 'Versace Eros (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/VersageErosP.jpg', desc: 'EDT Fresco, seductor y lleno de energía. 🍏🌿' },
-            { id: 'p_montblanc_exp', name: 'Montblanc Explorer (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/MontblacExplorerP.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
-            { id: 'p_jpg_pg', name: 'Jean Paul Gaultier Paradise Garden (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, image: 'img/JeanPaulParadiseGardenP.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con un carácter tropical y moderno. 🥥🌿' },
-            { id: 'p_hawas', name: 'Rasasi Hawas For Him (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/RasasiHawasForHimP.jpg', desc: 'EDP Fresco, acuático y moderno con mezcla vibrante de cítricos. 🌊🍋' },
-            { id: 'p_ice', name: 'Rasasi Hawas For Him Ice (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, image: 'img/RasasiHawasForHimIceP.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
-            { id: 'p_creed_aventus', name: 'Creed Aventus (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/CreedAventusP.jpg', desc: 'EDP Creed Aventus is a fragrance masculina fresca, frutal y amaderada. 🍍🪵' },
-            { id: 'p_bleu_chanel', name: 'Bleu de Chanel (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/BeludechanelP.jpg', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
-            { id: 'p_ysl_y', name: 'Yves Saint Laurent Y (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, image: 'img/YvesSaintLaurentP.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna. 🍏🪵' },
-            { id: 'p_carolina_bomba', name: 'Carolina Herrera La Bomba (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, image: 'img/CarolinaHerreraLaBombaP.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce, vibrante y elegante. 🌸🍬' },
+            { id: 'p_aqua', name: 'Oddesey Aqua (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, soldOut: true, image: 'img/OddesseyAquaP.jpg', desc: 'EDP Fragancia masculina fresca, acuática y aromática. Abre con un golpe cítrico de toronja y naranja con un toque amargo de ajenjo, seguido de un corazón de lavanda y menta helada, sobre un fondo limpio de ambroxan, pachulí y ciprés. Ideal para uso diario, clima cálido, oficina o cualquier ocasión en la que quieras oler fresco y limpio. 🌊🍊🌿' },
+            { id: 'p_sauvage_elixir', name: 'Sauvage Elixir Dior (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/SauvageDiorP.jpg', desc: 'EDP Una fragancia intensa y elegante con un carácter amaderado y especiado. 🪵🌶' },
+            { id: 'p_coco', name: 'Coco Mademoiselle Chanel (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/CocoChanelP.jpg', desc: 'EDP Fragancia femenina elegante, fresca y sofisticada. Combina notas cítricas con un corazón floral de rosa y jazmín, sobre un fondo cálido de pachulí y ámbar. Ideal para uso diario, citas o eventos especiales. Un aroma femenino, refinado y con mucha presencia. (DUPE) 🌸🍊✨' },
+            { id: 'p_scandal', name: 'Scandal (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/ScandalP.jpg', desc: 'EDP Fragancia masculina intensa, dulce y seductora, con un perfil cálido y elegante que combina notas aromáticas, caramelo y maderas. Ideal para la noche, citas, fiestas o para quien busca un aroma con mucha presencia y personalidad (DUPE) 🍬🪵🌙' },
+            { id: 'p_coral_fantasy', name: 'Valentino Coral Fantasy (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/ValentinocoralfantasyP.jpg', desc: 'EDT Fragancia masculina fresca, dulce y seductora. Combina manzana roja, salvia y tabaco, creando un aroma frutal y cálido con mucha personalidad. Ideal para salidas, citas y uso nocturno. (DUPE) 🍎🌿🚬' },
+            { id: 'p_yara', name: 'Lattafa Yara (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/LattfaYaraP.jpg', desc: 'EDP Fragancia femenina dulce, cremosa y muy agradable. Mezcla notas florales y frutales con un fondo de vainilla, almizcle y sándalo, dejando un aroma suave, femenino y ligeramente tropical. Ideal para uso diario, citas o para quien disfruta perfumes dulces sin que resulten demasiado pesados. 🌸🍨' },
+            { id: 'p_noble_blush', name: 'Lattafa Noble Blush (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/LatffaNobleBlushP.jpg', desc: 'EDP Fragancia cremosa y delicada, con un perfil dulce que recuerda a postres y merengue. Combina matices de rosa, leche, almendra y vainilla con un fondo suave de sándalo y almizcle. Ideal para citas, salidas y climas frescos, especialmente para quien busca un aroma dulce, femenino y envolvente. 🧁🥛🍨' },
+            { id: 'p_love', name: 'Love, Don’t Be Shy by Kilian (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/LoveDontBeShyByKilianP.jpg', desc: 'EDP Fragancia dulce, cremosa y envolvente, con un perfil floral gourmand que recuerda a malvavisco, vainilla y flores blancas. Ideal para citas, salidas nocturnas o para quien busca un aroma femenino, coqueto y muy llamativo. (DUPE) 🍬🤍🌸' },
+            { id: 'p_prada_paradoxe', name: 'Prada Paradoxe (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/PradaParadoxeP.jpg', desc: 'EDP Fragancia femenina, elegante y moderna, con un aroma floral y ambarado de carácter dulce y sofisticado. Combina frescura, flores blancas y un fondo cálido y envolvente. Ideal para citas, salidas especiales o para quien busca un perfume femenino con presencia y estilo. (DUPE) 🌸✨amber' },
+            { id: 'p_rayhaan_aloha', name: 'Rayhaan Aloha (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/PacificRayhaanAlohaP.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
+            { id: 'p_valentino_donna', name: 'Valentino Donna Born in Roma (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/ValentinoDonnaBornInRomaP.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
+            { id: 'p_imagination_lv', name: 'Imagination Louis Vuitton (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/ImaginationLouisVuittonp.jpg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
+            { id: 'p_santal_33', name: 'Santal 33 (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/Santal33P.jpg', desc: 'EDP Aroma amaderado y limpio, con mezcla de sándalo y cardamomo. 🪵🌿' },
+            { id: 'p_perry_purple', name: 'Perry Ellis Purple For Women (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/PerryEllisPurpleForWomenP.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
+            { id: 'p_jpg_elixir', name: 'Jean Paul Gaultier Elixir (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/JeanPaulElixirP.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
+            { id: 'p_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/JeanPaulLeMaleP.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
+            { id: 'p_pacific_chill', name: 'Pacific Chill Louis Vuitton (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/LouisVuittonPacificChillP.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde. 🍋🌿' },
+            { id: 'p_le_beau', name: 'Jean Paul Gaultier "Le Beau" (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/JeanPaulLeBeauP.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
+            { id: 'p_afnan_9pm', name: 'Afnan 9PM (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/Afnan9PMP.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
+            { id: 'p_afnan_9am', name: 'Afnan 9AM (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/Afnan9AMP.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
+            { id: 'p_khamrah', name: 'Lattafa Khamrah (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/LattafaKhamrahP.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
+            { id: 'p_invictus_parfum', name: 'Invictus Parfum (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/InvictusParfumP.jpg', desc: 'EDP Una fragancia intensa que combina acordes marinos, lavanda y notas minerales. 🌊🪻' },
+            { id: 'p_valentino_extradose', name: 'Valentino Born in Roma Extradose (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/ValentinoBornInRomaExtradoseP.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. 🪻🍨' },
+            { id: 'p_valentino_purple', name: 'Valentino Uomo Born in Roma Purple (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: true, image: 'img/ValentinoUomoBornInRomaPurpleP.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa y lavanda. 🪻🍨🪵' },
+            { id: 'p_versace_eros', name: 'Versace Eros (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/VersageErosP.jpg', desc: 'EDT Fresco, seductor y lleno de energía. 🍏🌿' },
+            { id: 'p_montblanc_exp', name: 'Montblanc Explorer (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/MontblacExplorerP.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
+            { id: 'p_jpg_pg', name: 'Jean Paul Gaultier Paradise Garden (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/JeanPaulParadiseGardenP.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con un carácter tropical y moderno. 🥥🌿' },
+            { id: 'p_hawas', name: 'Rasasi Hawas For Him (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/RasasiHawasForHimP.jpg', desc: 'EDP Fresco, acuático y moderno con mezcla vibrante de cítricos. 🌊🍋' },
+            { id: 'p_ice', name: 'Rasasi Hawas For Him Ice (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/RasasiHawasForHimIceP.jpg', desc: 'EDP Frescura intensa con notas de manzana congelada y bergamota. 🧊🍏' },
+            { id: 'p_creed_aventus', name: 'Creed Aventus (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/CreedAventusP.jpg', desc: 'EDP Creed Aventus is a fragrance masculina fresca, frutal y amaderada. 🍍🪵' },
+            { id: 'p_bleu_chanel', name: 'Bleu de Chanel (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/BeludechanelP.jpg', desc: 'EDP Fragancia masculina elegante, fresca y amaderada. 🍋🪵' },
+            { id: 'p_ysl_y', name: 'Yves Saint Laurent Y (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/YvesSaintLaurentP.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna. 🍏🪵' },
+            { id: 'p_carolina_bomba', name: 'Carolina Herrera La Bomba (Perfume completo)', category: 'perfumes', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/CarolinaHerreraLaBombaP.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce, vibrante y elegante. 🌸🍬' },
  
-            { id: 't1', name: 'Playera Básica Negra', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nNormal' },
-            { id: 't2', name: 'Playera Básica Blanca', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nBlanca' },
-            { id: 't3', name: 'Polo Gold Edition Negra', category: 'playeras', sub: 'Tipo Polo', price: 650, isRequest: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Polo\nNegra' },
-            { id: 't4', name: 'Polo Silver Edition Blanca', category: 'playeras', sub: 'Tipo Polo', price: 650, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Polo\nBlanca' },
-            { id: 's1', name: 'Sudadera Hoodie Classic', category: 'sudaderas', sub: 'Unisex', price: 890, isRequest: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Sudadera\nClassic' },
-            { id: 's2', name: 'Sudadera Crewneck', category: 'sudaderas', sub: 'Unisex', price: 790, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Crewneck' },
-            { id: 'g1', name: 'Gorra Snapback Logo Dorado', category: 'gorras', sub: 'Unisex', price: 350, isRequest: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Gorra\nGold' },
-            { id: 'g2', name: 'Gorra Trucker Logo Plateado', category: 'gorras', sub: 'Unisex', price: 350, isRequest: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Gorra\nSilver' },
+            { id: 't1', name: 'Playera Básica Negra', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nNormal' },
+            { id: 't2', name: 'Playera Básica Blanca', category: 'playeras', sub: 'Normal', price: 400, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Playera\nBlanca' },
+            { id: 't3', name: 'Polo Gold Edition Negra', category: 'playeras', sub: 'Tipo Polo', price: 650, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Polo\nNegra' },
+            { id: 't4', name: 'Polo Silver Edition Blanca', category: 'playeras', sub: 'Tipo Polo', price: 650, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Polo\nBlanca' },
+            { id: 's1', name: 'Sudadera Hoodie Classic', category: 'sudaderas', sub: 'Unisex', price: 890, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Sudadera\nClassic' },
+            { id: 's2', name: 'Sudadera Crewneck', category: 'sudaderas', sub: 'Unisex', price: 790, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Crewneck' },
+            { id: 'g1', name: 'Gorra Snapback Logo Dorado', category: 'gorras', sub: 'Unisex', price: 350, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/D4AF37?text=Gorra\nGold' },
+            { id: 'g2', name: 'Gorra Trucker Logo Plateado', category: 'gorras', sub: 'Unisex', price: 350, isRequest: false, soldOut: false, image: 'https://placehold.co/400x500/ffffff/333333?text=Gorra\nSilver' },
         ];
  
         const catalogStructure = [
@@ -1255,7 +1271,7 @@
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-lg md:text-xl brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1263,8 +1279,38 @@
                         originBadge = `<span class="mt-1 inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-sm border ${bgClass}">${prod.origin.toUpperCase()}</span>`;
                     }
  
+                    let actionButtonsHTML = '';
+                    let soldOutClass = '';
+                    let soldOutOverlayHTML = '';
+
+                    if (prod.soldOut) {
+                        soldOutClass = 'sold-out';
+                        soldOutOverlayHTML = `
+                            <div class="sold-out-overlay absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-20 pointer-events-none">
+                                <span class="bg-black/90 border border-fsgold text-fsgold px-4 py-2 rounded-full font-bold uppercase tracking-[0.2em] text-xs shadow-xl">Agotado</span>
+                            </div>
+                        `;
+                        actionButtonsHTML = `
+                            <div class="w-full text-center py-2 bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-widest rounded cursor-not-allowed">
+                                Agotado
+                            </div>
+                        `;
+                    } else {
+                        actionButtonsHTML = `
+                            <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
+                                    <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
+                                </button>
+                                <button onclick="event.stopPropagation(); buyNow('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                    Comprar
+                                </button>
+                            </div>
+                        `;
+                    }
+
                     productsHTML += `
-                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                        <div class="product-card ${soldOutClass} bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                            ${soldOutOverlayHTML}
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start pointer-events-none">
@@ -1274,11 +1320,11 @@
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
                                 <h3 class="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
-                                <div class="mt-auto flex items-center justify-between pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800">
-                                    ${priceDisplay}
-                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-300 hover:text-white dark:hover:text-white w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
-                                        <i class="fas fa-plus text-xs sm:text-sm"></i>
-                                    </button>
+                                <div class="mt-auto pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        ${priceDisplay}
+                                    </div>
+                                    ${actionButtonsHTML}
                                 </div>
                             </div>
                         </div>
@@ -1430,6 +1476,9 @@
             if (product.occasion) {
                 tagsHTML += `<span class="text-xs font-bold px-3 py-1 rounded shadow-sm border bg-gray-100 dark:bg-black text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700"><i class="fas fa-glass-cheers mr-1"></i> ${product.occasion}</span>`;
             }
+            if (product.soldOut) {
+                tagsHTML += `<span class="text-xs font-bold px-3 py-1 rounded shadow-sm border bg-black text-fsgold border-fsgold">AGOTADO</span>`;
+            }
             if (emojisMatch) {
                 tagsHTML += `<span class="text-sm px-2.5 py-0.5 bg-gray-50 dark:bg-black/30 rounded border border-gray-200 dark:border-gray-800 tracking-widest">${emojisMatch.join(' ')}</span>`;
             }
@@ -1440,25 +1489,45 @@
             const qvAddBtn = document.getElementById('qv-add-btn');
             const qvQtyBox = document.getElementById('qv-qty-box');
 
+            if (product.soldOut) {
+                qvAddBtn.disabled = true;
+                qvAddBtn.innerHTML = `<i class="fas fa-ban"></i> Agotado`;
+                qvAddBtn.className = 'flex-grow bg-gray-400 text-white h-12 rounded font-bold uppercase tracking-widest cursor-not-allowed flex items-center justify-center gap-2';
+            } else {
+                qvAddBtn.disabled = false;
+                qvAddBtn.innerHTML = `<i class="fas fa-shopping-bag"></i> Añadir`;
+                if (document.body.classList.contains('women-mode')) {
+                    qvAddBtn.className = 'flex-grow bg-[#B76E79] text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                } else if (document.body.classList.contains('bw-mode')) {
+                    qvAddBtn.className = 'flex-grow bg-white text-black h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                } else if (document.documentElement.classList.contains('dark')) {
+                    qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                } else {
+                    qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                }
+            }
+
             if (document.body.classList.contains('women-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#DDA7B1] dark:border-[#5C383F] bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
-                qvAddBtn.className = 'flex-grow bg-[#B76E79] text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                if(!product.soldOut) {
+                    qvAddBtn.className = 'flex-grow bg-[#B76E79] text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                }
                 qvQtyBox.className = 'flex items-center rounded border border-[#DDA7B1] dark:border-[#5C383F] bg-white dark:bg-black/40 text-[#4A2E35] dark:text-[#F7EBEB]';
             } else if (document.body.classList.contains('bw-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#333333] bg-[#0a0a0a] text-white';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#0a0a0a] text-white border-l border-[#222222]';
-                qvAddBtn.className = 'flex-grow bg-white text-black h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                if(!product.soldOut) {
+                    qvAddBtn.className = 'flex-grow bg-white text-black h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                }
                 qvQtyBox.className = 'flex items-center rounded border border-[#333333] bg-[#1a1a1a] text-white';
             } else if (document.documentElement.classList.contains('dark')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30 bg-fsdark text-gray-100';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-fsdark text-gray-100';
-                qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
                 qvQtyBox.className = 'flex items-center rounded border border-gray-700 bg-black text-gray-200';
             } else {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30 bg-white text-gray-900';
                 qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white text-gray-900';
-                qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
                 qvQtyBox.className = 'flex items-center rounded border border-gray-300 bg-gray-100 text-gray-800';
             }
 
@@ -1560,6 +1629,10 @@
         function addQvToCart() {
             if (!currentQuickViewId) return;
             const product = productsDB.find(p => p.id === currentQuickViewId);
+            if (product && product.soldOut) {
+                showToast("Este producto está agotado.");
+                return;
+            }
             
             const existingItem = cart.find(item => item.id === currentQuickViewId);
             if (existingItem) {
@@ -1576,6 +1649,10 @@
         function addToCart(productId) {
             const product = productsDB.find(p => p.id === productId);
             if (!product) return;
+            if (product.soldOut) {
+                showToast("Este producto está agotado.");
+                return;
+            }
  
             const existingItem = cart.find(item => item.id === productId);
             if (existingItem) {
@@ -1586,6 +1663,24 @@
  
             updateCartUI();
             showToast(`${product.name} agregado.`);
+        }
+
+        function buyNow(productId) {
+            const product = productsDB.find(p => p.id === productId);
+            if (!product) return;
+            if (product.soldOut) {
+                showToast("Este producto está agotado.");
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+            processCheckout();
         }
  
         function removeFromCart(productId) {
@@ -1883,7 +1978,7 @@
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-lg md:text-xl brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span class="text-sm sm:text-base md:text-lg brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1902,11 +1997,18 @@
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
                                 <h3 class="text-xs sm:text-sm md:text-base font-semibold mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
-                                <div class="mt-auto flex items-center justify-between pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800">
-                                    ${priceDisplay}
-                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
-                                        <i class="fas fa-plus text-xs sm:text-sm"></i>
-                                    </button>
+                                <div class="mt-auto pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        ${priceDisplay}
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                        <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
+                                            <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
+                                        </button>
+                                        <button onclick="event.stopPropagation(); buyNow('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                            Comprar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1948,7 +2050,7 @@
                 catProducts.forEach(prod => {
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-lg md:text-xl brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span class="text-sm sm:text-base md:text-lg brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1967,11 +2069,18 @@
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
                                 <h3 class="text-xs sm:text-sm md:text-base font-semibold mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
-                                <div class="mt-auto flex items-center justify-between pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800">
-                                    ${priceDisplay}
-                                    <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="btn-float btn-press bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition duration-300 shadow-sm border border-transparent dark:border-gray-700 dark:hover:border-fsgold" title="Agregar 1">
-                                        <i class="fas fa-plus text-xs sm:text-sm"></i>
-                                    </button>
+                                <div class="mt-auto pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        ${priceDisplay}
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                        <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
+                                            <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
+                                        </button>
+                                        <button onclick="event.stopPropagation(); buyNow('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                            Comprar
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
