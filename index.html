@@ -41,6 +41,7 @@
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: clip; 
+            -webkit-text-size-adjust: 100%;
         }
         
         h1, h2, h3, h4, h5, .brand-font {
@@ -94,11 +95,12 @@
             filter: grayscale(60%) brightness(65%);
         }
         .product-card.sold-out .sold-out-overlay {
-            opacity: 0;
+            opacity: 1;
             transition: opacity 0.3s ease;
         }
         .product-card.sold-out:hover .sold-out-overlay {
             opacity: 1;
+            background-color: rgba(0, 0, 0, 0.75);
         }
  
         @keyframes float-slow {
@@ -244,7 +246,6 @@
         .fade-out { opacity: 0; }
         .fade-in { opacity: 1; }
 
-        /* Zoom modal transitions */
         #zoomed-image {
             will-change: transform;
         }
@@ -253,15 +254,15 @@
 <body class="antialiased flex flex-col min-h-screen bg-white text-gray-900 dark:bg-fsblack dark:text-gray-200 transition-colors duration-500">
  
     <nav class="fixed w-full z-50 bg-white/95 dark:bg-fsblack/95 backdrop-blur-md border-b border-fsgold/30 shadow-sm transition-colors duration-500">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 sm:h-20">
-                <div class="flex items-center space-x-3">
-                    <button onclick="toggleSubmenu()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-2 focus:outline-none" aria-label="Abrir menú">
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <button onclick="toggleSubmenu()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-1.5 sm:p-2 focus:outline-none" aria-label="Abrir menú">
                         <i class="fas fa-bars text-lg sm:text-xl"></i>
                     </button>
-                    <div class="flex items-center space-x-2 sm:space-x-3 cursor-pointer transition transform hover:scale-105" onclick="scrollToTop()">
-                        <img id="main-logo" src="https://i.imgur.com/GRbtuKx.png" alt="F Society Logo" class="h-9 w-9 sm:h-10 sm:w-10 object-contain rounded-full border border-fsgold/50 shadow-sm transition-all duration-300" onerror="this.style.display='none'">
-                        <span class="text-xl sm:text-3xl brand-font font-bold text-fsgold tracking-wider drop-shadow-sm">F SOCIETY</span>
+                    <div class="flex items-center space-x-1.5 sm:space-x-3 cursor-pointer transition transform hover:scale-105" onclick="scrollToTop()">
+                        <img id="main-logo" src="https://i.imgur.com/GRbtuKx.png" alt="F Society Logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain rounded-full border border-fsgold/50 shadow-sm transition-all duration-300" onerror="this.style.display='none'">
+                        <span class="text-lg sm:text-3xl brand-font font-bold text-fsgold tracking-wider drop-shadow-sm">F SOCIETY</span>
                     </div>
                 </div>
                 
@@ -273,7 +274,7 @@
                     <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Gorras</a>
                 </div>
 
-                <div class="flex items-center space-x-2 sm:space-x-4">
+                <div class="flex items-center space-x-1.5 sm:space-x-4">
                     <div class="hidden lg:block relative group">
                         <div class="flex items-center bg-gray-100 dark:bg-fsdark border border-gray-200 dark:border-gray-800 rounded-full px-3 py-1.5 focus-within:border-fsgold/50 transition-all">
                             <i class="fas fa-search text-gray-400 dark:text-gray-500 text-sm"></i>
@@ -287,12 +288,12 @@
                         <a href="https://www.facebook.com/1092397090632659" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-gray-500 hover:text-fsgold text-lg transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
                     </div>
 
-                    <button id="theme-toggle-btn" onclick="toggleDarkMode()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-2">
-                        <i id="theme-icon" class="fas fa-moon text-lg sm:text-xl"></i>
+                    <button id="theme-toggle-btn" onclick="toggleDarkMode()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-1.5 sm:p-2">
+                        <i id="theme-icon" class="fas fa-moon text-base sm:text-xl"></i>
                     </button>
 
-                    <button onclick="toggleCart()" class="relative p-2 text-gray-800 dark:text-gray-200 hover:text-fsgold transition">
-                        <i class="fas fa-shopping-bag text-xl sm:text-2xl"></i>
+                    <button onclick="toggleCart()" class="relative p-1.5 sm:p-2 text-gray-800 dark:text-gray-200 hover:text-fsgold transition">
+                        <i class="fas fa-shopping-bag text-lg sm:text-2xl"></i>
                         <span id="cart-count" class="absolute top-0 right-0 bg-fsgold text-white text-[10px] sm:text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center transform translate-x-1 -translate-y-1 shadow-md">0</span>
                     </button>
                 </div>
@@ -307,12 +308,12 @@
                 <a href="#" onclick="scrollToCategory(event, 'sudaderas')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Sudaderas</a>
                 <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Gorras</a>
             </div>
-            <div class="px-4 pb-2.5 relative">
+            <div class="px-3 pb-2.5 relative">
                 <div class="flex items-center bg-gray-200/50 dark:bg-black/50 rounded-lg px-3 py-1.5 border border-gray-300 dark:border-gray-700 focus-within:border-fsgold/50">
                     <i class="fas fa-search text-gray-400 text-xs mr-2"></i>
                     <input type="text" id="mobile-global-search" onkeyup="handleGlobalSearch(event, true)" placeholder="Buscar producto..." class="bg-transparent border-none focus:ring-0 text-xs sm:text-sm text-gray-700 dark:text-gray-300 w-full outline-none">
                 </div>
-                <div id="mobile-global-search-results" class="absolute top-full left-4 right-4 mt-1 bg-white dark:bg-fscardbg border border-fsgold/20 rounded-lg shadow-xl opacity-0 invisible transition-all duration-300 max-h-60 overflow-y-auto z-50"></div>
+                <div id="mobile-global-search-results" class="absolute top-full left-3 right-3 mt-1 bg-white dark:bg-fscardbg border border-fsgold/20 rounded-lg shadow-xl opacity-0 invisible transition-all duration-300 max-h-60 overflow-y-auto z-50"></div>
             </div>
         </div>
     </nav>
@@ -362,7 +363,7 @@
         </div>
     </div>
  
-    <section class="w-full bg-white dark:bg-fsblack py-6 sm:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/35 pt-20 sm:pt-28 transition-colors duration-500">
+    <section class="w-full bg-white dark:bg-fsblack py-6 sm:py-8 px-3 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/35 pt-20 sm:pt-28 transition-colors duration-500">
         <div class="max-w-[1700px] mx-auto">
             <div class="text-center mb-5 sm:mb-6 px-2">
                 <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Esencias de Alta Gama</span>
@@ -370,43 +371,43 @@
             </div>
             
             <div id="showcase-container-wrapper" class="touch-pan-y relative overflow-hidden">
-                <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 h-auto md:h-[460px] lg:h-[500px] transition-all duration-[1000ms] ease-in-out opacity-100 transform translate-y-0">
+                <div id="showcase-grid-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 h-auto md:h-[460px] lg:h-[500px] transition-all duration-[1000ms] ease-in-out opacity-100 transform translate-y-0">
                     
-                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
+                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[200px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
                         <img id="showcase-left-img" src="" alt="Showcase Left" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10">
-                            <span id="showcase-left-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-1.5 sm:mb-2 inline-block"></span>
-                            <h3 id="showcase-left-title" class="text-lg sm:text-xl md:text-2xl brand-font font-bold text-white mb-1.5 sm:mb-2 leading-tight"></h3>
-                            <div class="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
-                                <span>Ver Detalles</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 z-10">
+                            <span id="showcase-left-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded mb-1 sm:mb-2 inline-block"></span>
+                            <h3 id="showcase-left-title" class="text-base sm:text-xl md:text-2xl brand-font font-bold text-white mb-1 sm:mb-2 leading-tight"></h3>
+                            <div class="inline-flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                                <span>Ver Detalles</span> <i class="fas fa-arrow-right text-[9px]"></i>
                             </div>
                         </div>
                     </div>
 
-                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/30 cursor-pointer md:-translate-y-3 z-10 h-[240px] sm:h-[280px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].center.id)">
+                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/30 cursor-pointer md:-translate-y-3 z-10 h-[220px] sm:h-[280px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].center.id)">
                         <img id="showcase-center-img" src="" alt="Showcase Center" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-95">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                        <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/60 backdrop-blur-md px-2.5 sm:px-3 py-1 rounded-full border border-fsgold/30 text-[9px] sm:text-[10px] text-fsgold uppercase tracking-widest font-bold">
+                        <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/60 backdrop-blur-md px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-fsgold/30 text-[9px] sm:text-[10px] text-fsgold uppercase tracking-widest font-bold">
                             Destacado
                         </div>
-                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10">
-                            <span id="showcase-center-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-1.5 sm:mb-2 inline-block"></span>
-                            <h3 id="showcase-center-title" class="text-xl sm:text-2xl md:text-3xl brand-font font-bold text-white mb-1.5 sm:mb-2 leading-tight"></h3>
-                            <div class="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
-                                <span>Explorar Esencia</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 z-10">
+                            <span id="showcase-center-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded mb-1 sm:mb-2 inline-block"></span>
+                            <h3 id="showcase-center-title" class="text-lg sm:text-2xl md:text-3xl brand-font font-bold text-white mb-1 sm:mb-2 leading-tight"></h3>
+                            <div class="inline-flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                                <span>Explorar Esencia</span> <i class="fas fa-arrow-right text-[9px]"></i>
                             </div>
                         </div>
                     </div>
 
-                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[220px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].right.id)">
+                    <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[200px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].right.id)">
                         <img id="showcase-right-img" src="" alt="Showcase Right" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-10">
-                            <span id="showcase-right-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-1.5 sm:mb-2 inline-block"></span>
-                            <h3 id="showcase-right-title" class="text-lg sm:text-xl md:text-2xl brand-font font-bold text-white mb-1.5 sm:mb-2 leading-tight"></h3>
-                            <div class="inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
-                                <span>Ver Detalles</span> <i class="fas fa-arrow-right text-[10px]"></i>
+                        <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 z-10">
+                            <span id="showcase-right-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded mb-1 sm:mb-2 inline-block"></span>
+                            <h3 id="showcase-right-title" class="text-base sm:text-xl md:text-2xl brand-font font-bold text-white mb-1 sm:mb-2 leading-tight"></h3>
+                            <div class="inline-flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-bold text-fsgold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                                <span>Ver Detalles</span> <i class="fas fa-arrow-right text-[9px]"></i>
                             </div>
                         </div>
                     </div>
@@ -414,21 +415,21 @@
                 </div>
             </div>
 
-            <div class="flex justify-center items-center gap-3 mt-5 sm:mt-6" id="showcase-dots">
+            <div class="flex justify-center items-center gap-3 mt-4 sm:mt-6" id="showcase-dots">
             </div>
         </div>
     </section>
  
-    <header class="h-[70vh] sm:h-[75vh] w-full flex flex-col items-center justify-center text-center bg-gradient-to-b from-amber-50 to-gray-100 dark:from-[#111] dark:to-fsblack pt-12 sm:pt-20 transition-colors duration-300 relative">
+    <header class="h-[65vh] sm:h-[75vh] w-full flex flex-col items-center justify-center text-center bg-gradient-to-b from-amber-50 to-gray-100 dark:from-[#111] dark:to-fsblack pt-8 sm:pt-20 transition-colors duration-300 relative">
         <div class="absolute inset-0 z-0 opacity-10 dark:opacity-5 pointer-events-none">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-fsgold via-transparent to-transparent"></div>
         </div>
         
-        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 mt-6 sm:mt-8 flex flex-col items-center justify-center w-full">
-            <div class="bg-white/80 dark:bg-fsdark/80 backdrop-blur-md border border-white/70 dark:border-fsgold/20 p-6 sm:p-10 md:p-16 rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1),_0_15px_30px_-15px_rgba(212,175,55,0.2)] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5),_0_15px_30px_-15px_rgba(212,175,55,0.1)] animate-float-slow w-full transition-all duration-700">
-                <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 tracking-tight">Exclusividad y Estilo</h1>
-                <p class="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-10 font-light max-w-2xl mx-auto">Descubre nuestra colección premium. Perfumería fina y moda urbana diseñadas para destacar.</p>
-                <a href="#" onclick="scrollToCategory(event, 'decants')" class="group inline-flex items-center justify-center gap-3 bg-fsgold text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-medium text-xs sm:text-sm uppercase tracking-[0.2em] border border-fsgold hover:bg-transparent hover:text-fsgold transition-all duration-500 shadow-[0_10px_30px_-10px_rgba(212,175,55,0.6)] hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] relative z-20">
+        <div class="relative z-10 max-w-4xl mx-auto px-3 sm:px-6 mt-4 sm:mt-8 flex flex-col items-center justify-center w-full">
+            <div class="bg-white/80 dark:bg-fsdark/80 backdrop-blur-md border border-white/70 dark:border-fsgold/20 p-5 sm:p-10 md:p-16 rounded-[1.75rem] sm:rounded-[2.5rem] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1),_0_15px_30px_-15px_rgba(212,175,55,0.2)] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5),_0_15px_30px_-15px_rgba(212,175,55,0.1)] animate-float-slow w-full transition-all duration-700">
+                <h1 class="text-2xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-6 tracking-tight">Exclusividad y Estilo</h1>
+                <p class="text-xs sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-5 sm:mb-10 font-light max-w-2xl mx-auto leading-relaxed">Descubre nuestra colección premium. Perfumería fina y moda urbana diseñadas para destacar.</p>
+                <a href="#" onclick="scrollToCategory(event, 'decants')" class="group inline-flex items-center justify-center gap-3 bg-fsgold text-white px-7 sm:px-10 py-3 sm:py-4 rounded-full font-medium text-xs sm:text-sm uppercase tracking-[0.2em] border border-fsgold hover:bg-transparent hover:text-fsgold transition-all duration-500 shadow-[0_10px_30px_-10px_rgba(212,175,55,0.6)] hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] relative z-20">
                     <span>Ver Catálogo</span>
                 </a>
             </div>
@@ -456,26 +457,26 @@
     <div id="cart-drawer" class="fixed inset-0 z-[60] hidden-element flex justify-end transition-opacity duration-300">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="toggleCart()"></div>
         <div class="relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-panel">
-            <div class="flex items-center justify-between p-6 border-b border-inherit">
-                <h2 id="cart-title" class="text-2xl brand-font">Tu Selección</h2>
-                <button onclick="toggleCart()" class="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition">
+            <div class="flex items-center justify-between p-4 sm:p-6 border-b border-inherit">
+                <h2 id="cart-title" class="text-xl sm:text-2xl brand-font">Tu Selección</h2>
+                <button onclick="toggleCart()" class="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition p-1">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="cart-items" class="flex-grow overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4">
                 <div class="text-center text-gray-400 mt-10">Tu carrito está vacío.</div>
             </div>
-            <div class="p-6 border-t border-inherit bg-gray-50 dark:bg-fsblack">
-                <div class="flex flex-col mb-6 space-y-2">
+            <div class="p-4 sm:p-6 border-t border-inherit bg-gray-50 dark:bg-fsblack">
+                <div class="flex flex-col mb-4 sm:mb-6 space-y-2">
                     <div class="flex justify-between items-center">
-                        <span id="cart-total-label" class="text-lg">Total Estimado:</span>
-                        <span id="cart-total" class="text-xl brand-font font-bold">$0.00</span>
+                        <span id="cart-total-label" class="text-base sm:text-lg">Total Estimado:</span>
+                        <span id="cart-total" class="text-lg sm:text-xl brand-font font-bold">$0.00</span>
                     </div>
                 </div>
-                <button onclick="processCheckout()" id="cart-checkout-btn" class="w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md">
-                    <i class="fab fa-whatsapp text-xl"></i> Hacer Pedido
+                <button onclick="processCheckout()" id="cart-checkout-btn" class="w-full bg-fsgold text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm">
+                    <i class="fab fa-whatsapp text-lg sm:text-xl"></i> Hacer Pedido
                 </button>
-                <p class="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">Serás redirigido a WhatsApp para confirmar.</p>
+                <p class="text-[11px] sm:text-xs text-center text-gray-500 dark:text-gray-400 mt-3">Serás redirigido a WhatsApp para confirmar.</p>
             </div>
         </div>
     </div>
@@ -483,15 +484,15 @@
     <div id="quick-view-modal" class="fixed inset-0 z-[70] hidden-element flex items-end md:items-center justify-center transition-opacity duration-300 p-2 sm:p-4">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuickView()"></div>
         <div class="relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30" id="quick-view-panel">
-            <button onclick="closeQuickView()" class="absolute top-4 right-4 z-20 bg-white/80 dark:bg-black/80 backdrop-blur text-gray-800 dark:text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-fsgold hover:text-white transition shadow-md">
+            <button onclick="closeQuickView()" class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 bg-white/80 dark:bg-black/80 backdrop-blur text-gray-800 dark:text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-fsgold hover:text-white transition shadow-md">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="w-full md:w-1/2 bg-gray-100 dark:bg-black/60 h-64 md:h-auto relative flex items-center justify-center overflow-hidden touch-pan-y group" id="qv-image-wrapper">
+            <div class="w-full md:w-1/2 bg-gray-100 dark:bg-black/60 h-60 sm:h-72 md:h-auto relative flex items-center justify-center overflow-hidden touch-pan-y group" id="qv-image-wrapper">
                 <div id="qv-image-container" class="flex w-full h-full transition-transform duration-300 ease-out">
                     <img id="qv-image-1" src="" alt="Producto" class="min-w-full h-full object-cover cursor-pointer hover:opacity-95 transition" onclick="openZoomModal(this.src)">
                     <img id="qv-image-2" src="" alt="Producto Vista 2" class="min-w-full h-full object-cover cursor-pointer hover:opacity-95 transition" onclick="openZoomModal(this.src)">
                 </div>
-                <div id="qv-badge" class="absolute top-4 left-4 text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-3 py-1 rounded shadow-sm font-bold uppercase tracking-widest z-10"></div>
+                <div id="qv-badge" class="absolute top-3 left-3 sm:top-4 sm:left-4 text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded shadow-sm font-bold uppercase tracking-widest z-10"></div>
                 
                 <button id="qv-prev-btn" onclick="prevQvSlide()" class="absolute left-3 top-1/2 transform -translate-y-1/2 z-20 bg-black/60 backdrop-blur-md text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-fsgold transition shadow-md opacity-0 group-hover:opacity-100 sm:opacity-80 hidden-element">
                     <i class="fas fa-chevron-left text-xs"></i>
@@ -500,29 +501,34 @@
                     <i class="fas fa-chevron-right text-xs"></i>
                 </button>
 
-                <button onclick="openZoomModal(document.getElementById(`qv-image-${currentQvSlide + 1}`).src)" class="absolute bottom-4 right-4 z-10 bg-white/80 dark:bg-black/80 backdrop-blur text-gray-800 dark:text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-fsgold hover:text-white transition shadow-md opacity-0 group-hover:opacity-100 sm:opacity-100">
-                    <i class="fas fa-search-plus"></i>
+                <button onclick="openZoomModal(document.getElementById(`qv-image-${currentQvSlide + 1}`).src)" class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-10 bg-white/80 dark:bg-black/80 backdrop-blur text-gray-800 dark:text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-fsgold hover:text-white transition shadow-md opacity-0 group-hover:opacity-100 sm:opacity-100">
+                    <i class="fas fa-search-plus text-xs sm:text-sm"></i>
                 </button>
 
-                <div id="qv-image-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                <div id="qv-image-dots" class="absolute bottom-3 sm:bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
                     <button onclick="setQvSlide(0)" id="qv-dot-1" class="w-2 h-2 rounded-full bg-white shadow-md border border-black/10 transition-colors"></button>
                     <button onclick="setQvSlide(1)" id="qv-dot-2" class="w-2 h-2 rounded-full bg-white/40 shadow-md border border-black/10 transition-colors"></button>
                 </div>
             </div>
-            <div id="qv-content-box" class="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto">
-                <h3 id="qv-title" class="text-2xl md:text-3xl brand-font font-bold mb-2 leading-tight"></h3>
-                <div id="qv-tags" class="flex flex-wrap gap-2 mb-4"></div>
-                <div id="qv-price" class="text-xl brand-font font-bold mb-4"></div>
-                <p id="qv-desc" class="text-sm mb-8 leading-relaxed"></p>
-                <div class="mt-auto pt-4 border-t border-inherit flex items-center gap-4">
-                    <div id="qv-qty-box" class="flex items-center rounded border">
-                        <button onclick="changeQvQty(-1)" class="w-10 h-12 flex items-center justify-center transition">-</button>
-                        <span id="qv-qty" class="w-8 text-center font-semibold">1</span>
-                        <button onclick="changeQvQty(1)" class="w-10 h-12 flex items-center justify-center transition">+</button>
+            <div id="qv-content-box" class="w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col overflow-y-auto">
+                <h3 id="qv-title" class="text-xl sm:text-2xl md:text-3xl brand-font font-bold mb-2 leading-tight"></h3>
+                <div id="qv-tags" class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4"></div>
+                <div id="qv-price" class="text-lg sm:text-xl brand-font font-bold mb-3 sm:mb-4"></div>
+                <p id="qv-desc" class="text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed"></p>
+                <div class="mt-auto pt-3 sm:pt-4 border-t border-inherit flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                    <div id="qv-qty-box" class="flex items-center justify-center rounded border h-11 sm:h-12">
+                        <button onclick="changeQvQty(-1)" class="w-12 h-full flex items-center justify-center transition text-base">-</button>
+                        <span id="qv-qty" class="w-8 text-center font-semibold text-sm sm:text-base">1</span>
+                        <button onclick="changeQvQty(1)" class="w-12 h-full flex items-center justify-center transition text-base">+</button>
                     </div>
-                    <button id="qv-add-btn" onclick="addQvToCart()" class="flex-grow text-white h-12 rounded font-bold uppercase tracking-widest transition shadow-md flex items-center justify-center gap-2">
-                        <i class="fas fa-shopping-bag"></i> Añadir
-                    </button>
+                    <div id="qv-action-buttons-container" class="flex flex-grow gap-2">
+                        <button id="qv-add-btn" onclick="addQvToCart()" class="flex-1 text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm">
+                            <i class="fas fa-shopping-bag"></i> Añadir
+                        </button>
+                        <button id="qv-buy-btn" onclick="buyQvNow()" class="flex-1 text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm bg-fsgold hover:bg-yellow-600">
+                            <i class="fas fa-bolt"></i> Comprar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -546,23 +552,23 @@
         </div>
     </div>
 
-    <div id="toast-modal" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-fsgold text-white px-6 py-3 rounded shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none z-[80] flex items-center gap-3">
+    <div id="toast-modal" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-fsgold text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none z-[80] flex items-center gap-3">
         <i class="fas fa-check-circle"></i>
-        <span id="toast-message" class="font-medium text-sm">Producto añadido</span>
+        <span id="toast-message" class="font-medium text-xs sm:text-sm">Producto añadido</span>
     </div>
  
     <div id="checkout-modal" class="fixed inset-0 z-[70] hidden-element flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeCheckoutModal()"></div>
-        <div class="relative bg-white dark:bg-fscardbg border border-fsgold rounded-lg max-w-sm w-full p-8 text-center shadow-2xl transform transition-all">
-            <div class="w-16 h-16 bg-amber-50 dark:bg-black/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-fsgold">
-                <i class="fas fa-check text-2xl text-fsgold"></i>
+        <div class="relative bg-white dark:bg-fscardbg border border-fsgold rounded-lg max-w-sm w-full p-6 sm:p-8 text-center shadow-2xl transform transition-all">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-amber-50 dark:bg-black/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-fsgold">
+                <i class="fas fa-check text-xl sm:text-2xl text-fsgold"></i>
             </div>
             <h3 class="text-2xl brand-font text-fsgold mb-2">¡Pedido Listo!</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Tu catálogo ha sido empaquetado. Presiona enviar para mandar tu pedido por WhatsApp y afinar detalles de envío y pago.</p>
-            <a id="whatsapp-link" href="#" target="_blank" onclick="closeCheckoutModalAndCart()" class="block w-full bg-fsgold text-white py-3 rounded font-bold uppercase tracking-wider hover:bg-yellow-600 transition shadow-md">
+            <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mb-6">Tu catálogo ha sido empaquetado. Presiona enviar para mandar tu pedido por WhatsApp y afinar detalles de envío y pago.</p>
+            <a id="whatsapp-link" href="#" target="_blank" onclick="closeCheckoutModalAndCart()" class="block w-full bg-fsgold text-white py-3 rounded font-bold uppercase tracking-wider hover:bg-yellow-600 transition shadow-md text-xs sm:text-sm">
                 Enviar a WhatsApp
             </a>
-            <button onclick="closeCheckoutModal()" class="mt-4 text-gray-500 dark:text-gray-400 hover:text-white text-sm underline">Cancelar</button>
+            <button onclick="closeCheckoutModal()" class="mt-4 text-gray-500 dark:text-gray-400 hover:text-white text-xs sm:text-sm underline">Cancelar</button>
         </div>
     </div>
  
@@ -1287,22 +1293,22 @@
                         soldOutClass = 'sold-out';
                         soldOutOverlayHTML = `
                             <div class="sold-out-overlay absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center z-20 pointer-events-none">
-                                <span class="bg-black/90 border border-fsgold text-fsgold px-4 py-2 rounded-full font-bold uppercase tracking-[0.2em] text-xs shadow-xl">Agotado</span>
+                                <span class="bg-black/90 border border-fsgold text-fsgold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[10px] sm:text-xs shadow-xl">Agotado</span>
                             </div>
                         `;
                         actionButtonsHTML = `
-                            <div class="w-full text-center py-2 bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-widest rounded cursor-not-allowed">
+                            <div class="w-full text-center py-2 bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded cursor-not-allowed">
                                 Agotado
                             </div>
                         `;
                     } else {
                         actionButtonsHTML = `
                             <div class="grid grid-cols-2 gap-1.5 pt-1">
-                                <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
+                                <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
                                     <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                 </button>
-                                <button onclick="event.stopPropagation(); buyNow('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
-                                    Comprar
+                                <button onclick="event.stopPropagation(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-2 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                    <i class="fas fa-bolt text-[9px]"></i> Comprar
                                 </button>
                             </div>
                         `;
@@ -1487,48 +1493,50 @@
             const qvContentBox = document.getElementById('qv-content-box');
             const qvPanel = document.getElementById('quick-view-panel');
             const qvAddBtn = document.getElementById('qv-add-btn');
+            const qvBuyBtn = document.getElementById('qv-buy-btn');
             const qvQtyBox = document.getElementById('qv-qty-box');
 
             if (product.soldOut) {
                 qvAddBtn.disabled = true;
+                qvBuyBtn.disabled = true;
                 qvAddBtn.innerHTML = `<i class="fas fa-ban"></i> Agotado`;
-                qvAddBtn.className = 'flex-grow bg-gray-400 text-white h-12 rounded font-bold uppercase tracking-widest cursor-not-allowed flex items-center justify-center gap-2';
+                qvBuyBtn.style.display = 'none';
+                qvAddBtn.className = 'w-full bg-gray-400 text-white h-11 sm:h-12 rounded font-bold uppercase tracking-widest cursor-not-allowed flex items-center justify-center gap-2 text-xs sm:text-sm';
             } else {
                 qvAddBtn.disabled = false;
+                qvBuyBtn.disabled = false;
+                qvBuyBtn.style.display = 'flex';
                 qvAddBtn.innerHTML = `<i class="fas fa-shopping-bag"></i> Añadir`;
+                qvBuyBtn.innerHTML = `<i class="fas fa-bolt"></i> Comprar`;
+                
                 if (document.body.classList.contains('women-mode')) {
-                    qvAddBtn.className = 'flex-grow bg-[#B76E79] text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                    qvAddBtn.className = 'flex-1 bg-[#B76E79] text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    qvBuyBtn.className = 'flex-1 bg-gray-900 dark:bg-black text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
                 } else if (document.body.classList.contains('bw-mode')) {
-                    qvAddBtn.className = 'flex-grow bg-white text-black h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
-                } else if (document.documentElement.classList.contains('dark')) {
-                    qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                    qvAddBtn.className = 'flex-1 bg-white text-black h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    qvBuyBtn.className = 'flex-1 bg-gray-800 text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
                 } else {
-                    qvAddBtn.className = 'flex-grow bg-fsgold text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
+                    qvAddBtn.className = 'flex-1 bg-fsgold text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    qvBuyBtn.className = 'flex-1 bg-gray-900 dark:bg-black text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
                 }
             }
 
             if (document.body.classList.contains('women-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#DDA7B1] dark:border-[#5C383F] bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
-                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
-                if(!product.soldOut) {
-                    qvAddBtn.className = 'flex-grow bg-[#B76E79] text-white h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
-                }
-                qvQtyBox.className = 'flex items-center rounded border border-[#DDA7B1] dark:border-[#5C383F] bg-white dark:bg-black/40 text-[#4A2E35] dark:text-[#F7EBEB]';
+                qvContentBox.className = 'w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col overflow-y-auto bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
+                qvQtyBox.className = 'flex items-center justify-center rounded border border-[#DDA7B1] dark:border-[#5C383F] bg-white dark:bg-black/40 text-[#4A2E35] dark:text-[#F7EBEB] h-11 sm:h-12';
             } else if (document.body.classList.contains('bw-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#333333] bg-[#0a0a0a] text-white';
-                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-[#0a0a0a] text-white border-l border-[#222222]';
-                if(!product.soldOut) {
-                    qvAddBtn.className = 'flex-grow bg-white text-black h-12 rounded font-bold uppercase tracking-widest hover:opacity-90 transition shadow-md flex items-center justify-center gap-2';
-                }
-                qvQtyBox.className = 'flex items-center rounded border border-[#333333] bg-[#1a1a1a] text-white';
+                qvContentBox.className = 'w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col overflow-y-auto bg-[#0a0a0a] text-white border-l border-[#222222]';
+                qvQtyBox.className = 'flex items-center justify-center rounded border border-[#333333] bg-[#1a1a1a] text-white h-11 sm:h-12';
             } else if (document.documentElement.classList.contains('dark')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30 bg-fsdark text-gray-100';
-                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-fsdark text-gray-100';
-                qvQtyBox.className = 'flex items-center rounded border border-gray-700 bg-black text-gray-200';
+                qvContentBox.className = 'w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col overflow-y-auto bg-fsdark text-gray-100';
+                qvQtyBox.className = 'flex items-center justify-center rounded border border-gray-700 bg-black text-gray-200 h-11 sm:h-12';
             } else {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-fsgold/30 bg-white text-gray-900';
-                qvContentBox.className = 'w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto bg-white text-gray-900';
-                qvQtyBox.className = 'flex items-center rounded border border-gray-300 bg-gray-100 text-gray-800';
+                qvContentBox.className = 'w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col overflow-y-auto bg-white text-gray-900';
+                qvQtyBox.className = 'flex items-center justify-center rounded border border-gray-300 bg-gray-100 text-gray-800 h-11 sm:h-12';
             }
 
             const modal = document.getElementById('quick-view-modal');
@@ -1645,6 +1653,26 @@
             closeQuickView();
             showToast(`${quickViewQty}x ${product.name} añadido.`);
         }
+
+        function buyQvNow() {
+            if (!currentQuickViewId) return;
+            const product = productsDB.find(p => p.id === currentQuickViewId);
+            if (product && product.soldOut) {
+                showToast("Este producto está agotado.");
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === currentQuickViewId);
+            if (existingItem) {
+                existingItem.quantity += quickViewQty;
+            } else {
+                cart.push({ ...product, quantity: quickViewQty });
+            }
+
+            updateCartUI();
+            closeQuickView();
+            processCheckout();
+        }
  
         function addToCart(productId) {
             const product = productsDB.find(p => p.id === productId);
@@ -1665,7 +1693,7 @@
             showToast(`${product.name} agregado.`);
         }
 
-        function buyNow(productId) {
+        function buyDirectly(productId) {
             const product = productsDB.find(p => p.id === productId);
             if (!product) return;
             if (product.soldOut) {
