@@ -143,6 +143,10 @@
             color: #000000 !important;
             border-color: #ffffff !important;
         }
+        body.bw-mode #cart-checkout-btn {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
         body.bw-mode .text-gray-900, body.bw-mode .text-gray-800 {
             color: #ffffff !important;
         }
@@ -233,6 +237,17 @@
         body.women-mode .product-card:hover {
             border-color: #B76E79 !important;
             box-shadow: 0 0 25px rgba(183, 110, 121, 0.35) !important;
+        }
+        body.women-mode #checkout-modal .bg-white, .dark body.women-mode #checkout-modal .dark\:bg-fscardbg {
+            background-color: #FAF4F5 !important;
+            color: #4A2E35 !important;
+        }
+        .dark body.women-mode #checkout-modal .dark\:bg-fscardbg {
+            background-color: #24191D !important;
+            color: #F7EBEB !important;
+        }
+        body.women-mode #checkout-modal button.underline {
+            color: #B76E79 !important;
         }
  
         .hidden-element { display: none !important; }
@@ -564,11 +579,11 @@
                 <i class="fas fa-check text-xl sm:text-2xl text-fsgold"></i>
             </div>
             <h3 class="text-2xl brand-font text-fsgold mb-2">¡Pedido Listo!</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mb-6">Tu catálogo ha sido empaquetado. Presiona enviar para mandar tu pedido por WhatsApp y afinar detalles de envío y pago.</p>
+            <p class="text-gray-700 dark:text-gray-200 text-xs sm:text-sm mb-6 font-medium">Tu catálogo ha sido empaquetado. Presiona enviar para mandar tu pedido por WhatsApp y afinar detalles de envío y pago.</p>
             <a id="whatsapp-link" href="#" target="_blank" onclick="closeCheckoutModalAndCart()" class="block w-full bg-fsgold text-white py-3 rounded font-bold uppercase tracking-wider hover:bg-yellow-600 transition shadow-md text-xs sm:text-sm">
                 Enviar a WhatsApp
             </a>
-            <button onclick="closeCheckoutModal()" class="mt-4 text-gray-500 dark:text-gray-400 hover:text-white text-xs sm:text-sm underline">Cancelar</button>
+            <button onclick="closeCheckoutModal()" class="mt-4 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white text-xs sm:text-sm font-semibold underline">Cancelar</button>
         </div>
     </div>
  
@@ -773,7 +788,7 @@
             { id: 'd_rayhaan_aloha', name: 'Rayhaan Aloha (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Diario', price: 200, isRequest: false, soldOut: false, image: 'img/PacificRayhaanAlohaPyD.jpg', image2: 'img/PacificRayhaanAlohaD.jpg', desc: 'EDP Fragancia fresca, tropical y vibrante, con una salida cítrica y frutal que transmite sensación de vacaciones y playa. Ideal para clima cálido, uso diario y quienes buscan un aroma limpio, juvenil y refrescante con buena presencia. 🌴☀🌊' },
             { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 140, isRequest: false, soldOut: false, image: 'img/ValentinoDonnaBornInRomaPyD.jpg', image2: 'img/ValentinoDonnaBornInRomaD.jpg', desc: 'EDP Fragancia femenina elegante, dulce y sofisticada. Combina grosella negra y bergamota con un corazón floral de jazmín, sobre un fondo cálido de vainilla bourbon y notas amaderadas. Tiene un aroma femenino, moderno y sensual, ideal para citas, salidas, eventos especiales o uso nocturno. (DUPE) 🌸🖤✨' },
             { id: 'd2', name: 'Valentino Uomo Born in Roma Purple (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 210, isRequest: false, soldOut: true, image: 'img/ValentinoUomoBornInRomaPurplePyD.jpg', image2: 'img/ValentinoUomoBornInRomaPurpleD.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa, lavanda aromática y vetiver ahumado. 🪻🍨🪵' },
-            { id: 'd3', name: 'Valentino Born In Roma Extradose (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, soldOut: false, image: 'img/ValentinoBornInRomaExtradosePyD.jpg', image2: 'img/ValentinoBornInRomaExtradoseD.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
+            { id: 'd3', name: 'Valentino Born In Roma Extradose (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 200, isRequest: false, soldOut: true, image: 'img/ValentinoBornInRomaExtradosePyD.jpg', image2: 'img/ValentinoBornInRomaExtradoseD.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. Combina notas de vainilla, lavanda y vetiver. 🪻🍨' },
             { id: 'd4', name: 'Yves Saint Laurent Y (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 100, isRequest: false, soldOut: false, image: 'img/YvesSaintLaurentPyD.jpg', image2: 'img/YvesSaintLaurentD.jpg', desc: 'EDP YSL Y Eau de Parfum combina elegancia y carácter en una fragancia moderna y versátil. 🍏🪵' },
             { id: 'd5', name: 'Jean Paul Gaultier Elixir (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, soldOut: false, image: 'img/JeanPaulElixirPyD.jpg', image2: 'img/JeanPaulElixirD.jpg', desc: 'EDP Una fragancia intensa y seductora que combina notas de lavanda, vainilla, miel y haba tonka. 🍯🪻' },
             { id: 'd_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 110, isRequest: false, soldOut: false, image: 'img/JeanPaulLeMalePyD.jpg', image2: 'img/JeanPAulLeMaleD.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
@@ -818,7 +833,7 @@
             { id: 'p_afnan_9am', name: 'Afnan 9AM (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/Afnan9AMP.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
             { id: 'p_khamrah', name: 'Lattafa Khamrah (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/LattafaKhamrahP.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
             { id: 'p_invictus_parfum', name: 'Invictus Parfum (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/InvictusParfumP.jpg', desc: 'EDP Una fragancia intensa que combina acordes marinos, lavanda y notas minerales. 🌊🪻' },
-            { id: 'p_valentino_extradose', name: 'Valentino Born in Roma Extradose (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/ValentinoBornInRomaExtradoseP.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. 🪻🍨' },
+            { id: 'p_valentino_extradose', name: 'Valentino Born in Roma Extradose (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: true, image: 'img/ValentinoBornInRomaExtradoseP.jpg', desc: 'EDP Una fragancia intensa, elegante y muy masculina. 🪻🍨' },
             { id: 'p_valentino_purple', name: 'Valentino Uomo Born in Roma Purple (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: true, image: 'img/ValentinoUomoBornInRomaPurpleP.jpg', desc: 'EDP Una fragancia elegante y seductora que combina vainilla intensa y lavanda. 🪻🍨🪵' },
             { id: 'p_versace_eros', name: 'Versace Eros (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/VersageErosP.jpg', desc: 'EDT Fresco, seductor y lleno de energía. 🍏🌿' },
             { id: 'p_montblanc_exp', name: 'Montblanc Explorer (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/MontblacExplorerP.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
@@ -1793,22 +1808,22 @@
                 panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] border-l border-[#DDA7B1] dark:border-[#5C383F]';
                 cartTitle.className = 'text-2xl brand-font text-[#B76E79]';
                 cartTotalLabel.className = 'text-lg text-[#4A2E35] dark:text-[#F7EBEB]';
-                cartCheckoutBtn.className = 'w-full bg-[#B76E79] text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+                cartCheckoutBtn.className = 'w-full bg-[#B76E79] text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
             } else if (document.body.classList.contains('bw-mode')) {
                 panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-[#050505] text-white border-l border-[#333333]';
                 cartTitle.className = 'text-2xl brand-font text-white';
                 cartTotalLabel.className = 'text-lg text-white';
-                cartCheckoutBtn.className = 'w-full bg-white text-black py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+                cartCheckoutBtn.className = 'w-full bg-white text-black py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
             } else if (document.documentElement.classList.contains('dark')) {
                 panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-fsdark text-gray-100 border-l border-fsgold/30';
                 cartTitle.className = 'text-2xl brand-font text-fsgold';
                 cartTotalLabel.className = 'text-lg text-gray-300';
-                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
             } else {
                 panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-white text-gray-900 border-l border-fsgold/30';
                 cartTitle.className = 'text-2xl brand-font text-fsgold';
                 cartTotalLabel.className = 'text-lg text-gray-700';
-                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md';
+                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
             }
             
             if (drawer.classList.contains('hidden-element')) {
