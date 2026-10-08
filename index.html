@@ -2031,6 +2031,7 @@
             }
  
             const results = productsDB.filter(p => 
+                !p.soldOut && 
                 (p.category === 'decants' || p.category === 'perfumes') && 
                 (p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query))
             );
@@ -2064,7 +2065,7 @@
             const grid = document.getElementById(`grid-${categoryId}`);
             if(!grid) return;
  
-            let catProducts = productsDB.filter(p => p.category === categoryId);
+            let catProducts = productsDB.filter(p => !p.soldOut && p.category === categoryId);
             if (query.length > 0) {
                 catProducts = catProducts.filter(p => p.name.toLowerCase().includes(query));
             }
@@ -2140,7 +2141,7 @@
                 if (subSectionWrapper) subSectionWrapper.style.display = 'block';
             }
  
-            let catProducts = productsDB.filter(p => p.category === categoryId && p.sub === subCategory);
+            let catProducts = productsDB.filter(p => !p.soldOut && p.category === categoryId && p.sub === subCategory);
             
             if (filters[categoryId]) {
                 const f = filters[categoryId];
