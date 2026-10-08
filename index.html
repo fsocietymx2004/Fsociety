@@ -1384,11 +1384,11 @@
                         `;
                     } else {
                         actionButtonsHTML = `
-                            <div class="grid grid-cols-2 gap-1.5 pt-1">
-                                <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
+                            <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
+                                <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir al carrito">
                                     <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                 </button>
-                                <button onclick="event.stopPropagation(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-2 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                <button type="button" onclick="event.stopPropagation(); event.preventDefault(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-2 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar ahora">
                                     <i class="fas fa-bolt text-[9px]"></i> Comprar
                                 </button>
                             </div>
@@ -1712,7 +1712,8 @@
             quickViewQty += delta;
             if (quickViewQty < 1) quickViewQty = 1;
             if (quickViewQty > 10) quickViewQty = 10;
-            document.getElementById('qv-qty').innerText = quickViewQty;
+            const qtyEl = document.getElementById('qv-qty');
+            if (qtyEl) qtyEl.innerText = quickViewQty;
         }
  
         function addQvToCart() {
@@ -2183,11 +2184,11 @@
                                     <div class="flex items-center justify-between">
                                         ${priceDisplay}
                                     </div>
-                                    <div class="grid grid-cols-2 gap-1.5 pt-1">
-                                        <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
+                                    <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
+                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir al carrito">
                                             <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                         </button>
-                                        <button onclick="event.stopPropagation(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar ahora">
                                             Comprar
                                         </button>
                                     </div>
