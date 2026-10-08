@@ -149,6 +149,7 @@
 
             #quick-view-panel {
                 max-height: 85vh !important;
+                max-height: 85dvh !important;
                 border-bottom-left-radius: 0 !important;
                 border-bottom-right-radius: 0 !important;
             }
@@ -420,7 +421,7 @@
         </div>
     </div>
  
-    <section class="w-full bg-white dark:bg-fsblack py-6 sm:py-8 px-3 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/35 pt-28 sm:pt-36 transition-colors duration-500">
+    <section class="w-full bg-white dark:bg-fsblack py-6 sm:py-8 px-3 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/35 pt-28 sm:pt-40 md:pt-48 transition-colors duration-500">
         <div class="max-w-[1700px] mx-auto">
             <div class="text-center mb-5 sm:mb-6 px-2">
                 <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Colección Exclusiva</span>
@@ -614,7 +615,7 @@
         <span id="toast-message" class="font-medium text-xs sm:text-sm">Producto añadido</span>
     </div>
  
-    <div id="whatsapp-welcome-bubble" class="fixed bottom-6 right-6 z-[85] max-w-xs sm:max-w-sm bg-white/95 dark:bg-fscardbg/95 backdrop-blur-md border border-fsgold/50 rounded-2xl shadow-2xl p-4 sm:p-5 transform translate-y-20 opacity-0 transition-all duration-700 ease-out flex items-start gap-3.5">
+    <div id="whatsapp-welcome-bubble" class="fixed bottom-6 right-6 z-[55] max-w-xs sm:max-w-sm bg-white/95 dark:bg-fscardbg/95 backdrop-blur-md border border-fsgold/50 rounded-2xl shadow-2xl p-4 sm:p-5 transform translate-y-20 opacity-0 transition-all duration-700 ease-out flex items-start gap-3.5">
         <div class="w-10 h-10 rounded-full bg-amber-50 dark:bg-black/50 border border-fsgold/40 flex items-center justify-center flex-shrink-0 text-fsgold shadow-inner">
             <i class="fab fa-whatsapp text-lg"></i>
         </div>
@@ -667,7 +668,7 @@
             {
                 left: { id: 'd_outofuniverse', name: 'Lattafa Out Of Universe', sub: 'Unisex', image: 'img/LattfaOutOfUniversePubli.png' },
                 center: { id: 'd5', name: 'Jean Paul Gaultier Elixir', sub: 'Hombre', image: 'img/JPElixirPubliDyP.jpg' },
-                right: { id: 'd8', name: 'Afnan 9PM', sub: 'Hombre', image: 'img/Afnan9PMPubli.jpg' }
+                right: { id: 'd_love', name: 'Love, Don’t Be Shy by Kilian', sub: 'Mujer', image: 'img/LoveDontBeShyPubli.png' }
             },
             {
                 left: { id: 'd12', name: 'Sauvage Elixir Dior', sub: 'Hombre', image: 'img/SauvagePubli.jpg' },
@@ -859,7 +860,7 @@
             { id: 'd_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 110, isRequest: false, soldOut: false, image: 'img/JeanPaulLeMalePyD.jpg', image2: 'img/JeanPAulLeMaleD.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
             { id: 'd6', name: 'Pacific Chill Louis Vuitton (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 180, isRequest: false, soldOut: false, image: 'img/LouisVuittonPacificChillPyD.jpg', image2: 'img/LouisVuittonPacificChillD.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde que transmite lujo y sofisticación. 🍋🌿' },
             { id: 'd7', name: 'Montblanc Explorer (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 130, isRequest: false, soldOut: false, image: 'img/MontblacExplorerPyD.jpg', image2: 'img/MontblacExplorerD.jpg', desc: 'EDP Aroma sofisticado y aventurero que combina frescura cítrica y notas amaderadas. 🪵🍋' },
-            { id: 'd8', name: 'Afnan 9PM (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 80, isRequest: false, soldOut: false, image: 'img/Afnan9PMPyD.jpg', image2: 'img/Afnan9PMD.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
+            { id: 'd8', name: 'Afnan 9PM (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 80, isRequest: false, soldOut: true, image: 'img/Afnan9PMPyD.jpg', image2: 'img/Afnan9PMD.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
             { id: 'd9', name: 'Afnan 9AM (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 140, isRequest: false, soldOut: false, image: 'img/Afnan9AMPyD.jpg', image2: 'img/Afnan9AMD.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
             { id: 'd10', name: 'Lattafa Khamrah (Decant de 10ml)', category: 'decants', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 100, isRequest: false, soldOut: false, image: 'img/LattafaKhamrahPyD.jpg', image2: 'img/LattafaKhamrahD.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
             { id: 'd11', name: 'Perry Ellis Purple For Women (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Versátil', price: 60, isRequest: false, soldOut: false, image: 'img/PerryEllisPurpleForWomenPyD.jpg', image2: 'img/PerryEllisPurpleForWomenD.jpg', desc: 'EDP Fragancia floral-frutal con toques de vainilla y almizcle. 🌸🍇' },
@@ -895,7 +896,7 @@
             { id: 'p_jp_lemale', name: 'Jean Paul Gaultier "Le Male" (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/JeanPaulLeMaleP.jpg', desc: 'EDP Fragancia masculina intensa, elegante y seductora. Combina un inicio especiado con cardamomo, un corazón aromático de lavanda e iris y un fondo cálido de vainilla y notas amaderadas. (DUPE) 🌿🍦🪵' },
             { id: 'p_pacific_chill', name: 'Pacific Chill Louis Vuitton (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Diseñador', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/LouisVuittonPacificChillP.jpg', desc: 'EDP Una fragancia fresca, cítrica y elegante con un toque verde. 🍋🌿' },
             { id: 'p_le_beau', name: 'Jean Paul Gaultier "Le Beau" (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/JeanPaulLeBeauP.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
-            { id: 'p_afnan_9pm', name: 'Afnan 9PM (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/Afnan9PMP.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
+            { id: 'p_afnan_9pm', name: 'Afnan 9PM (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, soldOut: true, image: 'img/Afnan9PMP.jpg', desc: 'EDP Una fragancia dulce, seductora y elegante diseñada para la noche. 🍏🍨' },
             { id: 'p_afnan_9am', name: 'Afnan 9AM (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Diario', price: 0, isRequest: true, soldOut: false, image: 'img/Afnan9AMP.jpg', desc: 'EDP Fragancia fresca y acuática con notas cítricas, menta y manzana. 🍏🧊' },
             { id: 'p_khamrah', name: 'Lattafa Khamrah (Perfume completo)', category: 'perfumes', sub: 'Unisex', origin: 'Árabe', occasion: 'Noche', price: 0, isRequest: true, soldOut: false, image: 'img/LattafaKhamrahP.jpg', desc: 'EDP Fragancia cálida y dulce con notas de canela, dátiles y vainilla. 🥮🍨' },
             { id: 'p_invictus_parfum', name: 'Invictus Parfum (Perfume completo)', category: 'perfumes', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 0, isRequest: true, soldOut: false, image: 'img/InvictusParfumP.jpg', desc: 'EDP Una fragancia intensa que combina acordes marinos, lavanda y notas minerales. 🌊🪻' },
@@ -2225,14 +2226,6 @@
             updateCartUI();
             initShowcase();
             initQvSwipe();
-            
-            setTimeout(() => {
-                const bubble = document.getElementById('whatsapp-welcome-bubble');
-                if (bubble && !localStorage.getItem('fs_whatsapp_bubble_dismissed')) {
-                    bubble.classList.remove('translate-y-20', 'opacity-0');
-                    bubble.classList.add('translate-y-0', 'opacity-100');
-                }
-            }, 1500);
         };
 
         function dismissWhatsAppBubble() {
@@ -2242,9 +2235,16 @@
                 setTimeout(() => {
                     bubble.style.display = 'none';
                 }, 700);
-                localStorage.setItem('fs_whatsapp_bubble_dismissed', 'true');
             }
         }
+
+        setTimeout(() => {
+            const bubble = document.getElementById('whatsapp-welcome-bubble');
+            if (bubble) {
+                bubble.classList.remove('translate-y-20', 'opacity-0');
+                bubble.classList.add('translate-y-0', 'opacity-100');
+            }
+        }, 1500);
     </script>
 </body>
 </html>
