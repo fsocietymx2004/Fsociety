@@ -113,25 +113,21 @@
 
         /* --- CORRECCIONES EXCLUSIVAS PARA MÓVIL --- */
         @media (max-width: 768px) {
-            /* Forzar tarjetas de productos en 2 columnas exactas y equilibradas en pantallas móviles */
             .grid-cols-2 {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
                 gap: 0.5rem !important;
             }
             
-            /* Ajustar padding general de secciones para evitar desbordamiento horizontal */
             section {
                 padding-left: 0.75rem !important;
                 padding-right: 0.75rem !important;
             }
 
-            /* Tamaños de tipografía optimizados en móvil para títulos y subtítulos */
             h2.brand-font {
                 font-size: 1.35rem !important;
                 line-height: 1.2 !important;
             }
 
-            /* Tarjetas de producto más compactas y estéticas en móvil */
             .product-card {
                 border-radius: 0.5rem !important;
             }
@@ -140,7 +136,6 @@
                 padding: 0.5rem !important;
             }
 
-            /* Altura fija uniforme para títulos de productos en móvil para evitar saltos de línea irregulares */
             .product-card h3 {
                 font-size: 0.75rem !important;
                 height: 32px !important;
@@ -148,14 +143,12 @@
                 overflow: hidden;
             }
 
-            /* Botones de acción directos en móvil más limpios */
             .product-card button {
                 padding-top: 0.35rem !important;
                 padding-bottom: 0.35rem !important;
                 font-size: 9px !important;
             }
 
-            /* Ajustes para el panel de vista rápida (Quick View) en móvil */
             #quick-view-panel {
                 max-height: 85vh !important;
                 border-bottom-left-radius: 0 !important;
@@ -323,13 +316,13 @@
     <nav class="fixed w-full z-50 bg-white/95 dark:bg-fsblack/95 backdrop-blur-md border-b border-fsgold/30 shadow-sm transition-colors duration-500">
         <div class="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 sm:h-20">
-                <div class="flex items-center space-x-2 sm:space-x-3">
+                <div class="flex items-center space-x-1.5 sm:space-x-3">
                     <button onclick="toggleSubmenu()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-1.5 sm:p-2 focus:outline-none" aria-label="Abrir menú">
                         <i class="fas fa-bars text-lg sm:text-xl"></i>
                     </button>
-                    <div class="flex items-center space-x-1.5 sm:space-x-3 cursor-pointer transition transform hover:scale-105" onclick="scrollToTop()">
+                    <div class="flex items-center space-x-1 sm:space-x-3 cursor-pointer transition transform hover:scale-105" onclick="scrollToTop()">
                         <img id="main-logo" src="https://i.imgur.com/GRbtuKx.png" alt="F Society Logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain rounded-full border border-fsgold/50 shadow-sm transition-all duration-300" onerror="this.style.display='none'">
-                        <span class="text-lg sm:text-3xl brand-font font-bold text-fsgold tracking-wider drop-shadow-sm">F SOCIETY</span>
+                        <span class="text-base sm:text-3xl brand-font font-bold text-fsgold tracking-wider drop-shadow-sm">F SOCIETY</span>
                     </div>
                 </div>
                 
@@ -341,7 +334,15 @@
                     <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Gorras</a>
                 </div>
 
-                <div class="flex items-center space-x-1.5 sm:space-x-4">
+                <div class="flex items-center space-x-1 sm:space-x-4">
+                    <div class="relative group block lg:hidden">
+                        <div class="flex items-center bg-gray-100 dark:bg-fsdark border border-gray-200 dark:border-gray-800 rounded-full px-2 sm:px-3 py-1 focus-within:border-fsgold/50 transition-all w-24 sm:w-32">
+                            <i class="fas fa-search text-gray-400 dark:text-gray-500 text-xs"></i>
+                            <input type="text" id="mobile-global-search" onkeyup="handleGlobalSearch(event, true)" placeholder="Buscar..." class="bg-transparent border-none focus:ring-0 text-xs text-gray-700 dark:text-gray-300 w-full px-1.5 outline-none">
+                        </div>
+                        <div id="mobile-global-search-results" class="absolute top-full right-0 mt-2 w-72 bg-white dark:bg-fscardbg border border-fsgold/20 rounded-lg shadow-2xl opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 max-h-80 overflow-y-auto z-50"></div>
+                    </div>
+
                     <div class="hidden lg:block relative group">
                         <div class="flex items-center bg-gray-100 dark:bg-fsdark border border-gray-200 dark:border-gray-800 rounded-full px-3 py-1.5 focus-within:border-fsgold/50 transition-all">
                             <i class="fas fa-search text-gray-400 dark:text-gray-500 text-sm"></i>
@@ -368,19 +369,12 @@
         </div>
         
         <div class="md:hidden bg-gray-50 dark:bg-fsdark border-t border-b border-fsgold/20 flex flex-col">
-            <div class="overflow-x-auto whitespace-nowrap hide-scrollbar flex p-2.5 space-x-3 px-4 items-center">
+            <div class="overflow-x-auto whitespace-nowrap hide-scrollbar flex p-2.5 space-x-3 px-4 items-center justify-center">
                 <a href="#" onclick="scrollToCategory(event, 'decants')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Decants</a>
                 <a href="#" onclick="scrollToCategory(event, 'perfumes')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Perfumes</a>
                 <a href="#" onclick="scrollToCategory(event, 'playeras')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Playeras</a>
                 <a href="#" onclick="scrollToCategory(event, 'sudaderas')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Sudaderas</a>
                 <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Gorras</a>
-            </div>
-            <div class="px-3 pb-2.5 relative">
-                <div class="flex items-center bg-gray-200/50 dark:bg-black/50 rounded-lg px-3 py-1.5 border border-gray-300 dark:border-gray-700 focus-within:border-fsgold/50">
-                    <i class="fas fa-search text-gray-400 text-xs mr-2"></i>
-                    <input type="text" id="mobile-global-search" onkeyup="handleGlobalSearch(event, true)" placeholder="Buscar producto..." class="bg-transparent border-none focus:ring-0 text-xs sm:text-sm text-gray-700 dark:text-gray-300 w-full outline-none">
-                </div>
-                <div id="mobile-global-search-results" class="absolute top-full left-3 right-3 mt-1 bg-white dark:bg-fscardbg border border-fsgold/20 rounded-lg shadow-xl opacity-0 invisible transition-all duration-300 max-h-60 overflow-y-auto z-50"></div>
             </div>
         </div>
     </nav>
