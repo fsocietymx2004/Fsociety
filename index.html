@@ -110,6 +110,58 @@
         .animate-float-slow {
             animation: float-slow 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
+
+        /* --- CORRECCIONES EXCLUSIVAS PARA MÓVIL --- */
+        @media (max-width: 768px) {
+            /* Forzar tarjetas de productos en 2 columnas exactas y equilibradas en pantallas móviles */
+            .grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 0.5rem !important;
+            }
+            
+            /* Ajustar padding general de secciones para evitar desbordamiento horizontal */
+            section {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+
+            /* Tamaños de tipografía optimizados en móvil para títulos y subtítulos */
+            h2.brand-font {
+                font-size: 1.35rem !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Tarjetas de producto más compactas y estéticas en móvil */
+            .product-card {
+                border-radius: 0.5rem !important;
+            }
+            
+            .product-card .p-3 {
+                padding: 0.5rem !important;
+            }
+
+            /* Altura fija uniforme para títulos de productos en móvil para evitar saltos de línea irregulares */
+            .product-card h3 {
+                font-size: 0.75rem !important;
+                height: 32px !important;
+                line-clamp: 2;
+                overflow: hidden;
+            }
+
+            /* Botones de acción directos en móvil más limpios */
+            .product-card button {
+                padding-top: 0.35rem !important;
+                padding-bottom: 0.35rem !important;
+                font-size: 9px !important;
+            }
+
+            /* Ajustes para el panel de vista rápida (Quick View) en móvil */
+            #quick-view-panel {
+                max-height: 85vh !important;
+                border-bottom-left-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+            }
+        }
  
         body, nav, section, footer, .product-card, .bg-gray-50, .dark\:bg-fsblack, .bg-white, .dark\:bg-fscardbg, .text-fsgold, .bg-fsgold, .border-fsgold {
             transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -953,33 +1005,33 @@
                 if (isFragrance) {
                     section.innerHTML = `
                         ${headerHTML}
-                        <div class="max-w-[1600px] mx-auto space-y-16">
+                        <div class="max-w-[1600px] mx-auto space-y-12 sm:space-y-16">
                             <div id="sub-section-Hombre-${category.id}">
-                                <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
-                                    <i class="fas fa-mars text-fsgold text-xl"></i>
-                                    <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Hombre</h3>
+                                <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 border-b border-fsgold/20 pb-2 sm:pb-3">
+                                    <i class="fas fa-mars text-fsgold text-lg sm:text-xl"></i>
+                                    <h3 class="text-lg sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Hombre</h3>
                                 </div>
-                                <div id="grid-${category.id}-Hombre" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
+                                <div id="grid-${category.id}-Hombre" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6 lg:gap-8"></div>
                             </div>
                             <div id="sub-section-Mujer-${category.id}">
-                                <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
-                                    <i class="fas fa-venus text-fsgold text-xl"></i>
-                                    <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Mujer</h3>
+                                <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 border-b border-fsgold/20 pb-2 sm:pb-3">
+                                    <i class="fas fa-venus text-fsgold text-lg sm:text-xl"></i>
+                                    <h3 class="text-lg sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Mujer</h3>
                                 </div>
-                                <div id="grid-${category.id}-Mujer" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
+                                <div id="grid-${category.id}-Mujer" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6 lg:gap-8"></div>
                             </div>
                             <div id="sub-section-Unisex-${category.id}">
-                                <div class="flex items-center gap-4 mb-6 border-b border-fsgold/20 pb-3">
-                                    <i class="fas fa-venus-mars text-fsgold text-xl"></i>
-                                    <h3 class="text-xl sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Unisex</h3>
+                                <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 border-b border-fsgold/20 pb-2 sm:pb-3">
+                                    <i class="fas fa-venus-mars text-fsgold text-lg sm:text-xl"></i>
+                                    <h3 class="text-lg sm:text-2xl brand-font font-bold text-gray-900 dark:text-white uppercase tracking-wider">Unisex</h3>
                                 </div>
-                                <div id="grid-${category.id}-Unisex" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>
+                                <div id="grid-${category.id}-Unisex" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6 lg:gap-8"></div>
                             </div>
                         </div>
                     `;
                     fragranceZone.appendChild(section);
                 } else {
-                    section.innerHTML = headerHTML + `<div id="grid-${category.id}" class="max-w-[1600px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 lg:gap-8"></div>`;
+                    section.innerHTML = headerHTML + `<div id="grid-${category.id}" class="max-w-[1600px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6 lg:gap-8"></div>`;
                     clothingZone.appendChild(section);
                 }
             });
