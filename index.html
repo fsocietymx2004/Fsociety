@@ -86,7 +86,6 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.1);
         }
 
-        /* --- ESTILOS PARA PRODUCTOS AGOTADOS --- */
         .product-card.sold-out img {
             filter: grayscale(40%) brightness(85%);
             transition: filter 0.3s ease;
@@ -111,7 +110,6 @@
             animation: float-slow 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
-        /* --- CORRECCIONES EXCLUSIVAS PARA MÓVIL --- */
         @media (max-width: 768px) {
             .grid-cols-2 {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -160,7 +158,6 @@
             transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        /* --- MODO B&W STREETWEAR (APPAREL) --- */
         body.bw-mode {
             background-color: #050505 !important;
             color: #ffffff !important;
@@ -226,7 +223,6 @@
             display: none !important;
         }
 
-        /* --- MODO ROSE WHISPER (MUJER) --- */
         body.women-mode {
             background-color: #FAF4F5 !important;
             color: #4A2E35 !important;
@@ -427,8 +423,8 @@
     <section class="w-full bg-white dark:bg-fsblack py-6 sm:py-8 px-3 sm:px-6 lg:px-8 relative overflow-hidden border-b border-fsgold/35 pt-20 sm:pt-28 transition-colors duration-500">
         <div class="max-w-[1700px] mx-auto">
             <div class="text-center mb-5 sm:mb-6 px-2">
-                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Esencias de Alta Gama</span>
-                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-5xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1 leading-snug break-words">Valentino & Jean Paul Gaultier</h2>
+                <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-fsgold font-semibold">Colección Exclusiva</span>
+                <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-5xl brand-font font-bold text-gray-900 dark:text-white tracking-wider mt-1 leading-snug break-words">Temporada Otoño - Invierno</h2>
             </div>
             
             <div id="showcase-container-wrapper" class="touch-pan-y relative overflow-hidden">
@@ -618,6 +614,28 @@
         <span id="toast-message" class="font-medium text-xs sm:text-sm">Producto añadido</span>
     </div>
  
+    <div id="whatsapp-welcome-bubble" class="fixed bottom-6 right-6 z-[85] max-w-xs sm:max-w-sm bg-white/95 dark:bg-fscardbg/95 backdrop-blur-md border border-fsgold/50 rounded-2xl shadow-2xl p-4 sm:p-5 transform translate-y-20 opacity-0 transition-all duration-700 ease-out flex items-start gap-3.5">
+        <div class="w-10 h-10 rounded-full bg-amber-50 dark:bg-black/50 border border-fsgold/40 flex items-center justify-center flex-shrink-0 text-fsgold shadow-inner">
+            <i class="fab fa-whatsapp text-lg"></i>
+        </div>
+        <div class="flex-grow pr-2">
+            <div class="flex items-center justify-between mb-1">
+                <h4 class="brand-font text-xs uppercase tracking-widest font-bold text-fsgold">ASESORÍA PRIVADA DE F SOCIETY</h4>
+                <button onclick="dismissWhatsAppBubble()" class="text-gray-400 hover:text-gray-700 dark:hover:text-white transition p-0.5">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+            <p class="text-[11px] sm:text-xs text-gray-600 dark:text-gray-300 font-light leading-relaxed">
+                Para brindarte una atención exclusiva y personalizada, todas nuestras consultas, disponibilidad y adquisiciones se gestionan de forma directa vía WhatsApp. ✨
+            </p>
+            <div class="mt-3 flex items-center gap-2">
+                <a href="https://wa.me/525545234410?text=Hola%20F%20Society,%20me%20gustaría%20recibir%20asesoría%20sobre%20su%20catálogo." target="_blank" rel="noopener noreferrer" onclick="dismissWhatsAppBubble()" class="text-[10px] font-bold uppercase tracking-widest bg-fsgold text-white px-3 py-1.5 rounded hover:bg-yellow-600 transition shadow-sm inline-flex items-center gap-1.5">
+                    <i class="fab fa-whatsapp"></i> Iniciar Chat
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div id="checkout-modal" class="fixed inset-0 z-[70] hidden-element flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeCheckoutModal()"></div>
         <div class="relative bg-white dark:bg-fscardbg border border-fsgold rounded-lg max-w-sm w-full p-6 sm:p-8 text-center shadow-2xl transform transition-all">
@@ -2096,7 +2114,7 @@
                                         <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
                                             <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                         </button>
-                                        <button onclick="event.stopPropagation(); buyNow('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                        <button onclick="event.stopPropagation(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
                                             Comprar
                                         </button>
                                     </div>
@@ -2168,7 +2186,7 @@
                                         <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold" title="Añadir al carrito">
                                             <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                         </button>
-                                        <button onclick="event.stopPropagation(); buyNow('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
+                                        <button onclick="event.stopPropagation(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm" title="Comprar ahora">
                                             Comprar
                                         </button>
                                     </div>
@@ -2205,7 +2223,26 @@
             updateCartUI();
             initShowcase();
             initQvSwipe();
+            
+            setTimeout(() => {
+                const bubble = document.getElementById('whatsapp-welcome-bubble');
+                if (bubble && !localStorage.getItem('fs_whatsapp_bubble_dismissed')) {
+                    bubble.classList.remove('translate-y-20', 'opacity-0');
+                    bubble.classList.add('translate-y-0', 'opacity-100');
+                }
+            }, 1500);
         };
+
+        function dismissWhatsAppBubble() {
+            const bubble = document.getElementById('whatsapp-welcome-bubble');
+            if (bubble) {
+                bubble.classList.add('translate-y-20', 'opacity-0');
+                setTimeout(() => {
+                    bubble.style.display = 'none';
+                }, 700);
+                localStorage.setItem('fs_whatsapp_bubble_dismissed', 'true');
+            }
+        }
     </script>
 </body>
 </html>
