@@ -326,6 +326,7 @@
                 <div class="hidden md:flex space-x-8 items-center justify-center">
                     <a href="#" onclick="scrollToCategory(event, 'decants')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Decants</a>
                     <a href="#" onclick="scrollToCategory(event, 'perfumes')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Perfumes</a>
+                    <a href="#" onclick="openKitEmprendimientoPage(event)" class="text-fsgold dark:text-fsgold hover:text-yellow-600 transition font-medium text-sm uppercase tracking-widest flex items-center gap-1"><i class="fas fa-briefcase text-xs"></i> Kit Emprendedor</a>
                     <a href="#" onclick="scrollToCategory(event, 'playeras')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Playeras</a>
                     <a href="#" onclick="scrollToCategory(event, 'sudaderas')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Sudaderas</a>
                     <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-200 hover:text-fsgold dark:hover:text-fsgold transition font-medium text-sm uppercase tracking-widest">Gorras</a>
@@ -369,6 +370,7 @@
             <div class="overflow-x-auto whitespace-nowrap hide-scrollbar flex p-2.5 space-x-4 px-6 items-center justify-start sm:justify-center">
                 <a href="#" onclick="scrollToCategory(event, 'decants')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Decants</a>
                 <a href="#" onclick="scrollToCategory(event, 'perfumes')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Perfumes</a>
+                <a href="#" onclick="openKitEmprendimientoPage(event)" class="text-fsgold hover:text-yellow-600 text-xs uppercase tracking-wider inline-block font-medium flex items-center gap-1"><i class="fas fa-briefcase text-[10px]"></i> Kit Emprendedor</a>
                 <a href="#" onclick="scrollToCategory(event, 'playeras')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Playeras</a>
                 <a href="#" onclick="scrollToCategory(event, 'sudaderas')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium">Sudaderas</a>
                 <a href="#" onclick="scrollToCategory(event, 'gorras')" class="text-gray-800 dark:text-gray-300 hover:text-fsgold text-xs uppercase tracking-wider inline-block font-medium pr-4">Gorras</a>
@@ -392,6 +394,7 @@
                     <ul class="space-y-2.5">
                         <li><button onclick="navigateToSection(event, 'decants')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Decants de Perfumes</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'perfumes')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Perfumes Completos</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
+                        <li><button onclick="openKitEmprendimientoPageFromMenu(event)" class="w-full text-left text-sm transition font-medium py-0.5 flex items-center justify-between group text-fsgold"><span>Kit de Emprendimiento</span><i class="fas fa-chevron-right text-[9px] opacity-80 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'playeras')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Playeras (Normal y Polo)</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'sudaderas')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Sudaderas Hoodie</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
                         <li><button onclick="navigateToSection(event, 'gorras')" class="w-full text-left text-sm transition font-light py-0.5 flex items-center justify-between group"><span>Gorras Snapback</span><i class="fas fa-chevron-right text-[9px] opacity-40 group-hover:translate-x-1 transition-transform"></i></button></li>
@@ -672,11 +675,11 @@
             },
             {
                 left: { id: 'd12', name: 'Sauvage Elixir Dior', sub: 'Hombre', image: 'img/SauvagePubli.jpg' },
-                center: { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma', sub: 'Mujer', image: 'img/ValentinoDonnaPubliPyD.jpg' },
+                center: { id: 'kit-page', name: 'Kit de Emprendimiento', sub: 'Negocio Exclusivo', image: 'img/JPElixirPubliDyP.jpg', isKitPage: true },
                 right: { id: 'd_scandal', name: 'Scandal', sub: 'Hombre', image: 'img/ScandalPubli.jpg' }
             },
             {
-                left: { id: 'd16', name: 'Versace Eros', sub: 'Hombre', image: 'img/VersagePubli.jpg' },
+                left: { id: 'd_valentino_donna', name: 'Valentino Donna Born in Roma', sub: 'Mujer', image: 'img/ValentinoDonnaPubliPyD.jpg' },
                 center: { id: 'd_jp_lemale', name: 'Jean Paul Gaultier "Le Male"', sub: 'Hombre', image: 'img/JPLeMalePubliPyD.jpg' },
                 right: { id: 'd7', name: 'Montblanc Explorer', sub: 'Hombre', image: 'img/MontblancPubli.jpg' }
             }
@@ -689,6 +692,32 @@
             renderShowcaseDots();
             startShowcaseTimer();
             setupShowcaseSwipe();
+        }
+
+        function renderShowcaseDots() {
+            const dotsContainer = document.getElementById('showcase-dots');
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            showcaseSets.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.onclick = () => {
+                    clearInterval(showcaseInterval);
+                    const direction = idx > currentShowcaseIndex ? 1 : -1;
+                    if(idx !== currentShowcaseIndex) transitionShowcase(idx - currentShowcaseIndex);
+                    startShowcaseTimer();
+                };
+                btn.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentShowcaseIndex ? 'bg-fsgold w-6' : 'bg-gray-300 dark:bg-gray-700'}`;
+                dotsContainer.appendChild(btn);
+            });
+        }
+
+        function updateShowcaseDots() {
+            const dotsContainer = document.getElementById('showcase-dots');
+            if (!dotsContainer) return;
+            const buttons = dotsContainer.querySelectorAll('button');
+            buttons.forEach((btn, idx) => {
+                btn.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentShowcaseIndex ? 'bg-fsgold w-6' : 'bg-gray-300 dark:bg-gray-700'}`;
+            });
         }
 
         function startShowcaseTimer() {
@@ -743,65 +772,35 @@
         function renderShowcaseSet() {
             const set = showcaseSets[currentShowcaseIndex];
             
+            const leftEl = document.getElementById('showcase-left-img').closest('.showcase-slide');
+            const centerEl = document.getElementById('showcase-center-img').closest('.showcase-slide');
+            const rightEl = document.getElementById('showcase-right-img').closest('.showcase-slide');
+
             document.getElementById('showcase-left-img').src = set.left.image;
             document.getElementById('showcase-left-badge').innerText = set.left.sub;
             document.getElementById('showcase-left-title').innerText = set.left.name;
+            if (set.left.isKitPage) {
+                leftEl.onclick = (e) => openKitEmprendimientoPage(e);
+            } else {
+                leftEl.onclick = () => openQuickView(set.left.id);
+            }
 
             document.getElementById('showcase-center-img').src = set.center.image;
             document.getElementById('showcase-center-badge').innerText = set.center.sub;
             document.getElementById('showcase-center-title').innerText = set.center.name;
+            if (set.center.isKitPage) {
+                centerEl.onclick = (e) => openKitEmprendimientoPage(e);
+            } else {
+                centerEl.onclick = () => openQuickView(set.center.id);
+            }
 
             document.getElementById('showcase-right-img').src = set.right.image;
             document.getElementById('showcase-right-badge').innerText = set.right.sub;
             document.getElementById('showcase-right-title').innerText = set.right.name;
-        }
-
-        function renderShowcaseDots() {
-            const dotsContainer = document.getElementById('showcase-dots');
-            if(!dotsContainer) return;
-            dotsContainer.innerHTML = '';
-            showcaseSets.forEach((_, idx) => {
-                const dot = document.createElement('button');
-                dot.className = `h-2 rounded-full transition-all duration-500 ${idx === currentShowcaseIndex ? 'w-8 bg-fsgold' : 'w-2 bg-gray-400/50 hover:bg-gray-400'}`;
-                dot.onclick = () => {
-                    clearInterval(showcaseInterval);
-                    const wrapper = document.getElementById('showcase-grid-wrapper');
-                    if(wrapper) {
-                        wrapper.classList.remove('opacity-100', 'translate-y-0');
-                        wrapper.classList.add('opacity-0', 'translate-y-4');
-                        setTimeout(() => {
-                            currentShowcaseIndex = idx;
-                            renderShowcaseSet();
-                            updateShowcaseDots();
-                            wrapper.classList.remove('opacity-0', 'translate-y-4');
-                            wrapper.classList.add('opacity-100', 'translate-y-0');
-                        }, 500);
-                    }
-                    startShowcaseTimer();
-                };
-                dotsContainer.appendChild(dot);
-            });
-        }
-
-        function updateShowcaseDots() {
-            const dotsContainer = document.getElementById('showcase-dots');
-            if(!dotsContainer) return;
-            Array.from(dotsContainer.children).forEach((dot, idx) => {
-                dot.className = `h-2 rounded-full transition-all duration-500 ${idx === currentShowcaseIndex ? 'w-8 bg-fsgold' : 'w-2 bg-gray-400/50 hover:bg-gray-400'}`;
-            });
-        }
- 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
- 
-        function scrollToCategory(event, id) {
-            if(event) event.preventDefault();
-            const element = document.getElementById(id);
-            if (element) {
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const y = element.getBoundingClientRect().top + window.scrollY - navHeight;
-                window.scrollTo({ top: y, behavior: 'smooth' });
+            if (set.right.isKitPage) {
+                rightEl.onclick = (e) => openKitEmprendimientoPage(e);
+            } else {
+                rightEl.onclick = () => openQuickView(set.right.id);
             }
         }
  
@@ -935,12 +934,130 @@
             perfumes: { gender: 'Todos', origin: 'Todos', occasion: 'Todas' },
             decants: { gender: 'Todos', origin: 'Todos', occasion: 'Todas' }
         };
+        let kitFilters = { gender: 'Todos', origin: 'Todos', occasion: 'Todas', search: '' };
  
+        function openKitEmprendimientoPage(event) {
+            if(event) event.preventDefault();
+            const mainContent = document.getElementById('main-store-content');
+            const kitPage = document.getElementById('kit-emprendimiento-page');
+            const heroSection = document.querySelector('header');
+            const showcaseSection = document.querySelector('section.w-full.bg-white');
+            
+            if (mainContent && kitPage) {
+                mainContent.style.display = 'none';
+                if(heroSection) heroSection.style.display = 'none';
+                if(showcaseSection) showcaseSection.style.display = 'none';
+                kitPage.classList.remove('hidden-element');
+                renderKitEmprendimientoCatalog();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function openKitEmprendimientoPageFromMenu(event) {
+            event.preventDefault();
+            toggleSubmenu();
+            setTimeout(() => {
+                openKitEmprendimientoPage(null);
+            }, 300);
+        }
+
+        function closeKitEmprendimientoPage() {
+            const mainContent = document.getElementById('main-store-content');
+            const kitPage = document.getElementById('kit-emprendimiento-page');
+            const heroSection = document.querySelector('header');
+            const showcaseSection = document.querySelector('section.w-full.bg-white');
+
+            if (mainContent && kitPage) {
+                kitPage.classList.add('hidden-element');
+                mainContent.style.display = 'block';
+                if(heroSection) heroSection.style.display = 'flex';
+                if(showcaseSection) showcaseSection.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateKitFilter(type, value) {
+            kitFilters[type] = value;
+            renderKitEmprendimientoCatalog();
+        }
+
+        function handleKitSearch(event) {
+            kitFilters.search = event.target.value.toLowerCase().trim();
+            renderKitEmprendimientoCatalog();
+        }
+
+        function renderKitEmprendimientoCatalog() {
+            const grid = document.getElementById('kit-decants-grid');
+            if (!grid) return;
+
+            let decants = productsDB.filter(p => p.category === 'decants' && !p.soldOut);
+
+            if (kitFilters.gender !== 'Todos') {
+                decants = decants.filter(p => p.sub === kitFilters.gender);
+            }
+            if (kitFilters.origin !== 'Todos') {
+                decants = decants.filter(p => p.origin === kitFilters.origin);
+            }
+            if (kitFilters.occasion !== 'Todas') {
+                decants = decants.filter(p => p.occasion === kitFilters.occasion);
+            }
+            if (kitFilters.search.length > 0) {
+                decants = decants.filter(p => p.name.toLowerCase().includes(kitFilters.search));
+            }
+
+            let html = '';
+            if (decants.length === 0) {
+                html = `<div class="col-span-full text-center text-gray-400 py-12 text-sm">No hay decants disponibles con los filtros seleccionados.</div>`;
+            } else {
+                decants.forEach(prod => {
+                    let originBadge = '';
+                    if(prod.origin) {
+                        const bgClass = prod.origin === 'Diseñador' ? 'bg-black text-fsgold border-fsgold/50' : 'bg-fsgold text-black border-black/20';
+                        originBadge = `<span class="mt-1 inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-sm border ${bgClass}">${prod.origin.toUpperCase()}</span>`;
+                    }
+
+                    html += `
+                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                            <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
+                                <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
+                                <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
+                                    <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
+                                    ${originBadge}
+                                    <span class="bg-fsgold text-black font-bold text-[9px] px-1.5 py-0.5 rounded uppercase tracking-wider shadow-sm">Kit Emprendedor</span>
+                                </div>
+                            </div>
+                            <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
+                                <h3 class="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
+                                <div class="mt-auto pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
+                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToKitCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir">
+                                            <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
+                                        </button>
+                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); buyKitDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-2 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar">
+                                            <i class="fas fa-bolt text-[9px]"></i> Comprar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            grid.innerHTML = html;
+        }
+
         function renderCatalog() {
             const container = document.getElementById('catalog-container');
             if (!container) return;
             container.innerHTML = '';
  
+            const mainStoreContent = document.createElement('div');
+            mainStoreContent.id = 'main-store-content';
+            mainStoreContent.className = 'w-full flex flex-col';
+
             const fragranceZone = document.createElement('div');
             fragranceZone.id = 'fragrance-zone';
             fragranceZone.className = 'w-full';
@@ -967,7 +1084,7 @@
  
                 let filterHTML = '';
                 if (isFragrance) {
-                    const currentFilter = filters[category.id];
+                    const currentFilter = filters[category.id] || { gender: 'Todos', origin: 'Todos', occasion: 'Todas' };
                     filterHTML = `
                         <div class="flex flex-col justify-center items-center mt-6 mb-10 w-full max-w-4xl mx-auto px-2">
                             <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-4 gap-3 w-full">
@@ -1010,7 +1127,7 @@
                 }
  
                 const headerHTML = `
-                    <div class="max-w-4xl mx-auto mb-10 text-center px-4">
+                    <div class="max-w-4xl mx-auto mb-6 text-center px-4">
                         <h2 class="text-3xl sm:text-4xl brand-font text-gray-900 dark:text-white mb-2">${category.title}</h2>
                         <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">${category.description}</p>
                         ${filterHTML}
@@ -1096,7 +1213,7 @@
                                 En F Society seleccionamos y comercializamos fragancias y productos de estilo personal para distintos gustos, ocasiones y presupuestos.
                             </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
-                                Nuestra especialidad son los decants, que permiten probar y utilizar diferentes perfumes en presentaciones prácticas antes de invertir en una botella completa. También ofrecemos perfumes de distintas categorías, incluyendo fragancias de diseñador y propuestas árabes, además de una línea de ropa y accesorios.
+                                Nuestra especialidad son los decants, que permiten probar y utilizar differentes perfumes en presentaciones prácticas antes de invertir en una botella completa. También ofrecemos perfumes de distintas categorías, incluyendo fragancias de diseñador y propuestas árabes, además de una línea de ropa y accesorios.
                             </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
                                 Buscamos acompañar al cliente durante su compra mediante recomendaciones personalizadas, comparaciones entre fragancias y opciones adaptadas a su presupuesto.
@@ -1116,10 +1233,10 @@
                                 F Society nació de una idea sencilla: hacer más accesible el mundo de la perfumería.
                             </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
-                                Comprar una botella completa puede representar una inversión importante, especialmente cuando una persona todavía no sabe si una fragancia realmente se adapta a sus gustos. A partir de esa necesidad surgió la idea de ofrecer decants, pequeñas presentaciones que permiten conocer, probar y utilizar diferentes perfumes de una forma mucho más accesible.
+                                Comprar una botella completa puede representar una inversión importante, especialmente cuando una persona todavía no sabe si una fragancia realmente se adapta a sus gustos. A partir de esa necesidad surgió la idea de ofrecer decants, pequeñas presentaciones que permiten conocer, probar y utilizar differentes perfumes de una forma mucho más accesible.
                             </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
-                                Con el tiempo, el proyecto comenzó a crecer. El catálogo incorporó nuevas fragancias, perfumes de diseñador, opciones árabes y alternativas para diferentes presupuestos. Al mismo tiempo, F Society comenzó a desarrollar una identidad propia basada en una estética elegante, moderna y reconocible.
+                                Con el tiempo, el proyecto comenzó a crecer. El catálogo incorporó nuevas fragancias, perfumes de diseñador, opciones árabes y alternativas para differentes presupuestos. Al mismo tiempo, F Society comenzó a desarrollar una identidad propia basada en una estética elegante, moderna y reconocible.
                             </p>
                             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 font-light">
                                 La siguiente etapa fue ampliar el concepto más allá de la perfumería, incorporando playeras, sudaderas, gorras y productos relacionados con el estilo personal.
@@ -1164,7 +1281,7 @@
                                         <i class="fas fa-search"></i>
                                     </div>
                                     <h4 class="font-bold text-gray-900 dark:text-white mb-2 text-sm uppercase tracking-wider">Transparencia</h4>
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Te damos información clara sobre cada fragancia, su presentación, contenido y precio para que tomes una decisión informada, sin sorpresas ni condiciones ocultas.</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 font-light">Te damos información clara sobre cada fragancia, su presentación, contenido y precio para que tomes una decisión informada, sin sorpresas ni conditions ocultas.</p>
                                 </div>
                                 <div class="p-6 rounded-xl border border-fsgold/20 bg-gray-50/50 dark:bg-black/30 shadow-sm hover:border-fsgold transition-colors">
                                     <div class="w-10 h-10 rounded-full bg-fsgold/10 text-fsgold flex items-center justify-center mb-4 text-lg">
@@ -1239,9 +1356,133 @@
                 </div>
             `;
  
-            container.appendChild(fragranceZone);
-            container.appendChild(clothingZone);
-            container.appendChild(infoBottomZone);
+            mainStoreContent.appendChild(fragranceZone);
+            mainStoreContent.appendChild(clothingZone);
+            mainStoreContent.appendChild(infoBottomZone);
+            container.appendChild(mainStoreContent);
+
+            const kitPageView = document.createElement('div');
+            kitPageView.id = 'kit-emprendimiento-page';
+            kitPageView.className = 'hidden-element w-full min-h-screen bg-white dark:bg-fsblack pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 transition-colors duration-500';
+            kitPageView.innerHTML = `
+                <div class="max-w-[1700px] mx-auto">
+                    <button onclick="closeKitEmprendimientoPage()" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-fsgold font-bold mb-6 hover:underline">
+                        <i class="fas fa-arrow-left"></i> Regresar al Catálogo Principal
+                    </button>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        
+                        <!-- Columna Izquierda: Showcase Card + Decants Grid -->
+                        <div class="lg:col-span-8 space-y-8">
+                            
+                            <!-- Showcase-style Banner Card para la página del Kit -->
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-fsgold/30 h-[280px] sm:h-[340px] md:h-[380px] flex items-end p-6 sm:p-10 group">
+                                <img src="img/JPElixirPubliDyP.jpg" alt="Kit Emprendimiento Showcase" class="absolute inset-0 w-full h-full object-cover filter brightness-75 group-hover:scale-105 transition-transform duration-[2000s]" onerror="this.src='https://placehold.co/1200x600/121212/D4AF37?text=Kit+Emprendedor+F+Society'">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
+                                <div class="relative z-10 max-w-2xl">
+                                    <span class="text-[9px] sm:text-xs uppercase tracking-[0.3em] bg-fsgold text-black font-bold px-2.5 py-1 rounded mb-3 inline-block">Oportunidad de Negocio Exclusiva</span>
+                                    <h2 class="text-2xl sm:text-4xl md:text-5xl brand-font font-bold text-white mb-3 tracking-wider leading-tight">Kit de Emprendimiento F Society</h2>
+                                    <p class="text-xs sm:text-sm text-gray-300 font-light leading-relaxed">Selecciona tus decants favoritos y desbloquea márgenes de ganancia superiores con nuestros descuentos automáticos por volumen.</p>
+                                </div>
+                            </div>
+
+                            <!-- Filtros del Kit -->
+                            <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-4 gap-3 w-full">
+                                <div class="relative w-full">
+                                    <i class="fas fa-venus-mars absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
+                                    <select onchange="updateKitFilter('gender', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
+                                        <option value="Todos">Género: Todos</option>
+                                        <option value="Hombre">Hombre</option>
+                                        <option value="Mujer">Mujer</option>
+                                        <option value="Unisex">Unisex</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+                                </div>
+                                <div class="relative w-full">
+                                    <i class="fas fa-globe absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
+                                    <select onchange="updateKitFilter('origin', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
+                                        <option value="Todos">Origen: Todos</option>
+                                        <option value="Diseñador">Diseñador</option>
+                                        <option value="Árabe">Árabes</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+                                </div>
+                                <div class="relative w-full">
+                                    <i class="fas fa-glass-cheers absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
+                                    <select onchange="updateKitFilter('occasion', this.value)" class="appearance-none bg-gray-100 dark:bg-fsdark pl-8 pr-8 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none cursor-pointer w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold">
+                                        <option value="Todas">Ocasión: Todas</option>
+                                        <option value="Diario">Uso Diario</option>
+                                        <option value="Noche">Noche / Citas</option>
+                                        <option value="Versátil">Versátil</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[10px] pointer-events-none"></i>
+                                </div>
+                                <div class="relative w-full">
+                                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
+                                    <input type="text" onkeyup="handleKitSearch(event)" placeholder="Buscar decant..." class="bg-gray-100 dark:bg-fsdark pl-8 pr-3 py-2 text-xs text-gray-700 dark:text-gray-300 font-medium outline-none w-full rounded-xl border border-gray-200 dark:border-gray-800 focus:border-fsgold placeholder-gray-400">
+                                </div>
+                            </div>
+
+                            <!-- Grid de Decants del Kit -->
+                            <div id="kit-decants-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"></div>
+                        </div>
+
+                        <!-- Columna Derecha: Panel de Carrito del Kit en Grande -->
+                        <div class="lg:col-span-4 sticky top-24">
+                            <div class="bg-white dark:bg-fscardbg border border-fsgold/40 rounded-2xl shadow-2xl p-6 flex flex-col max-h-[85vh]">
+                                <div class="flex items-center justify-between pb-4 border-b border-inherit mb-4">
+                                    <h3 class="text-xl brand-font font-bold text-fsgold">Tu Kit de Emprendimiento</h3>
+                                    <span id="kit-total-items-badge" class="bg-fsgold text-black font-bold text-xs px-2.5 py-0.5 rounded-full">0 pz</span>
+                                </div>
+
+                                <!-- Tiers de Descuento Visualizador -->
+                                <div class="grid grid-cols-3 gap-2 mb-4 text-center">
+                                    <div id="tier-15" class="p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all">
+                                        <span class="block text-xs font-bold text-fsgold">15% OFF</span>
+                                        <span class="text-[9px] text-gray-500 block uppercase">5+ pz</span>
+                                    </div>
+                                    <div id="tier-30" class="p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all">
+                                        <span class="block text-xs font-bold text-fsgold">30% OFF</span>
+                                        <span class="text-[9px] text-gray-500 block uppercase">10+ pz</span>
+                                    </div>
+                                    <div id="tier-40" class="p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all">
+                                        <span class="block text-xs font-bold text-fsgold">40% OFF</span>
+                                        <span class="text-[9px] text-gray-500 block uppercase">20+ pz</span>
+                                    </div>
+                                </div>
+
+                                <!-- Items List Container -->
+                                <div id="kit-cart-items-container" class="flex-grow overflow-y-auto space-y-3 pr-1 mb-4 max-h-[360px] min-h-[180px]">
+                                    <div class="text-center text-gray-400 py-10 text-xs font-light">Aún no has agregado decants a tu kit.</div>
+                                </div>
+
+                                <!-- Resumen Financiero del Kit -->
+                                <div class="border-t border-inherit pt-4 space-y-2 mb-6">
+                                    <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
+                                        <span>Subtotal sin descuento:</span>
+                                        <span id="kit-subtotal-price">$0.00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-xs text-fsgold font-semibold">
+                                        <span id="kit-discount-label">Descuento aplicado (0%):</span>
+                                        <span id="kit-discount-amount">-$0.00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-base sm:text-lg brand-font font-bold pt-2 border-t border-inherit">
+                                        <span>Total Kit:</span>
+                                        <span id="kit-total-price" class="text-fsgold">$0.00</span>
+                                    </div>
+                                </div>
+
+                                <button onclick="processKitCheckout()" class="w-full bg-fsgold text-white py-3.5 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition shadow-md flex items-center justify-center gap-2 text-xs">
+                                    <fab class="fab fa-whatsapp text-base"></fab> Enviar Kit por WhatsApp
+                                </button>
+                                <p class="text-[10px] text-center text-gray-400 mt-2">Los descuentos se aplican automáticamente según el volumen de decants.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            `;
+            container.appendChild(kitPageView);
  
             catalogStructure.forEach(cat => {
                 if(cat.id === 'perfumes' || cat.id === 'decants') {
@@ -1340,7 +1581,13 @@
                 if (subSectionWrapper) subSectionWrapper.style.display = 'block';
             }
  
-            let catProducts = productsDB.filter(p => p.category === categoryId);
+            let catProducts = [];
+            if (categoryId === 'kit-emprendimiento') {
+                catProducts = productsDB.filter(p => p.category === 'decants');
+            } else {
+                catProducts = productsDB.filter(p => p.category === categoryId);
+            }
+
             if (subCategory) {
                 catProducts = catProducts.filter(p => p.sub === subCategory);
             }
@@ -1357,9 +1604,18 @@
                 productsHTML = `<div class="col-span-full text-center text-gray-400 py-8 text-sm">No hay productos en esta sección con los filtros seleccionados.</div>`;
             } else {
                 catProducts.forEach(prod => {
+                    let effectivePrice = prod.price;
+                    let kitBadge = '';
+                    if (categoryId === 'kit-emprendimiento') {
+                        effectivePrice = prod.price * 0.6; // 40% max discount preview or standard display
+                        kitBadge = `<span class="bg-fsgold text-black font-bold text-[9px] px-1.5 py-0.5 rounded uppercase tracking-wider shadow-sm">Kit Emprendedor</span>`;
+                    }
+
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : (categoryId === 'kit-emprendimiento' 
+                            ? `<div class="flex flex-col"><span class="text-xs line-through text-gray-400">$${prod.price.toFixed(2)}</span><span class="text-sm sm:text-base brand-font text-fsgold font-bold">Desde $${effectivePrice.toFixed(2)} <span class="text-[9px] font-normal text-gray-500">(Mayoreo)</span></span></div>`
+                            : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`);
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1370,6 +1626,9 @@
                     let actionButtonsHTML = '';
                     let soldOutClass = '';
                     let soldOutOverlayHTML = '';
+
+                    const addCartFn = categoryId === 'kit-emprendimiento' ? `addToKitCart('${prod.id}')` : `addToCart('${prod.id}')`;
+                    const buyDirectFn = categoryId === 'kit-emprendimiento' ? `buyKitDirectly('${prod.id}')` : `buyDirectly('${prod.id}')`;
 
                     if (prod.soldOut) {
                         soldOutClass = 'sold-out';
@@ -1386,10 +1645,10 @@
                     } else {
                         actionButtonsHTML = `
                             <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
-                                <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir al carrito">
+                                <button type="button" onclick="event.stopPropagation(); event.preventDefault(); ${addCartFn}" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir">
                                     <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                 </button>
-                                <button type="button" onclick="event.stopPropagation(); event.preventDefault(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-2 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar ahora">
+                                <button type="button" onclick="event.stopPropagation(); event.preventDefault(); ${buyDirectFn}" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-2 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar">
                                     <i class="fas fa-bolt text-[9px]"></i> Comprar
                                 </button>
                             </div>
@@ -1401,9 +1660,10 @@
                             ${soldOutOverlayHTML}
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
-                                <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start pointer-events-none">
+                                <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
                                     <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
                                     ${originBadge}
+                                    ${kitBadge}
                                 </div>
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
@@ -1765,18 +2025,18 @@
                 return;
             }
  
-            const existingItem = cart.find(item => item.id === productId);
+            const existingItem = cart.find(item => item.id === productId && !item.isKit);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cart.push({ ...product, quantity: 1, isKit: false });
             }
  
             updateCartUI();
             showToast(`${product.name} agregado.`);
         }
 
-        function buyDirectly(productId) {
+        function addToKitCart(productId) {
             const product = productsDB.find(p => p.id === productId);
             if (!product) return;
             if (product.soldOut) {
@@ -1784,184 +2044,179 @@
                 return;
             }
 
-            const existingItem = cart.find(item => item.id === productId);
+            const existingItem = cart.find(item => item.id === productId && item.isKit);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cart.push({ ...product, quantity: 1, isKit: true });
             }
-            updateCartUI();
-            processCheckout();
-        }
- 
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartUI();
-        }
- 
-        function changeQuantity(productId, delta) {
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity += delta;
-                if (item.quantity <= 0) {
-                    removeFromCart(productId);
-                } else {
-                    updateCartUI();
-                }
-            }
-        }
- 
-        function updateCartUI() {
-            const countEl = document.getElementById('cart-count');
-            const itemsContainer = document.getElementById('cart-items');
-            const totalEl = document.getElementById('cart-total');
- 
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            countEl.innerText = totalItems;
- 
-            itemsContainer.innerHTML = '';
-            let totalPrice = 0;
-            let hasRequests = false;
- 
-            if (cart.length === 0) {
-                itemsContainer.innerHTML = '<div class="text-center text-gray-400 mt-10">Tu carrito está vacío.</div>';
-                totalEl.innerText = `$0.00`;
-            } else {
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    totalPrice += itemTotal;
-                    if (item.isRequest) hasRequests = true;
- 
-                    const priceLabel = item.isRequest 
-                        ? `<span class="text-xs text-fsgold font-semibold tracking-wider">A COTIZAR</span>` 
-                        : `<span class="text-fsgold text-sm font-bold">$${item.price.toFixed(2)}</span>`;
- 
-                    itemsContainer.innerHTML += `
-                        <div class="flex items-center gap-4 bg-gray-50 dark:bg-black/50 p-3 rounded border border-gray-200 dark:border-gray-800">
-                            <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded border border-gray-200 dark:border-gray-700" onerror="this.src='https://placehold.co/100x100/ffffff/D4AF37?text=Item'">
-                            <div class="flex-grow">
-                                <h4 class="text-sm font-medium line-clamp-2 leading-tight">${item.name}</h4>
-                                <div class="mt-1">${priceLabel}</div>
-                                <div class="flex items-center gap-3 mt-2">
-                                    <button onclick="changeQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center border rounded shadow-sm">-</button>
-                                    <span class="text-sm font-semibold">${item.quantity}</span>
-                                    <button onclick="changeQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center border rounded shadow-sm">+</button>
-                                </div>
-                            </div>
-                            <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition px-2">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
-                });
- 
-                if (totalPrice === 0 && hasRequests) {
-                    totalEl.innerHTML = `<span class="text-lg">Por cotizar</span>`;
-                } else if (totalPrice > 0 && hasRequests) {
-                    totalEl.innerHTML = `$${totalPrice.toFixed(2)} <span class="text-sm font-normal text-gray-500 block text-right leading-none">+ Cotización</span>`;
-                } else {
-                    totalEl.innerText = `$${totalPrice.toFixed(2)} MXN`;
-                }
-            }
-        }
- 
-        function toggleCart() {
-            const drawer = document.getElementById('cart-drawer');
-            const panel = document.getElementById('cart-panel');
-            const cartTitle = document.getElementById('cart-title');
-            const cartTotalLabel = document.getElementById('cart-total-label');
-            const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 
-            if (document.body.classList.contains('women-mode')) {
-                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] border-l border-[#DDA7B1] dark:border-[#5C383F]';
-                cartTitle.className = 'text-2xl brand-font text-[#B76E79]';
-                cartTotalLabel.className = 'text-lg text-[#4A2E35] dark:text-[#F7EBEB]';
-                cartCheckoutBtn.className = 'w-full bg-[#B76E79] text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
-            } else if (document.body.classList.contains('bw-mode')) {
-                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-[#050505] text-white border-l border-[#333333]';
-                cartTitle.className = 'text-2xl brand-font text-white';
-                cartTotalLabel.className = 'text-lg text-white';
-                cartCheckoutBtn.className = 'w-full bg-white text-black py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
-            } else if (document.documentElement.classList.contains('dark')) {
-                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-fsdark text-gray-100 border-l border-fsgold/30';
-                cartTitle.className = 'text-2xl brand-font text-fsgold';
-                cartTotalLabel.className = 'text-lg text-gray-300';
-                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
-            } else {
-                panel.className = 'relative w-full max-w-md h-full shadow-2xl flex flex-col transform transition-transform duration-300 translate-x-full bg-white text-gray-900 border-l border-fsgold/30';
-                cartTitle.className = 'text-2xl brand-font text-fsgold';
-                cartTotalLabel.className = 'text-lg text-gray-700';
-                cartCheckoutBtn.className = 'w-full bg-fsgold text-white py-3.5 sm:py-4 rounded font-bold uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm';
-            }
-            
-            if (drawer.classList.contains('hidden-element')) {
-                drawer.classList.remove('hidden-element');
-                setTimeout(() => { panel.classList.remove('translate-x-full'); }, 10);
-            } else {
-                panel.classList.add('translate-x-full');
-                setTimeout(() => { drawer.classList.add('hidden-element'); }, 300);
-            }
+            renderKitCartUI();
+            updateCartUI();
+            showToast(`${product.name} añadido al Kit.`);
         }
- 
-        function showToast(message) {
-            const toast = document.getElementById('toast-modal');
-            const msgEl = document.getElementById('toast-message');
-            msgEl.innerText = message;
-            
-            toast.classList.remove('opacity-0');
-            toast.classList.add('opacity-100');
-            
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0');
-            }, 2500);
-        }
- 
-        function processCheckout() {
-            if (cart.length === 0) {
-                showToast("Agrega productos antes de pedir.");
+
+        function buyKitDirectly(productId) {
+            const product = productsDB.find(p => p.id === productId);
+            if (!product) return;
+            if (product.soldOut) {
+                showToast("Este producto está agotado.");
                 return;
             }
- 
-            let total = 0;
-            let hasRequests = false;
-            let mensaje = `*NUEVO PEDIDO - F SOCIETY*\n\n`;
-            
-            cart.forEach(item => {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
-                if (item.isRequest) hasRequests = true;
-            });
- 
-            if (hasRequests && total === 0) {
-                mensaje += `Hola, me gustaría solicitar la cotización del siguiente pedido:\n\n`;
-            } else if (hasRequests && total > 0) {
-                mensaje += `Hola, me gustaría realizar el siguiente pedido y solicitar cotización de los artículos faltantes:\n\n`;
+
+            const existingItem = cart.find(item => item.id === productId && item.isKit);
+            if (existingItem) {
+                existingItem.quantity += 1;
             } else {
-                mensaje += `Hola, me gustaría confirmar el siguiente pedido:\n\n`;
+                cart.push({ ...product, quantity: 1, isKit: true });
             }
-            
-            cart.forEach(item => {
-                const subtotal = item.price * item.quantity;
-                if (item.isRequest) {
-                    mensaje += `▪ ${item.quantity}x ${item.name} *(A Cotizar)*\n`;
-                } else {
-                    mensaje += `▪ ${item.quantity}x ${item.name} ($${subtotal})\n`;
+
+            renderKitCartUI();
+            updateCartUI();
+            processKitCheckout();
+        }
+
+        function changeKitItemQty(index, delta) {
+            const kitItems = cart.filter(item => item.isKit);
+            const item = kitItems[index];
+            if (!item) return;
+
+            const cartIndex = cart.indexOf(item);
+            if (cartIndex !== -1) {
+                cart[cartIndex].quantity += delta;
+                if (cart[cartIndex].quantity <= 0) {
+                    cart.splice(cartIndex, 1);
                 }
-            });
-            
-            if (hasRequests && total === 0) {
-                mensaje += `\n*Total Estimado: Por cotizar*\n\n`;
-            } else if (hasRequests && total > 0) {
-                mensaje += `\n*Total Estimado: $${total.toFixed(2)} MXN + Cotización*\n\n`;
-            } else {
-                mensaje += `\n*Total Estimado: $${total.toFixed(2)} MXN*\n\n`;
             }
-            mensaje += `Quedo a la espera de instrucciones para pago y envío.`;
- 
+            renderKitCartUI();
+            updateCartUI();
+        }
+
+        function removeKitItem(index) {
+            const kitItems = cart.filter(item => item.isKit);
+            const item = kitItems[index];
+            if (!item) return;
+
+            const cartIndex = cart.indexOf(item);
+            if (cartIndex !== -1) {
+                cart.splice(cartIndex, 1);
+            }
+            renderKitCartUI();
+            updateCartUI();
+        }
+
+        function renderKitCartUI() {
+            const container = document.getElementById('kit-cart-items-container');
+            const badge = document.getElementById('kit-total-items-badge');
+            const subtotalEl = document.getElementById('kit-subtotal-price');
+            const discountLabelEl = document.getElementById('kit-discount-label');
+            const discountAmountEl = document.getElementById('kit-discount-amount');
+            const totalPriceEl = document.getElementById('kit-total-price');
+            
+            const tier15 = document.getElementById('tier-15');
+            const tier30 = document.getElementById('tier-30');
+            const tier40 = document.getElementById('tier-40');
+
+            if (!container) return;
+
+            const kitItems = cart.filter(item => item.isKit);
+            const totalKitDecants = kitItems.reduce((sum, item) => sum + item.quantity, 0);
+
+            if(badge) badge.innerText = `${totalKitDecants} pz`;
+
+            let discountPercent = 0;
+            if (totalKitDecants >= 20) discountPercent = 0.40;
+            else if (totalKitDecants >= 10) discountPercent = 0.30;
+            else if (totalKitDecants >= 5) discountPercent = 0.15;
+
+            // Reset Tiers styling
+            if(tier15) tier15.className = 'p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all';
+            if(tier30) tier30.className = 'p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all';
+            if(tier40) tier40.className = 'p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all';
+
+            if (discountPercent === 0.15 && tier15) tier15.className = 'p-2 rounded-xl border-2 border-fsgold bg-amber-500/10 shadow-md transition-all scale-105';
+            if (discountPercent === 0.30 && tier30) tier30.className = 'p-2 rounded-xl border-2 border-fsgold bg-amber-500/10 shadow-md transition-all scale-105';
+            if (discountPercent === 0.40 && tier40) tier40.className = 'p-2 rounded-xl border-2 border-fsgold bg-amber-500/10 shadow-md transition-all scale-105';
+
+            let rawSubtotal = 0;
+            let html = '';
+
+            if (kitItems.length === 0) {
+                html = `<div class="text-center text-gray-400 py-10 text-xs font-light">Aún no has agregado decants a tu kit.</div>`;
+                if(subtotalEl) subtotalEl.innerText = '$0.00';
+                if(discountLabelEl) discountLabelEl.innerText = 'Descuento aplicado (0%):';
+                if(discountAmountEl) discountAmountEl.innerText = '-$0.00';
+                if(totalPriceEl) totalPriceEl.innerText = '$0.00';
+                container.innerHTML = html;
+                return;
+            }
+
+            kitItems.forEach((item, idx) => {
+                const itemSub = item.price * item.quantity;
+                rawSubtotal += itemSub;
+
+                html += `
+                    <div class="flex items-center gap-3 bg-gray-50 dark:bg-black/40 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-14 object-cover rounded border border-gray-200 dark:border-gray-700">
+                        <div class="flex-grow">
+                            <h4 class="text-xs font-semibold line-clamp-1 leading-tight">${item.name}</h4>
+                            <span class="text-xs text-fsgold font-bold">$${item.price.toFixed(2)} c/u</span>
+                            <div class="flex items-center gap-2 mt-1.5">
+                                <button onclick="changeKitItemQty(${idx}, -1)" class="w-5 h-5 flex items-center justify-center border rounded bg-white dark:bg-black text-xs font-bold">-</button>
+                                <span class="text-xs font-semibold">${item.quantity}</span>
+                                <button onclick="changeKitItemQty(${idx}, 1)" class="w-5 h-5 flex items-center justify-center border rounded bg-white dark:bg-black text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeKitItem(${idx})" class="text-gray-400 hover:text-red-500 transition p-1">
+                            <i class="fas fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            const discountAmount = rawSubtotal * discountPercent;
+            const finalTotal = rawSubtotal - discountAmount;
+
+            if(subtotalEl) subtotalEl.innerText = `$${rawSubtotal.toFixed(2)}`;
+            if(discountLabelEl) discountLabelEl.innerText = `Descuento aplicado (${Math.round(discountPercent * 100)}%):`;
+            if(discountAmountEl) discountAmountEl.innerText = `-$${discountAmount.toFixed(2)}`;
+            if(totalPriceEl) totalPriceEl.innerText = `$${finalTotal.toFixed(2)} MXN`;
+
+            container.innerHTML = html;
+        }
+
+        function processKitCheckout() {
+            const kitItems = cart.filter(item => item.isKit);
+            if (kitItems.length === 0) {
+                showToast("Agrega decants a tu kit antes de continuar.");
+                return;
+            }
+
+            const totalKitDecants = kitItems.reduce((sum, item) => sum + item.quantity, 0);
+            let discountPercent = 0;
+            if (totalKitDecants >= 20) discountPercent = 0.40;
+            else if (totalKitDecants >= 10) discountPercent = 0.30;
+            else if (totalKitDecants >= 5) discountPercent = 0.15;
+
+            let rawSubtotal = 0;
+            let mensaje = `*KIT DE EMPRENDIMIENTO - F SOCIETY*\n\nHola, me gustaría confirmar mi pedido de Kit de Emprendimiento:\n\n`;
+
+            kitItems.forEach(item => {
+                const sub = item.price * item.quantity;
+                rawSubtotal += sub;
+                mensaje += `▪ ${item.quantity}x ${item.name} ($${sub.toFixed(2)})\n`;
+            });
+
+            const discountAmount = rawSubtotal * discountPercent;
+            const finalTotal = rawSubtotal - discountAmount;
+
+            mensaje += `\n*Total Decants:* ${totalKitDecants} pz\n`;
+            mensaje += `*Descuento aplicado:* ${Math.round(discountPercent * 100)}% (-$${discountAmount.toFixed(2)})\n`;
+            mensaje += `*Total Kit:* $${finalTotal.toFixed(2)} MXN\n\nQuedo a la espera de instrucciones para pago y envío.`;
+
             const telefonoWA = "525545234410";
             const urlWA = `https://wa.me/${telefonoWA}?text=${encodeURIComponent(mensaje)}`;
- 
+
             document.getElementById('whatsapp-link').href = urlWA;
             document.getElementById('checkout-modal').classList.remove('hidden-element');
         }
@@ -2071,6 +2326,9 @@
                 catProducts = catProducts.filter(p => p.name.toLowerCase().includes(query));
             }
  
+            let grid = document.getElementById(`grid-${categoryId}`);
+            if (!grid) return;
+
             if (catProducts.length === 0 && query.length > 0) {
                 const mensaje = `Hola, no encontré el producto "${query}" en esta categoría. ¿Podrían cotizármelo?`;
                 const telefonoWA = "525545234410";
@@ -2176,7 +2434,7 @@
                         <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
-                                <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start pointer-events-none">
+                                <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
                                     <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
                                     ${originBadge}
                                 </div>
@@ -2188,11 +2446,11 @@
                                         ${priceDisplay}
                                     </div>
                                     <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
-                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir al carrito">
+                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir">
                                             <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
                                         </button>
-                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar ahora">
-                                            Comprar
+                                        <button type="button" onclick="event.stopPropagation(); event.preventDefault(); buyDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-2 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar">
+                                            <i class="fas fa-bolt text-[9px]"></i> Comprar
                                         </button>
                                     </div>
                                 </div>
@@ -2202,6 +2460,162 @@
                 });
             }
             grid.innerHTML = productsHTML;
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cart-count');
+            const itemsContainer = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            
+            const standardCartItems = cart.filter(item => !item.isKit);
+            const totalCount = standardCartItems.reduce((sum, item) => sum + item.quantity, 0);
+            if(countEl) countEl.innerText = totalCount;
+
+            if(!itemsContainer) return;
+
+            if(standardCartItems.length === 0) {
+                itemsContainer.innerHTML = `<div class="text-center text-gray-400 mt-10 text-xs">Tu carrito está vacío.</div>`;
+                if(totalEl) totalEl.innerText = '$0.00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            standardCartItems.forEach((item, index) => {
+                const sub = item.price * item.quantity;
+                total += sub;
+                html += `
+                    <div class="flex items-center gap-3 bg-gray-50 dark:bg-black/40 p-3 rounded-xl border border-gray-200 dark:border-gray-800">
+                        <img src="${item.image}" class="w-12 h-14 object-cover rounded">
+                        <div class="flex-grow">
+                            <h4 class="text-xs font-semibold line-clamp-1">${item.name}</h4>
+                            <span class="text-xs text-fsgold font-bold">$${item.price.toFixed(2)}</span>
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="changeCartQty(${index}, -1)" class="w-5 h-5 border rounded bg-white dark:bg-black text-xs font-bold">-</button>
+                                <span class="text-xs font-semibold">${item.quantity}</span>
+                                <button onclick="changeCartQty(${index}, 1)" class="w-5 h-5 border rounded bg-white dark:bg-black text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeCartItem(${index})" class="text-gray-400 hover:text-red-500 transition p-1">
+                            <i class="fas fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            itemsContainer.innerHTML = html;
+            if(totalEl) totalEl.innerText = `$${total.toFixed(2)} MXN`;
+        }
+
+        function changeCartQty(index, delta) {
+            const standardCartItems = cart.filter(item => !item.isKit);
+            const item = standardCartItems[index];
+            if(!item) return;
+            
+            const cartIndex = cart.indexOf(item);
+            if(cartIndex !== -1) {
+                cart[cartIndex].quantity += delta;
+                if(cart[cartIndex].quantity <= 0) {
+                    cart.splice(cartIndex, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeCartItem(index) {
+            const standardCartItems = cart.filter(item => !item.isKit);
+            const item = standardCartItems[index];
+            if(!item) return;
+
+            const cartIndex = cart.indexOf(item);
+            if(cartIndex !== -1) {
+                cart.splice(cartIndex, 1);
+            }
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const panel = document.getElementById('cart-panel');
+            const cartTitle = document.getElementById('cart-title');
+
+            // Determinar estado actual para evitar saltos en la animación
+            const isHidden = drawer.classList.contains('hidden-element');
+            const translateClass = isHidden ? 'translate-x-full' : '';
+
+            // Asignar colores y modo dinámicamente al panel y al título
+            if (document.body.classList.contains('women-mode')) {
+                panel.className = `relative w-full max-w-md bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] h-full border-l border-[#DDA7B1] dark:border-[#5C383F] shadow-2xl flex flex-col transform transition-transform duration-300 ${translateClass}`;
+                if (cartTitle) cartTitle.className = 'text-xl sm:text-2xl brand-font font-bold text-[#B76E79]';
+            } else if (document.body.classList.contains('bw-mode')) {
+                panel.className = `relative w-full max-w-md bg-[#050505] text-white h-full border-l border-[#333333] shadow-2xl flex flex-col transform transition-transform duration-300 ${translateClass}`;
+                if (cartTitle) cartTitle.className = 'text-xl sm:text-2xl brand-font font-bold text-white';
+            } else if (document.documentElement.classList.contains('dark')) {
+                panel.className = `relative w-full max-w-md bg-fsdark text-gray-100 h-full border-l border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 ${translateClass}`;
+                if (cartTitle) cartTitle.className = 'text-xl sm:text-2xl brand-font font-bold text-fsgold';
+            } else {
+                panel.className = `relative w-full max-w-md bg-white text-gray-900 h-full border-l border-fsgold/30 shadow-2xl flex flex-col transform transition-transform duration-300 ${translateClass}`;
+                if (cartTitle) cartTitle.className = 'text-xl sm:text-2xl brand-font font-bold text-fsgold';
+            }
+
+            if(isHidden) {
+                drawer.classList.remove('hidden-element');
+                setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+            } else {
+                panel.classList.add('translate-x-full');
+                setTimeout(() => drawer.classList.add('hidden-element'), 300);
+            }
+        }
+
+        function processCheckout() {
+            const standardCartItems = cart.filter(item => !item.isKit);
+            if(standardCartItems.length === 0) {
+                showToast("Tu carrito está vacío.");
+                return;
+            }
+
+            let mensaje = `*PEDIDO F SOCIETY*\n\nHola, me gustaría confirmar los siguientes productos:\n\n`;
+            let total = 0;
+
+            standardCartItems.forEach(item => {
+                const sub = item.price * item.quantity;
+                total += sub;
+                mensaje += `▪ ${item.quantity}x ${item.name} ($${sub.toFixed(2)})\n`;
+            });
+
+            mensaje += `\n*Total Estimado:* $${total.toFixed(2)} MXN\n\nQuedo a la espera para coordinar pago y envío.`;
+
+            const telefonoWA = "525545234410";
+            const urlWA = `https://wa.me/${telefonoWA}?text=${encodeURIComponent(mensaje)}`;
+
+            document.getElementById('whatsapp-link').href = urlWA;
+            document.getElementById('checkout-modal').classList.remove('hidden-element');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-modal');
+            const text = document.getElementById('toast-message');
+            if(!toast || !text) return;
+            text.innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function scrollToCategory(event, categoryId) {
+            if(event) event.preventDefault();
+            const el = document.getElementById(categoryId);
+            if(el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
  
         document.addEventListener('click', (e) => {
