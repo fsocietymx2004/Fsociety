@@ -647,7 +647,7 @@
                 <i class="fas fa-check text-xl sm:text-2xl text-fsgold"></i>
             </div>
             <h3 class="text-2xl brand-font text-fsgold mb-2">¡Pedido Listo!</h3>
-            <p class="text-gray-700 dark:text-gray-200 text-xs sm:text-sm mb-6 font-medium">Tu catálogo ha sido empaquetado. Presiona enviar para mandar tu pedido por WhatsApp y afinar detalles de envío y pago.</p>
+            <p class="text-gray-700 dark:text-gray-200 text-xs sm:text-sm mb-6 font-medium">Tu pedido ha sido preparado. Presiona enviar para mandar el resumen por WhatsApp y afinar detalles de envío y pago.</p>
             <a id="whatsapp-link" href="#" target="_blank" onclick="closeCheckoutModalAndCart()" class="block w-full bg-fsgold text-white py-3 rounded font-bold uppercase tracking-wider hover:bg-yellow-600 transition shadow-md text-xs sm:text-sm">
                 Enviar a WhatsApp
             </a>
@@ -782,7 +782,7 @@
             if (set.left.isKitPage) {
                 leftEl.onclick = (e) => openKitEmprendimientoPage(e);
             } else {
-                leftEl.onclick = () => openQuickView(set.left.id);
+                leftEl.onclick = () => openQuickView(set.left.id, false);
             }
 
             document.getElementById('showcase-center-img').src = set.center.image;
@@ -791,7 +791,7 @@
             if (set.center.isKitPage) {
                 centerEl.onclick = (e) => openKitEmprendimientoPage(e);
             } else {
-                centerEl.onclick = () => openQuickView(set.center.id);
+                centerEl.onclick = () => openQuickView(set.center.id, false);
             }
 
             document.getElementById('showcase-right-img').src = set.right.image;
@@ -800,7 +800,7 @@
             if (set.right.isKitPage) {
                 rightEl.onclick = (e) => openKitEmprendimientoPage(e);
             } else {
-                rightEl.onclick = () => openQuickView(set.right.id);
+                rightEl.onclick = () => openQuickView(set.right.id, false);
             }
         }
  
@@ -1016,8 +1016,9 @@
                         originBadge = `<span class="mt-1 inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-sm border ${bgClass}">${prod.origin.toUpperCase()}</span>`;
                     }
 
+                    // Modified to exclusively open quick view with the isFromKit flag
                     html += `
-                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', true)">
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
@@ -1033,19 +1034,14 @@
                                         <span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>
                                     </div>
                                     <div class="flex flex-col gap-1.5 pt-1 relative z-30" onclick="event.stopPropagation(); event.preventDefault();">
-                                        <!-- Selector de Cantidad -->
                                         <div class="flex items-center justify-center rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-black/50 h-8 w-full">
                                             <button type="button" onclick="changeCardQty('${prod.id}', -1)" class="w-10 h-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-fsgold text-base">-</button>
                                             <span id="card-qty-${prod.id}" class="w-8 text-center text-xs font-semibold text-gray-800 dark:text-gray-200">1</span>
                                             <button type="button" onclick="changeCardQty('${prod.id}', 1)" class="w-10 h-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-fsgold text-base">+</button>
                                         </div>
-                                        <!-- Botones de Acción -->
-                                        <div class="grid grid-cols-2 gap-1.5">
-                                            <button type="button" onclick="addMultipleToKitCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir">
-                                                <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
-                                            </button>
-                                            <button type="button" onclick="buyMultipleKitDirectly('${prod.id}')" class="bg-fsgold hover:bg-yellow-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider py-1.5 px-1 rounded transition flex items-center justify-center gap-1 shadow-sm touch-manipulation cursor-pointer" title="Comprar">
-                                                <i class="fas fa-bolt text-[9px]"></i> Comprar
+                                        <div class="w-full">
+                                            <button type="button" onclick="addMultipleToKitCart('${prod.id}')" class="w-full bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir al Kit">
+                                                <i class="fas fa-shopping-bag text-[10px]"></i> Añadir al Kit
                                             </button>
                                         </div>
                                     </div>
@@ -1381,10 +1377,8 @@
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                         
-                        <!-- Columna Izquierda: Showcase Card + Decants Grid -->
                         <div class="lg:col-span-8 space-y-8">
                             
-                            <!-- Showcase-style Banner Card para la página del Kit -->
                             <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-fsgold/30 h-[280px] sm:h-[340px] md:h-[380px] flex items-end p-6 sm:p-10 group">
                                 <img src="img/PackEmprendimiento.png" alt="Kit Emprendimiento Showcase" class="absolute inset-0 w-full h-full object-cover filter brightness-75 group-hover:scale-105 transition-transform duration-[2000s]" onerror="this.src='https://placehold.co/1200x600/121212/D4AF37?text=Kit+Emprendedor+F+Society'">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
@@ -1395,7 +1389,6 @@
                                 </div>
                             </div>
 
-                            <!-- Filtros del Kit -->
                             <div class="bg-white/90 dark:bg-black/80 backdrop-blur-md border border-fsgold/30 rounded-2xl p-4 sm:px-6 sm:py-4 shadow-lg grid grid-cols-1 sm:grid-cols-4 gap-3 w-full">
                                 <div class="relative w-full">
                                     <i class="fas fa-venus-mars absolute left-3 top-1/2 transform -translate-y-1/2 text-fsgold text-xs"></i>
@@ -1432,11 +1425,9 @@
                                 </div>
                             </div>
 
-                            <!-- Grid de Decants del Kit -->
                             <div id="kit-decants-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6"></div>
                         </div>
 
-                        <!-- Columna Derecha: Panel de Carrito del Kit en Grande -->
                         <div class="lg:col-span-4 sticky top-24">
                             <div class="bg-white dark:bg-fscardbg border border-fsgold/40 rounded-2xl shadow-2xl p-6 flex flex-col max-h-[85vh]">
                                 <div class="flex items-center justify-between pb-4 border-b border-inherit mb-4">
@@ -1444,7 +1435,6 @@
                                     <span id="kit-total-items-badge" class="bg-fsgold text-black font-bold text-xs px-2.5 py-0.5 rounded-full">0 pz</span>
                                 </div>
 
-                                <!-- Tiers de Descuento Visualizador -->
                                 <div class="grid grid-cols-3 gap-2 mb-4 text-center">
                                     <div id="tier-15" class="p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all">
                                         <span class="block text-xs font-bold text-fsgold">15% OFF</span>
@@ -1460,12 +1450,10 @@
                                     </div>
                                 </div>
 
-                                <!-- Items List Container -->
                                 <div id="kit-cart-items-container" class="flex-grow overflow-y-auto space-y-3 pr-1 mb-4 max-h-[360px] min-h-[180px]">
                                     <div class="text-center text-gray-400 py-10 text-xs font-light">Aún no has agregado decants a tu kit.</div>
                                 </div>
 
-                                <!-- Resumen Financiero del Kit -->
                                 <div class="border-t border-inherit pt-4 space-y-2 mb-6">
                                     <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
                                         <span>Subtotal sin descuento:</span>
@@ -1482,7 +1470,7 @@
                                 </div>
 
                                 <button onclick="processKitCheckout()" class="w-full bg-fsgold text-white py-3.5 rounded font-bold uppercase tracking-widest hover:bg-yellow-600 transition shadow-md flex items-center justify-center gap-2 text-xs">
-                                    <fab class="fab fa-whatsapp text-base"></fab> Enviar Kit por WhatsApp
+                                    <i class="fab fa-whatsapp text-base"></i> Enviar Kit por WhatsApp
                                 </button>
                                 <p class="text-[10px] text-center text-gray-400 mt-2">Los descuentos se aplican automáticamente según el volumen de decants.</p>
                             </div>
@@ -1590,12 +1578,7 @@
                 if (subSectionWrapper) subSectionWrapper.style.display = 'block';
             }
  
-            let catProducts = [];
-            if (categoryId === 'kit-emprendimiento') {
-                catProducts = productsDB.filter(p => p.category === 'decants');
-            } else {
-                catProducts = productsDB.filter(p => p.category === categoryId);
-            }
+            let catProducts = productsDB.filter(p => p.category === categoryId);
 
             if (subCategory) {
                 catProducts = catProducts.filter(p => p.sub === subCategory);
@@ -1613,18 +1596,9 @@
                 productsHTML = `<div class="col-span-full text-center text-gray-400 py-8 text-sm">No hay productos en esta sección con los filtros seleccionados.</div>`;
             } else {
                 catProducts.forEach(prod => {
-                    let effectivePrice = prod.price;
-                    let kitBadge = '';
-                    if (categoryId === 'kit-emprendimiento') {
-                        effectivePrice = prod.price * 0.6; // 40% max discount preview or standard display
-                        kitBadge = `<span class="bg-fsgold text-black font-bold text-[9px] px-1.5 py-0.5 rounded uppercase tracking-wider shadow-sm">Kit Emprendedor</span>`;
-                    }
-
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : (categoryId === 'kit-emprendimiento' 
-                            ? `<div class="flex flex-col"><span class="text-xs line-through text-gray-400">$${prod.price.toFixed(2)}</span><span class="text-sm sm:text-base brand-font text-fsgold font-bold">Desde $${effectivePrice.toFixed(2)} <span class="text-[9px] font-normal text-gray-500">(Mayoreo)</span></span></div>`
-                            : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`);
+                        : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1636,8 +1610,8 @@
                     let soldOutClass = '';
                     let soldOutOverlayHTML = '';
 
-                    const addCartFn = categoryId === 'kit-emprendimiento' ? `addToKitCart('${prod.id}')` : `addToCart('${prod.id}')`;
-                    const buyDirectFn = categoryId === 'kit-emprendimiento' ? `buyKitDirectly('${prod.id}')` : `buyDirectly('${prod.id}')`;
+                    const addCartFn = `addToCart('${prod.id}')`;
+                    const buyDirectFn = `buyDirectly('${prod.id}')`;
 
                     if (prod.soldOut) {
                         soldOutClass = 'sold-out';
@@ -1665,14 +1639,13 @@
                     }
 
                     productsHTML += `
-                        <div class="product-card ${soldOutClass} bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                        <div class="product-card ${soldOutClass} bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', false)">
                             ${soldOutOverlayHTML}
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
                                     <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
                                     ${originBadge}
-                                    ${kitBadge}
                                 </div>
                             </div>
                             <div class="p-3 sm:p-4 md:p-5 flex flex-col flex-grow z-10 transition-all duration-300">
@@ -1777,7 +1750,7 @@
             }, { passive: true });
         }
  
-        function openQuickView(productId) {
+        function openQuickView(productId, isFromKit = false) {
             const product = productsDB.find(p => p.id === productId);
             if (!product) return;
  
@@ -1846,7 +1819,9 @@
             const qvAddBtn = document.getElementById('qv-add-btn');
             const qvBuyBtn = document.getElementById('qv-buy-btn');
             const qvQtyBox = document.getElementById('qv-qty-box');
+            const qvActionButtonsContainer = document.getElementById('qv-action-buttons-container');
 
+            // Dynamic logic separating Kit behavior from normal catalog behavior
             if (product.soldOut) {
                 qvAddBtn.disabled = true;
                 qvBuyBtn.disabled = true;
@@ -1856,21 +1831,41 @@
             } else {
                 qvAddBtn.disabled = false;
                 qvBuyBtn.disabled = false;
-                qvBuyBtn.style.display = 'flex';
-                qvAddBtn.innerHTML = `<i class="fas fa-shopping-bag"></i> Añadir`;
-                qvBuyBtn.innerHTML = `<i class="fas fa-bolt"></i> Comprar`;
                 
-                if (document.body.classList.contains('women-mode')) {
-                    qvAddBtn.className = 'flex-1 bg-[#B76E79] text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
-                    qvBuyBtn.className = 'flex-1 bg-gray-900 dark:bg-black text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
-                } else if (document.body.classList.contains('bw-mode')) {
-                    qvAddBtn.className = 'flex-1 bg-white text-black h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
-                    qvBuyBtn.className = 'flex-1 bg-gray-800 text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                if (isFromKit) {
+                    qvBuyBtn.style.display = 'none';
+                    qvAddBtn.innerHTML = `<i class="fas fa-shopping-bag"></i> Añadir al Kit`;
+                    qvAddBtn.onclick = () => addQvToKitCart();
+                    
+                    if (document.body.classList.contains('women-mode')) {
+                        qvAddBtn.className = 'w-full bg-[#B76E79] text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    } else if (document.body.classList.contains('bw-mode')) {
+                        qvAddBtn.className = 'w-full bg-white text-black h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    } else {
+                        qvAddBtn.className = 'w-full bg-fsgold text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    }
                 } else {
-                    qvAddBtn.className = 'flex-1 bg-fsgold text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
-                    qvBuyBtn.className = 'flex-1 bg-gray-900 dark:bg-black text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    qvBuyBtn.style.display = 'flex';
+                    qvAddBtn.innerHTML = `<i class="fas fa-shopping-bag"></i> Añadir`;
+                    qvBuyBtn.innerHTML = `<i class="fas fa-bolt"></i> Comprar`;
+                    qvAddBtn.onclick = () => addQvToCart();
+                    qvBuyBtn.onclick = () => buyQvNow();
+                    
+                    if (document.body.classList.contains('women-mode')) {
+                        qvAddBtn.className = 'flex-1 bg-[#B76E79] text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                        qvBuyBtn.className = 'flex-1 bg-gray-900 dark:bg-black text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    } else if (document.body.classList.contains('bw-mode')) {
+                        qvAddBtn.className = 'flex-1 bg-white text-black h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                        qvBuyBtn.className = 'flex-1 bg-gray-800 text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    } else {
+                        qvAddBtn.className = 'flex-1 bg-fsgold text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                        qvBuyBtn.className = 'flex-1 bg-gray-900 dark:bg-black text-white h-11 sm:h-12 rounded font-bold uppercase tracking-wider hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm';
+                    }
                 }
             }
+
+            if (qvActionButtonsContainer) qvActionButtonsContainer.style.display = 'flex';
+            if (qvQtyBox) qvQtyBox.style.display = 'flex';
 
             if (document.body.classList.contains('women-mode')) {
                 qvPanel.className = 'relative w-full md:w-auto md:max-w-3xl md:rounded-2xl rounded-t-3xl shadow-2xl overflow-hidden transform transition-transform duration-300 translate-y-full md:translate-y-0 md:scale-95 flex flex-col md:flex-row max-h-[90vh] border border-[#DDA7B1] dark:border-[#5C383F] bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#24191D] dark:text-[#F7EBEB]';
@@ -1994,16 +1989,37 @@
                 return;
             }
             
-            const existingItem = cart.find(item => item.id === currentQuickViewId);
+            const existingItem = cart.find(item => item.id === currentQuickViewId && !item.isKit);
             if (existingItem) {
                 existingItem.quantity += quickViewQty;
             } else {
-                cart.push({ ...product, quantity: quickViewQty });
+                cart.push({ ...product, quantity: quickViewQty, isKit: false });
             }
  
             updateCartUI();
             closeQuickView();
             showToast(`${quickViewQty}x ${product.name} añadido.`);
+        }
+
+        function addQvToKitCart() {
+            if (!currentQuickViewId) return;
+            const product = productsDB.find(p => p.id === currentQuickViewId);
+            if (product && product.soldOut) {
+                showToast("Este producto está agotado.");
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === currentQuickViewId && item.isKit);
+            if (existingItem) {
+                existingItem.quantity += quickViewQty;
+            } else {
+                cart.push({ ...product, quantity: quickViewQty, isKit: true });
+            }
+
+            renderKitCartUI();
+            updateCartUI();
+            closeQuickView();
+            showToast(`${quickViewQty}x ${product.name} añadido al Kit.`);
         }
 
         function buyQvNow() {
@@ -2045,7 +2061,7 @@
             showToast(`${product.name} agregado.`);
         }
 
-        function addToKitCart(productId) {
+        function buyDirectly(productId) {
             const product = productsDB.find(p => p.id === productId);
             if (!product) return;
             if (product.soldOut) {
@@ -2053,36 +2069,15 @@
                 return;
             }
 
-            const existingItem = cart.find(item => item.id === productId && item.isKit);
+            const existingItem = cart.find(item => item.id === productId && !item.isKit);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ ...product, quantity: 1, isKit: true });
+                cart.push({ ...product, quantity: 1, isKit: false });
             }
 
-            renderKitCartUI();
             updateCartUI();
-            showToast(`${product.name} añadido al Kit.`);
-        }
-
-        function buyKitDirectly(productId) {
-            const product = productsDB.find(p => p.id === productId);
-            if (!product) return;
-            if (product.soldOut) {
-                showToast("Este producto está agotado.");
-                return;
-            }
-
-            const existingItem = cart.find(item => item.id === productId && item.isKit);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1, isKit: true });
-            }
-
-            renderKitCartUI();
-            updateCartUI();
-            processKitCheckout();
+            processCheckout();
         }
 
         function changeCardQty(productId, delta) {
@@ -2118,28 +2113,6 @@
             renderKitCartUI();
             updateCartUI();
             showToast(`${qty}x ${product.name} añadido al Kit.`);
-        }
-
-        function buyMultipleKitDirectly(productId) {
-            const qtyEl = document.getElementById(`card-qty-${productId}`);
-            const qty = qtyEl ? parseInt(qtyEl.innerText) : 1;
-
-            const product = productsDB.find(p => p.id === productId);
-            if (!product) return;
-            if (product.soldOut) return;
-
-            const existingItem = cart.find(item => item.id === productId && item.isKit);
-            if (existingItem) {
-                existingItem.quantity += qty;
-            } else {
-                cart.push({ ...product, quantity: qty, isKit: true });
-            }
-
-            if (qtyEl) qtyEl.innerText = '1'; 
-
-            renderKitCartUI();
-            updateCartUI();
-            processKitCheckout();
         }
 
         function changeKitItemQty(index, delta) {
@@ -2195,7 +2168,6 @@
             else if (totalKitDecants >= 10) discountPercent = 0.30;
             else if (totalKitDecants >= 5) discountPercent = 0.15;
 
-            // Reset Tiers styling
             if(tier15) tier15.className = 'p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all';
             if(tier30) tier30.className = 'p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all';
             if(tier40) tier40.className = 'p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-black/40 transition-all';
@@ -2422,7 +2394,7 @@
                     }
  
                     productsHTML += `
-                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', false)">
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start pointer-events-none">
@@ -2497,7 +2469,7 @@
                     }
  
                     productsHTML += `
-                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}')">
+                        <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', false)">
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
@@ -2606,11 +2578,9 @@
             const panel = document.getElementById('cart-panel');
             const cartTitle = document.getElementById('cart-title');
 
-            // Determinar estado actual para evitar saltos en la animación
             const isHidden = drawer.classList.contains('hidden-element');
             const translateClass = isHidden ? 'translate-x-full' : '';
 
-            // Asignar colores y modo dinámicamente al panel y al título
             if (document.body.classList.contains('women-mode')) {
                 panel.className = `relative w-full max-w-md bg-[#FAF4F5] text-[#4A2E35] dark:bg-[#1A1215] dark:text-[#F7EBEB] h-full border-l border-[#DDA7B1] dark:border-[#5C383F] shadow-2xl flex flex-col transform transition-transform duration-300 ${translateClass}`;
                 if (cartTitle) cartTitle.className = 'text-xl sm:text-2xl brand-font font-bold text-[#B76E79]';
