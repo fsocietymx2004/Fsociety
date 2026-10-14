@@ -317,7 +317,7 @@
                     <button onclick="toggleSubmenu()" class="text-gray-800 dark:text-gray-200 hover:text-fsgold transition p-1.5 sm:p-2 focus:outline-none" aria-label="Abrir menú">
                         <i class="fas fa-bars text-lg sm:text-xl"></i>
                     </button>
-                    <div class="flex items-center space-x-1 sm:space-x-3 cursor-pointer transition transform hover:scale-105" onclick="scrollToTop()">
+                    <div class="flex items-center space-x-1 sm:space-x-3 cursor-pointer transition transform hover:scale-105" onclick="returnToHome()">
                         <img id="main-logo" src="https://i.imgur.com/GRbtuKx.png" alt="F Society Logo" class="h-8 w-8 sm:h-10 sm:w-10 object-contain rounded-full border border-fsgold/50 shadow-sm transition-all duration-300" onerror="this.style.display='none'">
                         <span class="text-base sm:text-3xl brand-font font-bold text-fsgold tracking-wider drop-shadow-sm">F SOCIETY</span>
                     </div>
@@ -969,9 +969,9 @@
 
             if (mainContent && kitPage) {
                 kitPage.classList.add('hidden-element');
-                mainContent.style.display = 'block';
-                if(heroSection) heroSection.style.display = 'flex';
-                if(showcaseSection) showcaseSection.style.display = 'block';
+                mainContent.style.display = '';
+                if(heroSection) heroSection.style.display = '';
+                if(showcaseSection) showcaseSection.style.display = '';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
@@ -2644,6 +2644,17 @@
 
         function scrollToCategory(event, categoryId) {
             if(event) event.preventDefault();
+            
+            const kitPage = document.getElementById('kit-emprendimiento-page');
+            if (kitPage && !kitPage.classList.contains('hidden-element')) {
+                closeKitEmprendimientoPage();
+                setTimeout(() => {
+                    const el = document.getElementById(categoryId);
+                    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+                return;
+            }
+
             const el = document.getElementById(categoryId);
             if(el) {
                 el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2652,6 +2663,15 @@
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToHome() {
+            const kitPage = document.getElementById('kit-emprendimiento-page');
+            if (kitPage && !kitPage.classList.contains('hidden-element')) {
+                closeKitEmprendimientoPage();
+            } else {
+                scrollToTop();
+            }
         }
  
         document.addEventListener('click', (e) => {
