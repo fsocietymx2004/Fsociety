@@ -575,6 +575,13 @@
                 <h3 id="qv-title" class="text-xl sm:text-2xl md:text-3xl brand-font font-bold mb-2 leading-tight"></h3>
                 <div id="qv-tags" class="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4"></div>
                 <div id="qv-price" class="text-lg sm:text-xl brand-font font-bold mb-3 sm:mb-4"></div>
+                <div id="qv-size-toggle" class="hidden-element mb-3 sm:mb-4">
+                    <span class="text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold block mb-1.5">Tamaño</span>
+                    <div class="flex items-center rounded border border-gray-200 dark:border-gray-700 overflow-hidden text-xs font-bold w-max">
+                        <button type="button" id="qv-size-5ml-btn" onclick="setQvSize('5ml')" class="px-4 py-1.5 transition">5ML</button>
+                        <button type="button" id="qv-size-10ml-btn" onclick="setQvSize('10ml')" class="px-4 py-1.5 transition">10ML</button>
+                    </div>
+                </div>
                 <p id="qv-desc" class="text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed"></p>
                 <div class="mt-auto pt-3 sm:pt-4 border-t border-inherit flex flex-col items-stretch gap-3">
                     <div id="qv-qty-box" class="flex items-center justify-center rounded border h-11 sm:h-12 w-full">
@@ -664,6 +671,7 @@
     <script>
         let currentQuickViewId = null;
         let quickViewQty = 1;
+        let qvSelectedSize = '10ml';
         
         let currentQvSlide = 0;
         let qvMaxSlides = 1;
@@ -672,6 +680,28 @@
 
         let isImageZoomed = false;
         let activeProductHasMultipleImages = false;
+
+        // Tamaño de decant elegido por producto: productId -> '5ml' | '10ml'. Por defecto 10ml.
+        let decantSizeSelection = {};
+
+        function getSelectedSize(productId) {
+            return decantSizeSelection[productId] || '10ml';
+        }
+
+        function getDecantPrice(product, size) {
+            if (size === '5ml') {
+                return Math.round(product.price * 0.5 * 100) / 100;
+            }
+            return product.price;
+        }
+
+        function getDecantDisplayName(product, size) {
+            if (product.category !== 'decants') return product.name;
+            if (size === '5ml') {
+                return product.name.replace('10ml', '5ml');
+            }
+            return product.name;
+        }
 
         const showcaseSets = [
             {
@@ -1022,6 +1052,9 @@
                         originBadge = `<span class="mt-1 inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-sm border ${bgClass}">${prod.origin.toUpperCase()}</span>`;
                     }
 
+                    const size = getSelectedSize(prod.id);
+                    const displayPrice = getDecantPrice(prod, size);
+
                     // Modified to exclusively open quick view with the isFromKit flag
                     html += `
                         <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', true)">
@@ -1037,9 +1070,10 @@
                                 <h3 class="text-xs sm:text-sm md:text-base font-semibold text-gray-900 dark:text-white mb-2 leading-tight line-clamp-2 h-[36px] sm:h-[40px] md:h-[45px]">${prod.name}</h3>
                                 <div class="mt-auto pt-2 sm:pt-3 md:pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
                                     <div class="flex items-center justify-between">
-                                        <span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>
+                                        <span id="kit-price-${prod.id}" class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${displayPrice.toFixed(2)}</span>
                                     </div>
                                     <div class="flex flex-col gap-1.5 pt-1 relative z-30" onclick="event.stopPropagation(); event.preventDefault();">
+                                        ${renderSizeToggle(prod.id, 'kit-')}
                                         <div class="flex items-center justify-center rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-black/50 h-8 w-full">
                                             <button type="button" onclick="changeCardQty('${prod.id}', -1)" class="w-10 h-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-fsgold text-base">-</button>
                                             <span id="card-qty-${prod.id}" class="w-8 text-center text-xs font-semibold text-gray-800 dark:text-gray-200">1</span>
@@ -1570,6 +1604,60 @@
             });
         }
  
+        function renderSizeToggle(productId, context) {
+            // context: '' para el catálogo principal, 'kit-' para el Kit de Emprendimiento
+            const size = getSelectedSize(productId);
+            const activeClass = 'bg-fsgold text-white';
+            const inactiveClass = 'bg-white dark:bg-black/40 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/60';
+            return `
+                <div class="flex items-center justify-center rounded border border-gray-200 dark:border-gray-700 overflow-hidden text-[10px] font-bold h-7 w-full" onclick="event.stopPropagation(); event.preventDefault();">
+                    <button type="button" id="${context}size-5ml-${productId}" onclick="setDecantSize('${productId}', '5ml', event)" class="flex-1 h-full transition ${size === '5ml' ? activeClass : inactiveClass}">5ML</button>
+                    <button type="button" id="${context}size-10ml-${productId}" onclick="setDecantSize('${productId}', '10ml', event)" class="flex-1 h-full transition ${size === '10ml' ? activeClass : inactiveClass}">10ML</button>
+                </div>
+            `;
+        }
+
+        function styleSizeToggleButtons(productId) {
+            const size = getSelectedSize(productId);
+            const activeClass = 'bg-fsgold text-white';
+            const inactiveClass = 'bg-white dark:bg-black/40 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/60';
+            ['', 'kit-'].forEach(prefix => {
+                const btn5 = document.getElementById(`${prefix}size-5ml-${productId}`);
+                const btn10 = document.getElementById(`${prefix}size-10ml-${productId}`);
+                if (btn5) btn5.className = `flex-1 h-full transition ${size === '5ml' ? activeClass : inactiveClass}`;
+                if (btn10) btn10.className = `flex-1 h-full transition ${size === '10ml' ? activeClass : inactiveClass}`;
+            });
+        }
+
+        function refreshDecantPriceDisplays(productId) {
+            const product = productsDB.find(p => p.id === productId);
+            if (!product) return;
+            const size = getSelectedSize(productId);
+            const price = getDecantPrice(product, size);
+
+            const mainPriceEl = document.getElementById(`price-${productId}`);
+            if (mainPriceEl) mainPriceEl.innerText = `$${price.toFixed(2)}`;
+
+            const kitPriceEl = document.getElementById(`kit-price-${productId}`);
+            if (kitPriceEl) kitPriceEl.innerText = `$${price.toFixed(2)}`;
+
+            styleSizeToggleButtons(productId);
+
+            if (currentQuickViewId === productId) {
+                qvSelectedSize = size;
+                updateQvPriceDisplay(product);
+                styleQvSizeButtons();
+                const qvTitleEl = document.getElementById('qv-title');
+                if (qvTitleEl) qvTitleEl.innerText = getDecantDisplayName(product, size);
+            }
+        }
+
+        function setDecantSize(productId, size, event) {
+            if (event) { event.stopPropagation(); event.preventDefault(); }
+            decantSizeSelection[productId] = size;
+            refreshDecantPriceDisplays(productId);
+        }
+
         function renderProducts(categoryId, subCategory = null) {
             const gridId = subCategory ? `grid-${categoryId}-${subCategory}` : `grid-${categoryId}`;
             const grid = document.getElementById(gridId);
@@ -1602,9 +1690,13 @@
                 productsHTML = `<div class="col-span-full text-center text-gray-400 py-8 text-sm">No hay productos en esta sección con los filtros seleccionados.</div>`;
             } else {
                 catProducts.forEach(prod => {
+                    const isDecant = prod.category === 'decants';
+                    const size = isDecant ? getSelectedSize(prod.id) : null;
+                    const displayPrice = isDecant ? getDecantPrice(prod, size) : prod.price;
+
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span id="price-${prod.id}" class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${displayPrice.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1618,6 +1710,7 @@
 
                     const addCartFn = `addToCart('${prod.id}')`;
                     const buyDirectFn = `buyDirectly('${prod.id}')`;
+                    const sizeToggleHTML = isDecant ? renderSizeToggle(prod.id, '') : '';
 
                     if (prod.soldOut) {
                         soldOutClass = 'sold-out';
@@ -1633,6 +1726,7 @@
                         `;
                     } else {
                         actionButtonsHTML = `
+                            ${sizeToggleHTML}
                             <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
                                 <button type="button" onclick="event.stopPropagation(); event.preventDefault(); ${addCartFn}" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-2 px-1 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir">
                                     <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
@@ -1755,6 +1849,44 @@
                 }
             }, { passive: true });
         }
+
+        function updateQvPriceDisplay(product) {
+            const priceEl = document.getElementById('qv-price');
+            if (!priceEl) return;
+            if (product.isRequest) {
+                priceEl.innerText = 'A Cotizar (Bajo Pedido)';
+                return;
+            }
+            const price = product.category === 'decants' ? getDecantPrice(product, qvSelectedSize) : product.price;
+            priceEl.innerText = `$${price.toFixed(2)}`;
+        }
+
+        function styleQvSizeButtons() {
+            const btn5 = document.getElementById('qv-size-5ml-btn');
+            const btn10 = document.getElementById('qv-size-10ml-btn');
+            if (!btn5 || !btn10) return;
+            const activeClass = 'bg-fsgold text-white';
+            const inactiveClass = 'bg-white dark:bg-black/40 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-black/60';
+            btn5.className = `px-4 py-1.5 transition ${qvSelectedSize === '5ml' ? activeClass : inactiveClass}`;
+            btn10.className = `px-4 py-1.5 transition ${qvSelectedSize === '10ml' ? activeClass : inactiveClass}`;
+        }
+
+        function setQvSize(size) {
+            if (!currentQuickViewId) return;
+            const product = productsDB.find(p => p.id === currentQuickViewId);
+            if (!product) return;
+            qvSelectedSize = size;
+            decantSizeSelection[currentQuickViewId] = size;
+            updateQvPriceDisplay(product);
+            styleQvSizeButtons();
+            document.getElementById('qv-title').innerText = getDecantDisplayName(product, size);
+            // mantener sincronizadas las tarjetas de las grillas detrás del modal
+            const mainPriceEl = document.getElementById(`price-${currentQuickViewId}`);
+            if (mainPriceEl) mainPriceEl.innerText = `$${getDecantPrice(product, size).toFixed(2)}`;
+            const kitPriceEl = document.getElementById(`kit-price-${currentQuickViewId}`);
+            if (kitPriceEl) kitPriceEl.innerText = `$${getDecantPrice(product, size).toFixed(2)}`;
+            styleSizeToggleButtons(currentQuickViewId);
+        }
  
         function openQuickView(productId, isFromKit = false) {
             const product = productsDB.find(p => p.id === productId);
@@ -1793,7 +1925,16 @@
             }
             setQvSlide(0);
 
-            document.getElementById('qv-title').innerText = product.name;
+            const qvSizeToggle = document.getElementById('qv-size-toggle');
+            if (product.category === 'decants') {
+                qvSelectedSize = getSelectedSize(product.id);
+                qvSizeToggle.classList.remove('hidden-element');
+                styleQvSizeButtons();
+                document.getElementById('qv-title').innerText = getDecantDisplayName(product, qvSelectedSize);
+            } else {
+                qvSizeToggle.classList.add('hidden-element');
+                document.getElementById('qv-title').innerText = product.name;
+            }
             document.getElementById('qv-badge').innerText = product.sub;
             
             const desc = product.desc || 'Una pieza exclusiva de F Society. Calidad superior garantizada.';
@@ -1802,7 +1943,7 @@
             let cleanDesc = desc.replace(emojiRegex, '').trim();
             document.getElementById('qv-desc').innerText = cleanDesc;
  
-            document.getElementById('qv-price').innerText = product.isRequest ? 'A Cotizar (Bajo Pedido)' : `$${product.price.toFixed(2)}`;
+            updateQvPriceDisplay(product);
  
             let tagsHTML = '';
             if (product.origin) {
@@ -1994,17 +2135,20 @@
                 showToast("Este producto está agotado.");
                 return;
             }
+
+            const size = product.category === 'decants' ? qvSelectedSize : undefined;
+            const finalProduct = size ? { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size } : product;
             
-            const existingItem = cart.find(item => item.id === currentQuickViewId && !item.isKit);
+            const existingItem = cart.find(item => item.id === currentQuickViewId && !item.isKit && item.size === size);
             if (existingItem) {
                 existingItem.quantity += quickViewQty;
             } else {
-                cart.push({ ...product, quantity: quickViewQty, isKit: false });
+                cart.push({ ...finalProduct, quantity: quickViewQty, isKit: false });
             }
  
             updateCartUI();
             closeQuickView();
-            showToast(`${quickViewQty}x ${product.name} añadido.`);
+            showToast(`${quickViewQty}x ${finalProduct.name} añadido.`);
         }
 
         function addQvToKitCart() {
@@ -2015,17 +2159,20 @@
                 return;
             }
 
-            const existingItem = cart.find(item => item.id === currentQuickViewId && item.isKit);
+            const size = product.category === 'decants' ? qvSelectedSize : undefined;
+            const finalProduct = size ? { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size } : product;
+
+            const existingItem = cart.find(item => item.id === currentQuickViewId && item.isKit && item.size === size);
             if (existingItem) {
                 existingItem.quantity += quickViewQty;
             } else {
-                cart.push({ ...product, quantity: quickViewQty, isKit: true });
+                cart.push({ ...finalProduct, quantity: quickViewQty, isKit: true });
             }
 
             renderKitCartUI();
             updateCartUI();
             closeQuickView();
-            showToast(`${quickViewQty}x ${product.name} añadido al Kit.`);
+            showToast(`${quickViewQty}x ${finalProduct.name} añadido al Kit.`);
         }
 
         function buyQvNow() {
@@ -2036,11 +2183,14 @@
                 return;
             }
 
-            const existingItem = cart.find(item => item.id === currentQuickViewId);
+            const size = product.category === 'decants' ? qvSelectedSize : undefined;
+            const finalProduct = size ? { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size } : product;
+
+            const existingItem = cart.find(item => item.id === currentQuickViewId && !item.isKit && item.size === size);
             if (existingItem) {
                 existingItem.quantity += quickViewQty;
             } else {
-                cart.push({ ...product, quantity: quickViewQty });
+                cart.push({ ...finalProduct, quantity: quickViewQty, isKit: false });
             }
 
             updateCartUI();
@@ -2055,16 +2205,19 @@
                 showToast("Este producto está agotado.");
                 return;
             }
+
+            const size = product.category === 'decants' ? getSelectedSize(productId) : undefined;
+            const finalProduct = size ? { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size } : product;
  
-            const existingItem = cart.find(item => item.id === productId && !item.isKit);
+            const existingItem = cart.find(item => item.id === productId && !item.isKit && item.size === size);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ ...product, quantity: 1, isKit: false });
+                cart.push({ ...finalProduct, quantity: 1, isKit: false });
             }
  
             updateCartUI();
-            showToast(`${product.name} agregado.`);
+            showToast(`${finalProduct.name} agregado.`);
         }
 
         function buyDirectly(productId) {
@@ -2075,11 +2228,14 @@
                 return;
             }
 
-            const existingItem = cart.find(item => item.id === productId && !item.isKit);
+            const size = product.category === 'decants' ? getSelectedSize(productId) : undefined;
+            const finalProduct = size ? { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size } : product;
+
+            const existingItem = cart.find(item => item.id === productId && !item.isKit && item.size === size);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ ...product, quantity: 1, isKit: false });
+                cart.push({ ...finalProduct, quantity: 1, isKit: false });
             }
 
             updateCartUI();
@@ -2107,18 +2263,21 @@
                 return;
             }
 
-            const existingItem = cart.find(item => item.id === productId && item.isKit);
+            const size = getSelectedSize(productId);
+            const finalProduct = { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size };
+
+            const existingItem = cart.find(item => item.id === productId && item.isKit && item.size === size);
             if (existingItem) {
                 existingItem.quantity += qty;
             } else {
-                cart.push({ ...product, quantity: qty, isKit: true });
+                cart.push({ ...finalProduct, quantity: qty, isKit: true });
             }
 
             if (qtyEl) qtyEl.innerText = '1'; 
 
             renderKitCartUI();
             updateCartUI();
-            showToast(`${qty}x ${product.name} añadido al Kit.`);
+            showToast(`${qty}x ${finalProduct.name} añadido al Kit.`);
         }
 
         function changeKitItemQty(index, delta) {
@@ -2293,7 +2452,7 @@
         function buildMiniCard(prod) {
             const priceText = prod.isRequest ? `<span class="text-xs text-fsgold font-bold uppercase">Bajo Pedido</span>` : `<span class="text-sm font-bold">$${prod.price.toFixed(2)}</span>`;
             return `
-                <div onclick="openQuickView('${prod.id}')" class="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-black/50 cursor-pointer border-b border-gray-100 dark:border-gray-800 last:border-0 group transition-colors">
+                <div onclick="openQuickView('${prod.id}', false)" class="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-black/50 cursor-pointer border-b border-gray-100 dark:border-gray-800 last:border-0 group transition-colors">
                     <img src="${prod.image}" class="w-12 h-14 object-cover rounded border border-gray-200 dark:border-gray-700">
                     <div class="flex-grow">
                         <h4 class="text-sm font-semibold group-hover:text-fsgold transition-colors line-clamp-1">${prod.name}</h4>
@@ -2464,15 +2623,21 @@
                 productsHTML = `<div class="col-span-full text-center text-gray-400 py-6 text-xs">No hay resultados en esta sección.</div>`;
             } else {
                 catProducts.forEach(prod => {
+                    const isDecant = prod.category === 'decants';
+                    const size = isDecant ? getSelectedSize(prod.id) : null;
+                    const displayPrice = isDecant ? getDecantPrice(prod, size) : prod.price;
+
                     const priceDisplay = prod.isRequest 
                         ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span class="text-sm sm:text-base md:text-lg brand-font font-bold">$${prod.price.toFixed(2)}</span>`;
+                        : `<span id="price-${prod.id}" class="text-sm sm:text-base md:text-lg brand-font font-bold">$${displayPrice.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
                         const bgClass = prod.origin === 'Diseñador' ? 'bg-black text-fsgold border-fsgold/50' : 'bg-fsgold text-black border-black/20';
                         originBadge = `<span class="mt-1 inline-block text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded shadow-sm border ${bgClass}">${prod.origin.toUpperCase()}</span>`;
                     }
+
+                    const sizeToggleHTML = isDecant ? renderSizeToggle(prod.id, '') : '';
  
                     productsHTML += `
                         <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', false)">
@@ -2489,6 +2654,7 @@
                                     <div class="flex items-center justify-between">
                                         ${priceDisplay}
                                     </div>
+                                    ${sizeToggleHTML}
                                     <div class="grid grid-cols-2 gap-1.5 pt-1 relative z-30">
                                         <button type="button" onclick="event.stopPropagation(); event.preventDefault(); addToCart('${prod.id}')" class="bg-gray-100 dark:bg-black/50 hover:bg-fsgold dark:hover:bg-fsgold text-gray-800 dark:text-gray-200 hover:text-white text-[10px] sm:text-xs font-semibold py-1.5 px-2 rounded transition flex items-center justify-center gap-1 border border-gray-200 dark:border-gray-700 hover:border-fsgold touch-manipulation cursor-pointer" title="Añadir">
                                             <i class="fas fa-shopping-bag text-[10px]"></i> Añadir
