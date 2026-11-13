@@ -437,6 +437,7 @@
                     <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[200px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].left.id)">
                         <img id="showcase-left-img" src="" alt="Showcase Left" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="showcase-promo-badge hidden absolute top-3 left-3 z-20 rounded-full border border-fsgold/70 bg-black/85 px-2.5 py-1 text-[9px] sm:text-[10px] font-semibold tracking-[0.14em] text-fsgold shadow-lg backdrop-blur-sm">20% OFF</div>
                         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 z-10">
                             <span id="showcase-left-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded mb-1 sm:mb-2 inline-block"></span>
                             <h3 id="showcase-left-title" class="text-base sm:text-xl md:text-2xl brand-font font-bold text-white mb-1 sm:mb-2 leading-tight"></h3>
@@ -449,6 +450,7 @@
                     <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/30 cursor-pointer md:-translate-y-3 z-10 h-[220px] sm:h-[280px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].center.id)">
                         <img id="showcase-center-img" src="" alt="Showcase Center" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-95">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                        <div class="showcase-promo-badge hidden absolute top-3 left-3 z-20 rounded-full border border-fsgold/70 bg-black/85 px-2.5 py-1 text-[9px] sm:text-[10px] font-semibold tracking-[0.14em] text-fsgold shadow-lg backdrop-blur-sm">20% OFF</div>
                         <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/60 backdrop-blur-md px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-fsgold/30 text-[9px] sm:text-[10px] text-fsgold uppercase tracking-widest font-bold">
                             Destacado
                         </div>
@@ -464,6 +466,7 @@
                     <div class="relative rounded-2xl overflow-hidden group shadow-2xl border border-fsgold/20 cursor-pointer h-[200px] sm:h-[260px] md:h-full showcase-slide" onclick="openQuickView(showcaseSets[currentShowcaseIndex].right.id)">
                         <img id="showcase-right-img" src="" alt="Showcase Right" class="w-full h-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105 filter brightness-90">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        <div class="showcase-promo-badge hidden absolute top-3 left-3 z-20 rounded-full border border-fsgold/70 bg-black/85 px-2.5 py-1 text-[9px] sm:text-[10px] font-semibold tracking-[0.14em] text-fsgold shadow-lg backdrop-blur-sm">20% OFF</div>
                         <div class="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 z-10">
                             <span id="showcase-right-badge" class="text-[9px] uppercase tracking-widest bg-fsgold text-black font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded mb-1 sm:mb-2 inline-block"></span>
                             <h3 id="showcase-right-title" class="text-base sm:text-xl md:text-2xl brand-font font-bold text-white mb-1 sm:mb-2 leading-tight"></h3>
@@ -670,6 +673,7 @@
  
     <script>
         let currentQuickViewId = null;
+        let currentQuickViewIsFromKit = false;
         let quickViewQty = 1;
         let qvSelectedSize = '10ml';
         
@@ -688,11 +692,39 @@
             return decantSizeSelection[productId] || '10ml';
         }
 
-        function getDecantPrice(product, size) {
-            if (size === '5ml') {
-                return Math.round(product.price * 0.5 * 100) / 100;
+        const DECANT_DISCOUNT_RATE = 0.20;
+
+        function getDecantBasePrice(product, size) {
+            const sizeMultiplier = size === '5ml' ? 0.5 : 1;
+            return Math.round(product.price * sizeMultiplier * 100) / 100;
+        }
+
+        // La promoción aplica en el catálogo normal; el Kit conserva su tarifa.
+        function getDecantPrice(product, size, isKit = false) {
+            const basePrice = getDecantBasePrice(product, size);
+            const finalPrice = isKit ? basePrice : basePrice * (1 - DECANT_DISCOUNT_RATE);
+            return Math.round(finalPrice * 100) / 100;
+        }
+
+        function getDecantPriceMarkup(product, size, isKit = false) {
+            const basePrice = getDecantBasePrice(product, size);
+            if (isKit) {
+                return `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${basePrice.toFixed(2)}</span>`;
             }
-            return product.price;
+
+            const discountedPrice = getDecantPrice(product, size);
+            return `
+                <span class="text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 line-through font-medium">$${basePrice.toFixed(2)}</span>
+                <span class="inline-flex items-center gap-1.5">
+                    <strong class="text-base sm:text-lg brand-font font-bold text-fsgold">$${discountedPrice.toFixed(2)}</strong>
+                    <span class="inline-flex items-center rounded-full border border-fsgold/50 bg-fsgold/10 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-bold tracking-wider text-fsgold">20% OFF</span>
+                </span>
+            `;
+        }
+
+        function getDecantPromoBadgeHTML(isDecant) {
+            if (!isDecant) return '';
+            return `<span class="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 inline-flex items-center rounded-full border border-fsgold/70 bg-black/85 px-2.5 py-1 text-[9px] sm:text-[10px] font-semibold tracking-[0.14em] text-fsgold shadow-lg backdrop-blur-sm pointer-events-none">20% OFF</span>`;
         }
 
         function getDecantDisplayName(product, size) {
@@ -811,6 +843,15 @@
             const leftEl = document.getElementById('showcase-left-img').closest('.showcase-slide');
             const centerEl = document.getElementById('showcase-center-img').closest('.showcase-slide');
             const rightEl = document.getElementById('showcase-right-img').closest('.showcase-slide');
+
+            const updateShowcasePromo = (slideEl, item) => {
+                const promoBadge = slideEl.querySelector('.showcase-promo-badge');
+                const product = productsDB.find(p => p.id === item.id);
+                if (promoBadge) promoBadge.classList.toggle('hidden', !product || product.category !== 'decants');
+            };
+            updateShowcasePromo(leftEl, set.left);
+            updateShowcasePromo(centerEl, set.center);
+            updateShowcasePromo(rightEl, set.right);
 
             document.getElementById('showcase-left-img').src = set.left.image;
             document.getElementById('showcase-left-badge').innerText = set.left.sub;
@@ -1053,9 +1094,9 @@
                     }
 
                     const size = getSelectedSize(prod.id);
-                    const displayPrice = getDecantPrice(prod, size);
+                    const displayPrice = getDecantPrice(prod, size, true);
 
-                    // Modified to exclusively open quick view with the isFromKit flag
+                    // The Kit keeps its standard unit price and volume-based discount.
                     html += `
                         <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', true)">
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
@@ -1636,10 +1677,10 @@
             const price = getDecantPrice(product, size);
 
             const mainPriceEl = document.getElementById(`price-${productId}`);
-            if (mainPriceEl) mainPriceEl.innerText = `$${price.toFixed(2)}`;
+            if (mainPriceEl) mainPriceEl.innerHTML = getDecantPriceMarkup(product, size);
 
             const kitPriceEl = document.getElementById(`kit-price-${productId}`);
-            if (kitPriceEl) kitPriceEl.innerText = `$${price.toFixed(2)}`;
+            if (kitPriceEl) kitPriceEl.innerText = `$${getDecantPrice(product, size, true).toFixed(2)}`;
 
             styleSizeToggleButtons(productId);
 
@@ -1694,9 +1735,11 @@
                     const size = isDecant ? getSelectedSize(prod.id) : null;
                     const displayPrice = isDecant ? getDecantPrice(prod, size) : prod.price;
 
-                    const priceDisplay = prod.isRequest 
-                        ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span id="price-${prod.id}" class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${displayPrice.toFixed(2)}</span>`;
+                    const priceDisplay = prod.isRequest
+                        ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>`
+                        : isDecant
+                            ? `<div id="price-${prod.id}" class="flex flex-col items-start leading-tight">${getDecantPriceMarkup(prod, size)}</div>`
+                            : `<span class="text-sm sm:text-base md:text-lg brand-font text-gray-900 dark:text-white font-bold">$${displayPrice.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -1743,6 +1786,7 @@
                             ${soldOutOverlayHTML}
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
+                                ${getDecantPromoBadgeHTML(isDecant)}
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
                                     <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
                                     ${originBadge}
@@ -1857,8 +1901,11 @@
                 priceEl.innerText = 'A Cotizar (Bajo Pedido)';
                 return;
             }
-            const price = product.category === 'decants' ? getDecantPrice(product, qvSelectedSize) : product.price;
-            priceEl.innerText = `$${price.toFixed(2)}`;
+            if (product.category === 'decants') {
+                priceEl.innerHTML = `<div class="flex flex-col items-start leading-tight">${getDecantPriceMarkup(product, qvSelectedSize, currentQuickViewIsFromKit)}</div>`;
+                return;
+            }
+            priceEl.innerText = `$${product.price.toFixed(2)}`;
         }
 
         function styleQvSizeButtons() {
@@ -1882,9 +1929,9 @@
             document.getElementById('qv-title').innerText = getDecantDisplayName(product, size);
             // mantener sincronizadas las tarjetas de las grillas detrás del modal
             const mainPriceEl = document.getElementById(`price-${currentQuickViewId}`);
-            if (mainPriceEl) mainPriceEl.innerText = `$${getDecantPrice(product, size).toFixed(2)}`;
+            if (mainPriceEl) mainPriceEl.innerHTML = getDecantPriceMarkup(product, size);
             const kitPriceEl = document.getElementById(`kit-price-${currentQuickViewId}`);
-            if (kitPriceEl) kitPriceEl.innerText = `$${getDecantPrice(product, size).toFixed(2)}`;
+            if (kitPriceEl) kitPriceEl.innerText = `$${getDecantPrice(product, size, true).toFixed(2)}`;
             styleSizeToggleButtons(currentQuickViewId);
         }
  
@@ -1893,6 +1940,7 @@
             if (!product) return;
  
             currentQuickViewId = product.id;
+            currentQuickViewIsFromKit = isFromKit;
             quickViewQty = 1;
             document.getElementById('qv-qty').innerText = quickViewQty;
  
@@ -2160,7 +2208,7 @@
             }
 
             const size = product.category === 'decants' ? qvSelectedSize : undefined;
-            const finalProduct = size ? { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size } : product;
+            const finalProduct = size ? { ...product, price: getDecantPrice(product, size, true), name: getDecantDisplayName(product, size), size } : product;
 
             const existingItem = cart.find(item => item.id === currentQuickViewId && item.isKit && item.size === size);
             if (existingItem) {
@@ -2264,7 +2312,7 @@
             }
 
             const size = getSelectedSize(productId);
-            const finalProduct = { ...product, price: getDecantPrice(product, size), name: getDecantDisplayName(product, size), size };
+            const finalProduct = { ...product, price: getDecantPrice(product, size, true), name: getDecantDisplayName(product, size), size };
 
             const existingItem = cart.find(item => item.id === productId && item.isKit && item.size === size);
             if (existingItem) {
@@ -2450,7 +2498,12 @@
         }
  
         function buildMiniCard(prod) {
-            const priceText = prod.isRequest ? `<span class="text-xs text-fsgold font-bold uppercase">Bajo Pedido</span>` : `<span class="text-sm font-bold">$${prod.price.toFixed(2)}</span>`;
+            const miniSize = prod.category === 'decants' ? getSelectedSize(prod.id) : null;
+            const priceText = prod.isRequest
+                ? `<span class="text-xs text-fsgold font-bold uppercase">Bajo Pedido</span>`
+                : prod.category === 'decants'
+                    ? `<div class="flex flex-col items-end leading-tight">${getDecantPriceMarkup(prod, miniSize)}</div>`
+                    : `<span class="text-sm font-bold">$${prod.price.toFixed(2)}</span>`;
             return `
                 <div onclick="openQuickView('${prod.id}', false)" class="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-black/50 cursor-pointer border-b border-gray-100 dark:border-gray-800 last:border-0 group transition-colors">
                     <img src="${prod.image}" class="w-12 h-14 object-cover rounded border border-gray-200 dark:border-gray-700">
@@ -2627,9 +2680,11 @@
                     const size = isDecant ? getSelectedSize(prod.id) : null;
                     const displayPrice = isDecant ? getDecantPrice(prod, size) : prod.price;
 
-                    const priceDisplay = prod.isRequest 
-                        ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>` 
-                        : `<span id="price-${prod.id}" class="text-sm sm:text-base md:text-lg brand-font font-bold">$${displayPrice.toFixed(2)}</span>`;
+                    const priceDisplay = prod.isRequest
+                        ? `<span class="text-[11px] sm:text-xs md:text-sm brand-font text-fsgold font-semibold uppercase tracking-wider">A Cotizar</span>`
+                        : isDecant
+                            ? `<div id="price-${prod.id}" class="flex flex-col items-start leading-tight">${getDecantPriceMarkup(prod, size)}</div>`
+                            : `<span class="text-sm sm:text-base md:text-lg brand-font font-bold">$${displayPrice.toFixed(2)}</span>`;
  
                     let originBadge = '';
                     if(prod.origin) {
@@ -2643,6 +2698,7 @@
                         <div class="product-card bg-white dark:bg-fscardbg rounded-lg overflow-hidden flex flex-col group relative btn-press cursor-pointer" onclick="openQuickView('${prod.id}', false)">
                             <div class="relative aspect-[4/5] overflow-hidden bg-gray-50 dark:bg-black/50 flex items-center justify-center">
                                 <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover transition duration-500" onerror="this.src='https://placehold.co/400x500/ffffff/D4AF37?text=F+Society'">
+                                ${getDecantPromoBadgeHTML(isDecant)}
                                 <div class="absolute top-2 sm:top-3 left-2 sm:left-3 flex flex-col items-start gap-1 pointer-events-none">
                                     <span class="text-[9px] sm:text-[10px] md:text-xs bg-white/95 dark:bg-black/90 border border-fsgold text-gray-800 dark:text-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded uppercase tracking-wider backdrop-blur-sm font-bold shadow-sm">${prod.sub}</span>
                                     ${originBadge}
