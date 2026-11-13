@@ -946,7 +946,7 @@
             { id: 'd15', name: 'Imagination Louis Vuitton (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, soldOut: false, image: 'img/ImaginationLouisVuittonPyD.jpg', image2: 'img/ImaginationLouisVuittonD.jpg', desc: 'EDP Una fragancia fresca, luminosa y sofisticada que combina cítricos vibrantes con té negro. 🍋☕' },
             { id: 'd16', name: 'Versace Eros (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Noche', price: 120, isRequest: false, soldOut: false, image: 'img/VersageerosPyD.jpg', image2: 'img/VersageErosD.jpg', desc: 'EDT Fresco, seductor y lleno de energía con menta, limón y vainilla. 🍏🌿' },
             { id: 'd17', name: 'Rasasi Hawas For Him (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Árabe', occasion: 'Versátil', price: 100, isRequest: false, soldOut: false, image: 'img/RasasiHawasForHimPyD.jpg', image2: 'img/RasasiHawasForHimD.jpg', desc: 'EDP Fresco, acuático y moderno con mezcla vibrante de cítricos. 🌊🍋' },
-            { id: 'd18', name: 'Jean Paul Gaultier "Le Beau" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 120, isRequest: false, soldOut: false, image: 'img/JeanPaulLeBeauPyD.jpg', image2: 'img/JeanPaulLeBeauD.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
+            { id: 'd18', name: 'Jean Paul Gaultier "Le Beau" (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 120, isRequest: false, soldOut: true, image: 'img/JeanPaulLeBeauPyD.jpg', image2: 'img/JeanPaulLeBeauD.jpg', desc: 'EDP Aroma tropical, dulce y seductor con notas de piña, coco y haba tonka. 🥥🍍' },
             { id: 'd19', name: 'Jean Paul Gaultier Paradise Garden (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Diario', price: 150, isRequest: false, soldOut: false, image: 'img/JeanPaulParadiseGardenPyD.jpg', image2: 'img/JeanPaulParadiseGardenD.jpg', desc: 'EDP Fragancia fresca, verde y seductora, con carácter tropical y moderno. 🥥🌿' },
             { id: 'd20', name: 'Carolina Herrera La Bomba (Decant de 10ml)', category: 'decants', sub: 'Mujer', origin: 'Diseñador', occasion: 'Noche', price: 180, isRequest: false, soldOut: false, image: 'img/CarolinaHerreraLaBombaPyD.jpg', image2: 'img/CarolinaHerreraLaBombaD.jpg', desc: 'EDP Fragancia femenina floral y frutal, con un aroma dulce y vibrante. 🌸🍬' },
             { id: 'd21', name: 'Creed Aventus (Decant de 10ml)', category: 'decants', sub: 'Hombre', origin: 'Diseñador', occasion: 'Versátil', price: 80, isRequest: false, soldOut: false, image: 'img/CreedAventusPyD.jpg', image2: 'img/CreedAventusD.jpg', desc: 'EDP Fragancia masculina fresca, frutal y amaderada. 🍍🪵' },
@@ -2544,7 +2544,7 @@
             }
  
             const results = productsDB.filter(p => 
-                (p.category === 'decants' && !p.soldOut || p.category === 'perfumes') && 
+                (p.category === 'decants' && !p.soldOut || p.category === 'perfumes' && p.id !== 'p_le_beau') && 
                 (p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query))
             );
             resultsContainer.innerHTML = '';
