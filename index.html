@@ -2732,11 +2732,10 @@
             const countEl = document.getElementById('cart-count');
             const itemsContainer = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
-            
+
             const standardCartItems = cart.filter(item => !item.isKit);
             const totalCount = standardCartItems.reduce((sum, item) => sum + item.quantity, 0);
             if(countEl) countEl.innerText = totalCount;
-
             if(!itemsContainer) return;
 
             if(standardCartItems.length === 0) {
@@ -2747,17 +2746,26 @@
 
             let html = '';
             let total = 0;
+            let hasRequestItems = false;
 
             standardCartItems.forEach((item, index) => {
-                const sub = item.price * item.quantity;
-                total += sub;
+                const isFullPerfume = item.isRequest === true;
+                const sub = isFullPerfume ? 0 : item.price * item.quantity;
+                if (isFullPerfume) hasRequestItems = true;
+                else total += sub;
+
+                const itemPriceHTML = isFullPerfume
+                    ? `<span class="inline-flex items-center rounded-full border border-fsgold/40 bg-fsgold/10 px-2 py-1 text-[10px] text-fsgold font-bold uppercase tracking-wider">Bajo cotización</span>`
+                    : `<span class="text-xs text-fsgold font-bold">$${item.price.toFixed(2)} c/u</span>
+                       <span class="block text-[10px] text-gray-500 dark:text-gray-400">Subtotal: $${sub.toFixed(2)} MXN</span>`;
+
                 html += `
                     <div class="flex items-center gap-3 bg-gray-50 dark:bg-black/40 p-3 rounded-xl border border-gray-200 dark:border-gray-800">
                         <img src="${item.image}" class="w-12 h-14 object-cover rounded">
-                        <div class="flex-grow">
-                            <h4 class="text-xs font-semibold line-clamp-1">${item.name}</h4>
-                            <span class="text-xs text-fsgold font-bold">$${item.price.toFixed(2)}</span>
-                            <div class="flex items-center gap-2 mt-1">
+                        <div class="flex-grow min-w-0">
+                            <h4 class="text-xs font-semibold line-clamp-2">${item.name}</h4>
+                            <div class="mt-1">${itemPriceHTML}</div>
+                            <div class="flex items-center gap-2 mt-2">
                                 <button onclick="changeCartQty(${index}, -1)" class="w-5 h-5 border rounded bg-white dark:bg-black text-xs font-bold">-</button>
                                 <span class="text-xs font-semibold">${item.quantity}</span>
                                 <button onclick="changeCartQty(${index}, 1)" class="w-5 h-5 border rounded bg-white dark:bg-black text-xs font-bold">+</button>
@@ -2771,7 +2779,19 @@
             });
 
             itemsContainer.innerHTML = html;
-            if(totalEl) totalEl.innerText = `$${total.toFixed(2)} MXN`;
+            const totalLabelEl = document.getElementById('cart-total-label');
+            if (totalEl) {
+                totalEl.innerText = (hasRequestItems && total === 0)
+                    ? 'Bajo cotización'
+                    : `$${total.toFixed(2)} MXN`;
+            }
+            if (totalLabelEl && hasRequestItems && total === 0) {
+                totalLabelEl.innerText = 'Total:';
+            } else if (totalLabelEl && hasRequestItems && total > 0) {
+                totalLabelEl.innerText = 'Total parcial:';
+            } else if (totalLabelEl) {
+                totalLabelEl.innerText = 'Total Estimado:';
+            }
         }
 
         function changeCartQty(index, delta) {
@@ -2839,16 +2859,54 @@
                 return;
             }
 
-            let mensaje = `*PEDIDO F SOCIETY*\n\nHola, me gustaría confirmar los siguientes productos:\n\n`;
+            const regularItems = standardCartItems.filter(item => item.isRequest !== true);
+            const requestItems = standardCartItems.filter(item => item.isRequest === true);
             let total = 0;
 
-            standardCartItems.forEach(item => {
-                const sub = item.price * item.quantity;
-                total += sub;
-                mensaje += `▪ ${item.quantity}x ${item.name} ($${sub.toFixed(2)})\n`;
-            });
+            let mensaje = `*SOLICITUD DE PEDIDO | F SOCIETY*
 
-            mensaje += `\n*Total Estimado:* $${total.toFixed(2)} MXN\n\nQuedo a la espera para coordinar pago y envío.`;
+Hola, me gustaría recibir atención para los siguientes productos:
+`;
+
+            if (regularItems.length > 0) {
+                mensaje += `
+*PRODUCTOS CON PRECIO PUBLICADO*
+`;
+                regularItems.forEach(item => {
+                    const sub = item.price * item.quantity;
+                    total += sub;
+                    mensaje += `▪ ${item.quantity} x ${item.name} — $${sub.toFixed(2)} MXN
+`;
+                });
+            }
+
+            if (requestItems.length > 0) {
+                mensaje += `
+*PERFUMES BAJO PEDIDO*
+`;
+                requestItems.forEach(item => {
+                    mensaje += `▪ ${item.quantity} x ${item.name}
+`;
+                });
+                mensaje += `
+Estos perfumes se manejan exclusivamente bajo pedido. ¿Podrían confirmarme la disponibilidad, presentación y precio de cada uno? Entiendo que el importe se cotiza por separado y que todavía no forma parte de un total.
+`;
+            }
+
+            if (regularItems.length > 0) {
+                mensaje += `
+*Subtotal de productos con precio publicado: $${total.toFixed(2)} MXN*
+`;
+            }
+            if (requestItems.length > 0) {
+                mensaje += `*Perfumes bajo pedido: precio pendiente de cotización*
+`;
+            }
+
+            mensaje += `
+Quedo atento(a) a la confirmación y a los detalles para continuar con el pedido. Gracias.
+
+_F Society_`;
 
             const telefonoWA = "525545234410";
             const urlWA = `https://wa.me/${telefonoWA}?text=${encodeURIComponent(mensaje)}`;
